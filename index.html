@@ -620,18 +620,16 @@ function applyI18n() {
 </script>
 
 <script>
-const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxvr18etNNrllF4JDLFD3Mz4WO3xLG7Q-qoFnrrZMCMWg3cWkE27DvVRiPHbh_VC55v/exec';
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzJdNOUBQIXgVG9HDN8L1q7A7M0uxwyRAal7vpcW95WjKOYd2oQZHojx3-58bJHEO3s/exec';
 const MES = 'abr2026';
 const USER_KEY = 'zd_user_fp';
 
-// Fingerprint simples por navegador (persiste no localStorage)
 function getUserFp(){
   let fp = localStorage.getItem(USER_KEY);
   if(!fp){ fp = 'u_' + Math.random().toString(36).slice(2,10) + '_' + Date.now(); localStorage.setItem(USER_KEY, fp); }
   return fp;
 }
 
-// Restaurar estado visual das marcações pessoais ao carregar
 function loadImportant(){
   const marked = JSON.parse(localStorage.getItem('zd_marked_local') || '[]');
   marked.forEach(id => {
@@ -649,15 +647,13 @@ function toggleImp(id){
   btn.querySelector('span').textContent = isMarked ? t('important') : t('markImportant');
   btn.closest('.card').classList.toggle('card-important', isMarked);
 
-  // Salvar estado local para restaurar ao recarregar
   let local = JSON.parse(localStorage.getItem('zd_marked_local') || '[]');
   local = isMarked ? [...new Set([...local, id])] : local.filter(x => x !== id);
   localStorage.setItem('zd_marked_local', JSON.stringify(local));
 
-  // Enviar para o Google Sheets
   const action = isMarked ? 'marcar' : 'desmarcar';
-  const url = `${SCRIPT_URL}?action=${action}&item_id=${id}&user_fp=${getUserFp()}&mes=${MES}&callback=zdnoop`;
-  jsonpFire(url);
+  const url = SCRIPT_URL + '?action=' + action + '&item_id=' + id + '&user_fp=' + getUserFp() + '&mes=' + MES;
+  new Image().src = url;
 }
 
 function toggleDisc(btn,id){
@@ -665,15 +661,6 @@ function toggleDisc(btn,id){
   const o=p.classList.toggle('open');
   btn.classList.toggle('open',o);
   btn.querySelector('span').textContent=o?t('hide'):t('discoveryBtn');
-}
-
-// JSONP helper — envia requests ao Apps Script sem bloqueio de CORS
-window.zdnoop = function(){};
-function jsonpFire(url, cb) {
-  const s = document.createElement('script');
-  s.src = url;
-  s.onload = s.onerror = () => { document.body.removeChild(s); if(cb) cb(); };
-  document.body.appendChild(s);
 }
 
 function submitSugestao(){
@@ -685,18 +672,19 @@ function submitSugestao(){
 
   const btn = document.getElementById('sbtn');
   btn.disabled = true;
-  btn.innerHTML = `<svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7h10M7 2l5 5-5 5"/></svg>${t('sending')}`;
+  btn.innerHTML = '<svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7h10M7 2l5 5-5 5"/></svg>' + t('sending');
 
-  const url = `${SCRIPT_URL}?action=sugestao&nome=${encodeURIComponent(nome)}&area=${encodeURIComponent(role)}&ref=${encodeURIComponent(ref)}&texto=${encodeURIComponent(texto)}&mes=${MES}`;
-
-  jsonpFire(url + '&callback=zdnoop', () => {
+  const url = SCRIPT_URL + '?action=sugestao&nome=' + encodeURIComponent(nome) + '&area=' + encodeURIComponent(role) + '&ref=' + encodeURIComponent(ref) + '&texto=' + encodeURIComponent(texto) + '&mes=' + MES;
+  const img = new Image();
+  img.onload = img.onerror = () => {
     ['iname','irole','iref','itext'].forEach(id => { document.getElementById(id).value=''; });
     const m = document.getElementById('smsg');
     m.classList.add('show');
     setTimeout(() => m.classList.remove('show'), 3000);
     btn.disabled = false;
-    btn.innerHTML = `<svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7h10M7 2l5 5-5 5"/></svg>${t('submitBtn')}`;
-  });
+    btn.innerHTML = '<svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7h10M7 2l5 5-5 5"/></svg>' + t('submitBtn');
+  };
+  img.src = url;
 }
 
 applyI18n();
