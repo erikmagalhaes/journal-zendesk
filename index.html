@@ -354,6 +354,47 @@ footer a:hover{color:var(--green)}
 
 </div>
 
+<div class="ss">
+  <div class="sh">
+    <div>
+      <p class="she" id="collab-eye">Colaboração do time</p>
+      <h2 class="sht" id="collab-title">Sugestões de iniciativas</h2>
+      <p class="shs" id="collab-sub">Registre aqui o que você quer explorar a partir das novidades deste mês</p>
+    </div>
+  </div>
+  <div class="sf">
+    <div class="fg">
+      <div class="fr"><label id="label-name">Seu nome</label><input type="text" id="iname" placeholder="Ex: Ana Lima"></div>
+      <div class="fr"><label id="label-area">Área</label>
+        <select id="irole">
+          <option value="">Selecione...</option>
+          <option value="cx">Líder de CX</option>
+          <option value="ops">Produto / Ops</option>
+        </select>
+      </div>
+    </div>
+    <div class="fr"><label id="label-ref">Relacionado a</label>
+      <select id="iref">
+        <option value="">Selecione a novidade...</option>
+        <option>Conversation Journey para IA avançada</option>
+        <option>Copilot com recomendações de roteamento</option>
+        <option>Sumarização de tickets por grupo</option>
+        <option>Monitoramento em tempo real com SLA</option>
+        <option>Encerramento de sessão + label de IA</option>
+        <option>Task lists (GA)</option>
+        <option>WFM: workstreams combinados</option>
+        <option value="geral">Geral / outro</option>
+      </select>
+    </div>
+    <div class="fr"><label id="label-sug">Sugestão de discovery ou iniciativa</label><textarea id="itext" placeholder="Ex: Quero explorar como usar o Conversation Journey para reduzir escalações no fluxo de cancelamento..."></textarea></div>
+    <button class="sbtn" id="sbtn" onclick="submitSugestao()">
+      <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7h10M7 2l5 5-5 5"/></svg>
+      Enviar sugestão
+    </button>
+    <div class="smsg" id="smsg"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7l3.5 3.5L12 3"/></svg>Sugestão enviada!</div>
+  </div>
+</div>
+
 <footer>
   <span id="footer-text">Zendesk Journal · Nuvemshop CX Intelligence · Gerado na primeira terça de cada mês ·</span>
   <a id="footer-src" href="https://support.zendesk.com/hc/en-us/articles/10479706763162" target="_blank">Fonte: Zendesk April 2026</a>
@@ -560,37 +601,63 @@ function applyI18n() {
   // Footer
   document.getElementById('footer-text').textContent = t('footerText');
   document.getElementById('footer-src').textContent = t('footerSource');
+
+  // Formulário de sugestões
+  document.getElementById('collab-eye').textContent = t('collab');
+  document.getElementById('collab-title').textContent = t('sugTitle');
+  document.getElementById('collab-sub').textContent = t('sugSub');
+  document.getElementById('label-name').textContent = t('labelName');
+  document.getElementById('iname').placeholder = t('namePlaceholder');
+  document.getElementById('label-area').textContent = t('labelArea');
+  document.getElementById('irole').options[0].text = t('areaPlaceholder');
+  document.getElementById('irole').options[1].text = t('areaCX');
+  document.getElementById('irole').options[2].text = t('areaOps');
+  document.getElementById('label-ref').textContent = t('labelRef');
+  document.getElementById('label-sug').textContent = t('labelSug');
+  document.getElementById('itext').placeholder = t('sugPlaceholder');
+  document.getElementById('sbtn').innerHTML = `<svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7h10M7 2l5 5-5 5"/></svg>${t('submitBtn')}`;
 }
 </script>
 
 <script>
-const IMP_KEY='zd_apr2026_imp';
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwCvyoXkdfbZUzgdYY_LzCCO_ts7hZ0axYmhrAZl6XVWtmMBxz05CbeWg92CknKoZsb/exec';
+const MES = 'abr2026';
+const USER_KEY = 'zd_user_fp';
 
+// Fingerprint simples por navegador (persiste no localStorage)
+function getUserFp(){
+  let fp = localStorage.getItem(USER_KEY);
+  if(!fp){ fp = 'u_' + Math.random().toString(36).slice(2,10) + '_' + Date.now(); localStorage.setItem(USER_KEY, fp); }
+  return fp;
+}
+
+// Restaurar estado visual das marcações pessoais ao carregar
 function loadImportant(){
-  try{
-    const raw=localStorage.getItem(IMP_KEY);
-    if(!raw)return;
-    JSON.parse(raw).forEach(id=>{
-      const btn=document.getElementById('imp-'+id);
-      if(!btn)return;
-      btn.classList.add('marked');
-      btn.querySelector('span').textContent=t('important');
-      btn.closest('.card').classList.add('card-important');
-    });
-  }catch(e){}
+  const marked = JSON.parse(localStorage.getItem('zd_marked_local') || '[]');
+  marked.forEach(id => {
+    const btn = document.getElementById('imp-'+id);
+    if(!btn) return;
+    btn.classList.add('marked');
+    btn.querySelector('span').textContent = t('important');
+    btn.closest('.card').classList.add('card-important');
+  });
 }
 
 function toggleImp(id){
-  const btn=document.getElementById('imp-'+id);
-  const isMarked=btn.classList.toggle('marked');
-  btn.querySelector('span').textContent=isMarked?t('important'):t('markImportant');
-  btn.closest('.card').classList.toggle('card-important',isMarked);
-  try{
-    let marked=[];
-    try{const raw=localStorage.getItem(IMP_KEY);if(raw)marked=JSON.parse(raw);}catch(e){}
-    marked=isMarked?[...new Set([...marked,id])]:marked.filter(x=>x!==id);
-    localStorage.setItem(IMP_KEY,JSON.stringify(marked));
-  }catch(e){}
+  const btn = document.getElementById('imp-'+id);
+  const isMarked = btn.classList.toggle('marked');
+  btn.querySelector('span').textContent = isMarked ? t('important') : t('markImportant');
+  btn.closest('.card').classList.toggle('card-important', isMarked);
+
+  // Salvar estado local para restaurar ao recarregar
+  let local = JSON.parse(localStorage.getItem('zd_marked_local') || '[]');
+  local = isMarked ? [...new Set([...local, id])] : local.filter(x => x !== id);
+  localStorage.setItem('zd_marked_local', JSON.stringify(local));
+
+  // Enviar para o Google Sheets
+  const action = isMarked ? 'marcar' : 'desmarcar';
+  const url = `${SCRIPT_URL}?action=${action}&item_id=${id}&user_fp=${getUserFp()}&mes=${MES}`;
+  fetch(url).catch(() => {});
 }
 
 function toggleDisc(btn,id){
@@ -600,6 +667,32 @@ function toggleDisc(btn,id){
   btn.querySelector('span').textContent=o?t('hide'):t('discoveryBtn');
 }
 
+function submitSugestao(){
+  const nome  = document.getElementById('iname').value.trim();
+  const role  = document.getElementById('irole').value;
+  const ref   = document.getElementById('iref').value;
+  const texto = document.getElementById('itext').value.trim();
+  if(!nome||!role||!texto){alert(t('fillAlert'));return;}
+
+  const btn = document.getElementById('sbtn');
+  btn.disabled = true;
+  btn.innerHTML = `<svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7h10M7 2l5 5-5 5"/></svg>${t('sending')}`;
+
+  const url = `${SCRIPT_URL}?action=sugestao&nome=${encodeURIComponent(nome)}&area=${encodeURIComponent(role)}&ref=${encodeURIComponent(ref)}&texto=${encodeURIComponent(texto)}&mes=${MES}`;
+
+  fetch(url)
+    .then(() => {
+      ['iname','irole','iref','itext'].forEach(id => { document.getElementById(id).value=''; });
+      const m = document.getElementById('smsg');
+      m.classList.add('show');
+      setTimeout(() => m.classList.remove('show'), 3000);
+    })
+    .catch(() => alert(t('saveError')))
+    .finally(() => {
+      btn.disabled = false;
+      btn.innerHTML = `<svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7h10M7 2l5 5-5 5"/></svg>${t('submitBtn')}`;
+    });
+}
 
 applyI18n();
 loadImportant();
