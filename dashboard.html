@@ -152,6 +152,10 @@ header{background:var(--navy);border-bottom:1px solid var(--border);position:sti
         <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 2L3 6l4 4"/></svg>
         Voltar ao journal
       </a>
+      <a class="back-btn" href="guia.html">
+        <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="6" cy="6" r="5"/><path d="M6 4v2.5M6 8.5h.01"/></svg>
+        Guia
+      </a>
     </div>
   </div>
 </header>
@@ -177,11 +181,16 @@ const ITEMS = {
   d7: { title: 'WFM: workstreams combinados e folgas mais precisas', cat: 'Agente' },
 };
 
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwCvyoXkdfbZUzgdYY_LzCCO_ts7hZ0axYmhrAZl6XVWtmMBxz05CbeWg92CknKoZsb/exec';
+
 async function getData() {
-  let marked = [], suggestions = [];
-  try { const raw=localStorage.getItem(IMP_KEY); if(raw) marked=JSON.parse(raw); } catch(e) {}
-  try { const raw=localStorage.getItem(SUG_KEY); if(raw) suggestions=JSON.parse(raw); } catch(e) {}
-  return { marked, suggestions };
+  try {
+    const res = await fetch(SCRIPT_URL + '?action=getData');
+    const data = await res.json();
+    return { counts: data.counts || {}, suggestions: data.suggestions || [] };
+  } catch(e) {
+    return { counts: {}, suggestions: [] };
+  }
 }
 
 function topicCounts(suggestions) {
@@ -193,7 +202,7 @@ function topicCounts(suggestions) {
   return Object.entries(counts).sort((a,b) => b[1]-a[1]);
 }
 
-function renderApp(marked, suggestions) {
+function renderApp(counts, suggestions) {
   const app = document.getElementById('app');
   const topics = topicCounts(suggestions);
   const maxTopicCount = topics.length ? topics[0][1] : 1;
@@ -209,8 +218,8 @@ function renderApp(marked, suggestions) {
 
     <div class="metrics">
       <div class="metric">
-        <div class="metric-val mv-amber">${marked.length}</div>
-        <div class="metric-label">itens marcados como importantes</div>
+        <div class="metric-val mv-amber">${Object.values(counts).reduce((a,b)=>a+b,0)}</div>
+        <div class="metric-label">marcações de importantes</div>
       </div>
       <div class="metric">
         <div class="metric-val mv-green">${suggestions.length}</div>
@@ -235,7 +244,7 @@ function renderApp(marked, suggestions) {
             <div class="insights-sub">Análise dos dados de engajamento do time</div>
           </div>
         </div>
-        <button class="gen-btn" id="gen-btn" onclick="generateInsights(${marked.length}, ${suggestions.length})">
+        <button class="gen-btn" id="gen-btn" onclick="generateInsights(Object.values(counts).reduce((a,b)=>a+b,0), ${suggestions.length})">
           <svg viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6.5 1v11M1 6.5h11"/></svg>
           Gerar insights
         </button>
@@ -245,18 +254,29 @@ function renderApp(marked, suggestions) {
       </div>
     </div>
 
-    <div class="section-title">Itens marcados como importantes</div>
-    <div class="imp-grid" id="imp-grid">
-      ${marked.length === 0
-        ? `<div class="imp-empty">Nenhum item marcado como importante ainda. Acesse o journal e marque os itens relevantes.</div>`
-        : marked.map(id => ITEMS[id] ? `
-          <div class="imp-card">
-            <div class="imp-check"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6l2.5 2.5L10 3"/></svg></div>
-            <div class="imp-info">
-              <div class="imp-title">${ITEMS[id].title}</div>
-              <div class="imp-cat">${ITEMS[id].cat}</div>
-            </div>
-          </div>` : '').join('')
+    <div class="section-title">Novidades marcadas como importantes</div>
+    <div id="imp-grid">
+      ${Object.keys(counts).length === 0
+        ? `<div class="imp-empty">Nenhum item marcado ainda. Acesse o journal e marque os itens relevantes.</div>`
+        : (() => {
+            const maxCount = Math.max(...Object.values(counts));
+            return Object.entries(counts)
+              .sort((a,b) => b[1]-a[1])
+              .map(([id, count]) => ITEMS[id] ? `
+                <div class="imp-card" style="align-items:center;gap:16px">
+                  <div style="min-width:36px;text-align:center">
+                    <div style="font-size:22px;font-weight:700;color:var(--amber);letter-spacing:-.03em;line-height:1">${count}</div>
+                    <div style="font-size:10px;color:var(--text3);margin-top:2px">${count===1?'pessoa':'pessoas'}</div>
+                  </div>
+                  <div style="flex:1">
+                    <div class="imp-title">${ITEMS[id].title}</div>
+                    <div class="imp-cat">${ITEMS[id].cat}</div>
+                    <div style="margin-top:6px;background:var(--navy3);border-radius:3px;height:4px;overflow:hidden">
+                      <div style="height:100%;background:var(--amber);border-radius:3px;width:${Math.round(count/maxCount*100)}%;transition:width .4s"></div>
+                    </div>
+                  </div>
+                </div>` : '').join('');
+          })()
       }
     </div>
 
@@ -335,18 +355,21 @@ async function generateInsights(markedCount, sugCount) {
   btn.innerHTML = '<div style="width:13px;height:13px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite"></div> Gerando...';
   body.innerHTML = '<div style="display:flex;align-items:center;gap:8px;color:var(--text3);font-size:13px"><div style="width:14px;height:14px;border:2px solid var(--border2);border-top-color:var(--purple);border-radius:50%;animation:spin .7s linear infinite;flex-shrink:0"></div> Analisando dados do mês...</div>';
 
-  let marked = [], suggestions = [];
-  try { const raw=localStorage.getItem(IMP_KEY); if(raw) marked=JSON.parse(raw); } catch(e) {}
+  let counts = {}, suggestions = [];
+  try { const raw=localStorage.getItem(IMP_KEY); if(raw) counts=JSON.parse(raw); } catch(e) {}
   try { const raw=localStorage.getItem(SUG_KEY); if(raw) suggestions=JSON.parse(raw); } catch(e) {}
 
-  const impTitles = marked.map(id => ITEMS[id]?.title).filter(Boolean);
+  const impTitles = Object.entries(counts)
+    .sort((a,b)=>b[1]-a[1])
+    .map(([id,n]) => ITEMS[id] ? `${ITEMS[id].title} (${n} marcação${n>1?'ões':''})` : null)
+    .filter(Boolean);
   const sugTexts = suggestions.map(s => `[${s.role === 'cx' ? 'CX' : 'Ops'}] ${s.ref ? s.ref + ': ' : ''}${s.text}`);
 
   const prompt = `Você é um analista estratégico de CX analisando o engajamento do time com as novidades mensais do Zendesk.
 
 Dados do mês de Abril 2026:
 
-ITENS MARCADOS COMO IMPORTANTES (${impTitles.length}):
+ITENS MARCADOS COMO IMPORTANTES (${impTitles.length} itens, ${Object.values(counts).reduce((a,b)=>a+b,0)} marcações total):
 ${impTitles.length ? impTitles.map((t,i) => `${i+1}. ${t}`).join('\n') : 'Nenhum item marcado ainda.'}
 
 SUGESTÕES DO TIME (${sugTexts.length}):
@@ -389,8 +412,8 @@ Retorne APENAS um JSON array com 4 strings, sem texto adicional, sem backticks:
 
 async function init() {
   document.getElementById('app').innerHTML = `<div class="loading" id="loading"><div class="spinner"></div><p>Carregando dados...</p></div>`;
-  const { marked, suggestions } = await getData();
-  renderApp(marked, suggestions);
+  const { counts, suggestions } = await getData();
+  renderApp(counts, suggestions);
 }
 
 init();
