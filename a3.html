@@ -184,7 +184,7 @@ header{background:var(--navy);border-bottom:1px solid var(--border);position:sti
           <span class="sec-head-title" style="color:var(--amber)" data-i="ishTitle">Análise de Causa-Raiz — Ishikawa</span>
         </div>
         <div class="ish-wrap">
-          <svg class="ish-svg" viewBox="0 0 900 280" xmlns="http://www.w3.org/2000/svg" id="ish-svg">
+          <svg viewBox="0 0 900 320" xmlns="http://www.w3.org/2000/svg" id="ish-svg" style="width:100%;display:block;min-height:200px">
             <!-- rendered by JS -->
           </svg>
         </div>
@@ -344,21 +344,19 @@ function list(id, items, bright=false){
 }
 
 function drawIshikawa(bones, effect){
-  const W=900, H=280, cy=H/2;
-  const spineX0=40, spineX1=760, effectCX=840;
+  const W=900, H=320, cy=H/2;
+  const spineX0=30, spineX1=730, effectCX=825;
   const sp = spineX1-spineX0;
-  // colors
   const navy2='#152236', green='#00C853', greenBg='#003D1A',
         coral='#FF5252', coralBg='#330808', amber='#FFB300',
         text2='#8FA3BB', text3='#4D6478', border='#253D58', border2='#1E3148';
 
-  // attach xs: 20% and 50% of spine
-  const ax1 = spineX0 + sp*0.22;
-  const ax2 = spineX0 + sp*0.54;
-  const boneH = 90;
+  const ax1 = spineX0 + sp*0.24;
+  const ax2 = spineX0 + sp*0.56;
+  const boneH = 130;
 
   // helper: text element
-  const txt=(x,y,t,fill,size=10,bold=false,anchor='middle')=>
+  const txt=(x,y,t,fill,size=13,bold=false,anchor='middle')=>
     `<text x="${x}" y="${y}" fill="${fill}" font-size="${size}" font-family="Inter,Arial,sans-serif" text-anchor="${anchor}" ${bold?'font-weight="600"':''}>${t}</text>`;
   const rect=(x,y,w,h,fill,stroke,r=4,sw=1.5)=>
     `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="${r}" fill="${fill}" stroke="${stroke}" stroke-width="${sw}"/>`;
@@ -366,13 +364,13 @@ function drawIshikawa(bones, effect){
   let svg = '';
 
   // Spine
-  svg += `<line x1="${spineX0}" y1="${cy}" x2="${spineX1}" y2="${cy}" stroke="${text2}" stroke-width="2.5"/>`;
-  svg += `<polygon points="${spineX1},${cy} ${spineX1-14},${cy-8} ${spineX1-14},${cy+8}" fill="${text2}"/>`;
+  svg += `<line x1="${spineX0}" y1="${cy}" x2="${spineX1}" y2="${cy}" stroke="${text2}" stroke-width="3"/>`;
+  svg += `<polygon points="${spineX1},${cy} ${spineX1-16},${cy-10} ${spineX1-16},${cy+10}" fill="${text2}"/>`;
 
   // Effect box
-  const bw=130, bh=58, bx=effectCX-bw/2, by=cy-bh/2;
+  const bw=150, bh=66, bx=effectCX-bw/2, by=cy-bh/2;
   svg += rect(bx,by,bw,bh,coralBg,coral,5,2);
-  effect.forEach((line,i)=> svg += txt(effectCX, by+15+i*16, line, coral, 10, true));
+  effect.forEach((line,i)=> svg += txt(effectCX, by+18+i*19, line, coral, 12, true));
 
   // Draw 4 bones
   const boneDefs = [
@@ -384,29 +382,29 @@ function drawIshikawa(bones, effect){
 
   boneDefs.forEach(({ax,top,bone})=>{
     const sign = top ? -1 : 1;
-    const tipX = ax - 70;
+    const tipX = ax - 80;
     const tipY = cy + sign * boneH;
 
     // Main diagonal bone
-    svg += `<line x1="${tipX}" y1="${tipY}" x2="${ax}" y2="${cy}" stroke="${border}" stroke-width="1.8"/>`;
+    svg += `<line x1="${tipX}" y1="${tipY}" x2="${ax}" y2="${cy}" stroke="${border}" stroke-width="2"/>`;
 
     // Label pill
-    const lw = bone.label.length * 8 + 20, lh = 20;
-    const lx = tipX - lw/2, ly = tipY + sign*28 - lh/2;
+    const lw = bone.label.length * 9 + 24, lh = 24;
+    const lx = tipX - lw/2, ly = tipY + sign*34 - lh/2;
     svg += rect(lx, ly, lw, lh, greenBg, green, 4, 1.5);
-    svg += txt(tipX, ly+13, bone.label, green, 10, true);
+    svg += txt(tipX, ly+16, bone.label, green, 12, true);
 
     // Causes
     bone.causes.forEach((cause,j)=>{
       const frac = 0.2 + j*0.28;
       const px = tipX + frac*(ax-tipX);
       const py = tipY + frac*(cy-tipY);
-      const stubX = px - 22;
-      const stubY = py + sign*22;
-      svg += `<line x1="${px}" y1="${py}" x2="${stubX}" y2="${stubY}" stroke="${border2}" stroke-width="1"/>`;
-      const textX = stubX - 4;
-      const textY = stubY + (top ? -3 : 11);
-      svg += txt(textX, textY, cause, text2, 9.5, false, 'end');
+      const stubX = px - 26;
+      const stubY = py + sign*26;
+      svg += `<line x1="${px}" y1="${py}" x2="${stubX}" y2="${stubY}" stroke="${border2}" stroke-width="1.2"/>`;
+      const textX = stubX - 5;
+      const textY = stubY + (top ? -4 : 13);
+      svg += txt(textX, textY, cause, text2, 11.5, false, 'end');
     });
   });
 
