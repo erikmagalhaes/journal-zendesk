@@ -620,7 +620,7 @@ function applyI18n() {
 </script>
 
 <script>
-const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwCvyoXkdfbZUzgdYY_LzCCO_ts7hZ0axYmhrAZl6XVWtmMBxz05CbeWg92CknKoZsb/exec';
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxvr18etNNrllF4JDLFD3Mz4WO3xLG7Q-qoFnrrZMCMWg3cWkE27DvVRiPHbh_VC55v/exec';
 const MES = 'abr2026';
 const USER_KEY = 'zd_user_fp';
 
@@ -656,8 +656,8 @@ function toggleImp(id){
 
   // Enviar para o Google Sheets
   const action = isMarked ? 'marcar' : 'desmarcar';
-  const url = `${SCRIPT_URL}?action=${action}&item_id=${id}&user_fp=${getUserFp()}&mes=${MES}`;
-  fetch(url).catch(() => {});
+  const url = `${SCRIPT_URL}?action=${action}&item_id=${id}&user_fp=${getUserFp()}&mes=${MES}&callback=zdnoop`;
+  jsonpFire(url);
 }
 
 function toggleDisc(btn,id){
@@ -665,6 +665,15 @@ function toggleDisc(btn,id){
   const o=p.classList.toggle('open');
   btn.classList.toggle('open',o);
   btn.querySelector('span').textContent=o?t('hide'):t('discoveryBtn');
+}
+
+// JSONP helper — envia requests ao Apps Script sem bloqueio de CORS
+window.zdnoop = function(){};
+function jsonpFire(url, cb) {
+  const s = document.createElement('script');
+  s.src = url;
+  s.onload = s.onerror = () => { document.body.removeChild(s); if(cb) cb(); };
+  document.body.appendChild(s);
 }
 
 function submitSugestao(){
@@ -680,18 +689,14 @@ function submitSugestao(){
 
   const url = `${SCRIPT_URL}?action=sugestao&nome=${encodeURIComponent(nome)}&area=${encodeURIComponent(role)}&ref=${encodeURIComponent(ref)}&texto=${encodeURIComponent(texto)}&mes=${MES}`;
 
-  fetch(url)
-    .then(() => {
-      ['iname','irole','iref','itext'].forEach(id => { document.getElementById(id).value=''; });
-      const m = document.getElementById('smsg');
-      m.classList.add('show');
-      setTimeout(() => m.classList.remove('show'), 3000);
-    })
-    .catch(() => alert(t('saveError')))
-    .finally(() => {
-      btn.disabled = false;
-      btn.innerHTML = `<svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7h10M7 2l5 5-5 5"/></svg>${t('submitBtn')}`;
-    });
+  jsonpFire(url + '&callback=zdnoop', () => {
+    ['iname','irole','iref','itext'].forEach(id => { document.getElementById(id).value=''; });
+    const m = document.getElementById('smsg');
+    m.classList.add('show');
+    setTimeout(() => m.classList.remove('show'), 3000);
+    btn.disabled = false;
+    btn.innerHTML = `<svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7h10M7 2l5 5-5 5"/></svg>${t('submitBtn')}`;
+  });
 }
 
 applyI18n();
