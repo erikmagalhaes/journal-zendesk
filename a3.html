@@ -161,13 +161,22 @@ header{background:var(--navy);border-bottom:1px solid var(--border);position:sti
     </div>
   </div>
 
+  <!-- Ishikawa — ocupa as 2 colunas -->
+  <div class="sec" style="margin-bottom:16px">
+    <div class="sec-head">
+      <div class="sec-head-bar" style="background:var(--amber)"></div>
+      <span class="sec-head-title" style="color:var(--amber)" data-i="ishTitle">Análise de Causa-Raiz — Ishikawa</span>
+    </div>
+    <div style="padding:1rem 1.25rem">
+      <svg viewBox="0 0 1100 320" xmlns="http://www.w3.org/2000/svg" id="ish-svg" style="width:100%;display:block"></svg>
+    </div>
+  </div>
+
   <div class="grid">
 
-    <!-- LEFT COLUMN -->
-    <div class="col-left">
-
-      <!-- Problema -->
-      <div class="sec">
+    <!-- LEFT: Problema + Estado Atual + Estado Futuro -->
+    <div>
+      <div class="sec" style="margin-bottom:12px">
         <div class="sec-head">
           <div class="sec-head-bar" style="background:var(--coral)"></div>
           <span class="sec-head-title" style="color:var(--coral)" data-i="probTitle">Problema</span>
@@ -176,21 +185,6 @@ header{background:var(--navy);border-bottom:1px solid var(--border);position:sti
           <p data-i="probText">A liderança de CX não tinha visibilidade sistemática das atualizações mensais do Zendesk, gerando perda de oportunidades de melhoria operacional e de IA para o time de atendimento.</p>
         </div>
       </div>
-
-      <!-- Ishikawa -->
-      <div class="sec">
-        <div class="sec-head">
-          <div class="sec-head-bar" style="background:var(--amber)"></div>
-          <span class="sec-head-title" style="color:var(--amber)" data-i="ishTitle">Análise de Causa-Raiz — Ishikawa</span>
-        </div>
-        <div class="ish-wrap">
-          <svg viewBox="0 0 900 320" xmlns="http://www.w3.org/2000/svg" id="ish-svg" style="width:100%;display:block;min-height:200px">
-            <!-- rendered by JS -->
-          </svg>
-        </div>
-      </div>
-
-      <!-- Estado Atual + Futuro -->
       <div class="state-grid">
         <div class="sec">
           <div class="sec-head">
@@ -211,14 +205,11 @@ header{background:var(--navy);border-bottom:1px solid var(--border);position:sti
           </div>
         </div>
       </div>
-
     </div>
 
-    <!-- RIGHT COLUMN -->
-    <div class="col-right">
-
-      <!-- Solução -->
-      <div class="sec">
+    <!-- RIGHT: Solução + Stack + Resultados -->
+    <div>
+      <div class="sec" style="margin-bottom:12px">
         <div class="sec-head">
           <div class="sec-head-bar" style="background:var(--green)"></div>
           <span class="sec-head-title" style="color:var(--green)" data-i="solTitle">Solução — Zendesk Journal</span>
@@ -228,9 +219,7 @@ header{background:var(--navy);border-bottom:1px solid var(--border);position:sti
         </div>
         <div class="comp-grid" id="comp-grid"></div>
       </div>
-
-      <!-- Stack + Resultados + Próximos Passos -->
-      <div class="sec">
+      <div class="sec" style="margin-bottom:12px">
         <div class="sec-head">
           <div class="sec-head-bar" style="background:var(--text3)"></div>
           <span class="sec-head-title" style="color:var(--text3)" data-i="techTitle">Stack Técnica</span>
@@ -239,8 +228,6 @@ header{background:var(--navy);border-bottom:1px solid var(--border);position:sti
           <ul class="blist" id="tech-list"></ul>
         </div>
       </div>
-
-      <!-- Resultados Esperados — full width -->
       <div class="sec" style="margin-bottom:12px">
         <div class="sec-head">
           <div class="sec-head-bar" style="background:var(--green)"></div>
@@ -250,8 +237,6 @@ header{background:var(--navy);border-bottom:1px solid var(--border);position:sti
           <ul class="blist bright" id="res-list"></ul>
         </div>
       </div>
-
-      <!-- Próximos Passos (escondido se vazio) -->
       <div class="sec" id="next-card">
         <div class="sec-head">
           <div class="sec-head-bar" style="background:var(--purple)"></div>
@@ -261,8 +246,8 @@ header{background:var(--navy);border-bottom:1px solid var(--border);position:sti
           <ul class="blist" id="next-list"></ul>
         </div>
       </div>
-
     </div>
+
   </div>
 </div>
 
@@ -292,7 +277,7 @@ const I18N = {
     ishBones:[
       {label:'PROCESSO',  causes:['Sem fluxo desenhado','Sem cadência definida','Processo reativo']},
       {label:'FERRAMENTA',causes:['Volume alto de updates','Artigos extensos e sem curadoria','Sem filtro de relevância']},
-      {label:'PESSOAS',   causes:['Processo oneroso','Problema invisível','Problema emergiu via feedback']},
+      {label:'PESSOAS',   causes:['Processo difícil de manter','Problema invisível','Problema emergiu via feedback']},
       {label:'GESTÃO',    causes:['Sem ritual de conhecimento','Dor não mapeada','Sem priorização']},
     ],
     ishEffect:['Liderança sem','visibilidade das','novidades Zendesk'],
@@ -321,7 +306,7 @@ const I18N = {
     ishBones:[
       {label:'PROCESO',    causes:['Sin flujo definido','Sin cadencia definida','Proceso reactivo']},
       {label:'HERRAMIENTA',causes:['Alto volumen updates','Artículos extensos sin curaduría','Sin filtro relevancia']},
-      {label:'PERSONAS',   causes:['Proceso oneroso','Problema invisible','Problema surgió vía feedback']},
+      {label:'PERSONAS',   causes:['Proceso difícil de mantener','Problema invisible','Problema surgió vía feedback']},
       {label:'GESTIÓN',    causes:['Sin ritual conocimiento','Dolor no mapeado','Sin priorización']},
     ],
     ishEffect:['Liderazgo sin','visibilidad de las','novedades Zendesk'],
@@ -344,69 +329,69 @@ function list(id, items, bright=false){
 }
 
 function drawIshikawa(bones, effect){
-  const W=900, H=320, cy=H/2;
-  const spineX0=30, spineX1=730, effectCX=825;
-  const sp = spineX1-spineX0;
-  const navy2='#152236', green='#00C853', greenBg='#003D1A',
-        coral='#FF5252', coralBg='#330808', amber='#FFB300',
-        text2='#8FA3BB', text3='#4D6478', border='#253D58', border2='#1E3148';
+  const green='#00C853', greenBg='#003D1A', greenBorder='#005C25',
+        coral='#FF5252', coralBg='#330808',
+        text1='#E8EDF2', text2='#8FA3BB', text3='#4D6478',
+        border='#1E3148', border2='#253D58';
 
-  const ax1 = spineX0 + sp*0.24;
-  const ax2 = spineX0 + sp*0.56;
-  const boneH = 130;
+  // Layout constants — viewBox 1100x320, spine at y=160
+  const cy = 160;
+  const spineX0 = 20, spineX1 = 880;
 
-  // helper: text element
-  const txt=(x,y,t,fill,size=13,bold=false,anchor='middle')=>
-    `<text x="${x}" y="${y}" fill="${fill}" font-size="${size}" font-family="Inter,Arial,sans-serif" text-anchor="${anchor}" ${bold?'font-weight="600"':''}>${t}</text>`;
-  const rect=(x,y,w,h,fill,stroke,r=4,sw=1.5)=>
-    `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="${r}" fill="${fill}" stroke="${stroke}" stroke-width="${sw}"/>`;
+  // 4 bone attach points + tip positions
+  // Left pair: attach at x=260, tips at x=160 (top) and x=160 (bottom)
+  // Right pair: attach at x=580, tips at x=480
+  const bones_layout = [
+    { ax:260, tipX:155, tipY: 50, top:true  }, // TL
+    { ax:580, tipX:475, tipY: 50, top:true  }, // TR
+    { ax:260, tipX:155, tipY:270, top:false }, // BL
+    { ax:580, tipX:475, tipY:270, top:false }, // BR
+  ];
+
+  const t = (x,y,text,fill,size,bold,anchor='middle') =>
+    `<text x="${x}" y="${y}" fill="${fill}" font-size="${size}" font-family="Inter,Arial,sans-serif" text-anchor="${anchor}" dominant-baseline="middle"${bold?' font-weight="700"':''}>${text}</text>`;
 
   let svg = '';
 
   // Spine
-  svg += `<line x1="${spineX0}" y1="${cy}" x2="${spineX1}" y2="${cy}" stroke="${text2}" stroke-width="3"/>`;
-  svg += `<polygon points="${spineX1},${cy} ${spineX1-16},${cy-10} ${spineX1-16},${cy+10}" fill="${text2}"/>`;
+  svg += `<line x1="${spineX0}" y1="${cy}" x2="${spineX1}" y2="${cy}" stroke="${text3}" stroke-width="2.5"/>`;
+  svg += `<polygon points="${spineX1},${cy} ${spineX1-14},${cy-8} ${spineX1-14},${cy+8}" fill="${text3}"/>`;
 
-  // Effect box
-  const bw=150, bh=66, bx=effectCX-bw/2, by=cy-bh/2;
-  svg += rect(bx,by,bw,bh,coralBg,coral,5,2);
-  effect.forEach((line,i)=> svg += txt(effectCX, by+18+i*19, line, coral, 12, true));
+  // Effect box — right side
+  const bw=170, bh=76, bx=920, by=cy-bh/2;
+  svg += `<rect x="${bx}" y="${by}" width="${bw}" height="${bh}" rx="6" fill="${coralBg}" stroke="${coral}" stroke-width="2"/>`;
+  effect.forEach((line,i) => svg += t(bx+bw/2, by+16+i*22, line, coral, 13, true));
 
-  // Draw 4 bones
-  const boneDefs = [
-    {ax:ax1, top:true,  bone:bones[0]},
-    {ax:ax2, top:true,  bone:bones[1]},
-    {ax:ax1, top:false, bone:bones[2]},
-    {ax:ax2, top:false, bone:bones[3]},
-  ];
+  // Draw bones
+  bones_layout.forEach((bl, i) => {
+    const bone = bones[i];
+    if(!bone) return;
 
-  boneDefs.forEach(({ax,top,bone})=>{
-    const sign = top ? -1 : 1;
-    const tipX = ax - 80;
-    const tipY = cy + sign * boneH;
+    // Diagonal line from tip to attach point on spine
+    svg += `<line x1="${bl.tipX}" y1="${bl.tipY}" x2="${bl.ax}" y2="${cy}" stroke="${border2}" stroke-width="2"/>`;
 
-    // Main diagonal bone
-    svg += `<line x1="${tipX}" y1="${tipY}" x2="${ax}" y2="${cy}" stroke="${border}" stroke-width="2"/>`;
+    // Category pill — centered on tipX, pushed away from spine
+    const pw = bone.label.length * 9 + 24, ph = 24;
+    const pillY = bl.top ? bl.tipY - 18 : bl.tipY + 18;
+    svg += `<rect x="${bl.tipX - pw/2}" y="${pillY - ph/2}" width="${pw}" height="${ph}" rx="4" fill="${greenBg}" stroke="${green}" stroke-width="1.5"/>`;
+    svg += t(bl.tipX, pillY, bone.label, green, 13, true);
 
-    // Label pill
-    const lw = bone.label.length * 9 + 24, lh = 24;
-    const lx = tipX - lw/2, ly = tipY + sign*34 - lh/2;
-    svg += rect(lx, ly, lw, lh, greenBg, green, 4, 1.5);
-    svg += txt(tipX, ly+16, bone.label, green, 12, true);
-
-    // Causes
-    bone.causes.forEach((cause,j)=>{
-      const frac = 0.2 + j*0.28;
-      const px = tipX + frac*(ax-tipX);
-      const py = tipY + frac*(cy-tipY);
-      const stubX = px - 26;
-      const stubY = py + sign*26;
-      svg += `<line x1="${px}" y1="${py}" x2="${stubX}" y2="${stubY}" stroke="${border2}" stroke-width="1.2"/>`;
-      const textX = stubX - 5;
-      const textY = stubY + (top ? -4 : 13);
-      svg += txt(textX, textY, cause, text2, 11.5, false, 'end');
+    // Cause texts — stacked vertically, anchored to right of tipX
+    bone.causes.forEach((cause, j) => {
+      if(bl.top){
+        // Above spine: texts go downward from top, ending above spine
+        const ty = bl.tipY + 14 + j * 22;
+        svg += t(bl.tipX + 60, ty, cause, text2, 13, false, 'start');
+      } else {
+        // Below spine: texts go upward from bottom, ending below spine
+        const ty = bl.tipY - 14 - j * 22;
+        svg += t(bl.tipX + 60, ty, cause, text2, 13, false, 'start');
+      }
     });
   });
+
+  // Center divider line (subtle vertical)
+  svg += `<line x1="420" y1="20" x2="420" y2="300" stroke="${border}" stroke-width="1" stroke-dasharray="4 4"/>`;
 
   document.getElementById('ish-svg').innerHTML = svg;
 }
