@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard · Zendesk Journal CX</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0D1B2A;--navy2:#152236;--navy3:#1E2F45;--navy4:#243650;
+  --green:#00C853;--green2:#00E676;--green-bg:#003D1A;--green-border:#005C25;
+  --amber:#FFB300;--amber-bg:#2A1F00;--amber-border:#503300;
+  --coral:#FF5252;--coral-bg:#2A0A0A;--coral-border:#4A1010;
+  --purple:#7C4DFF;--purple-bg:#1A0F35;--purple-border:#3D2680;
+  --blue:#4FC3F7;--blue-bg:#0A2035;--blue-border:#0D3D5C;
+  --text:#E8EDF2;--text2:#8FA3BB;--text3:#4D6478;
+  --border:#1E3148;--border2:#253D58;
+  --r:8px;--rl:12px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',sans-serif;background:var(--navy);color:var(--text);font-size:14px;line-height:1.6;min-height:100vh}
+
+header{background:var(--navy);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100}
+.hi{max-width:1000px;margin:0 auto;padding:0 1.5rem;height:56px;display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.lm{width:30px;height:30px;border-radius:6px;background:var(--green);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.lm svg{width:16px;height:16px;fill:var(--navy)}
+.ln{font-size:15px;font-weight:700;color:var(--text);letter-spacing:-.02em}
+.ln span{color:var(--green)}
+.hright{display:flex;align-items:center;gap:10px}
+.back-btn{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:500;color:var(--text3);border:1px solid var(--border);border-radius:4px;padding:5px 12px;text-decoration:none;transition:all .15s}
+.back-btn:hover{color:var(--green);border-color:var(--green)}
+.back-btn svg{width:12px;height:12px}
+.dash-badge{font-size:11px;font-weight:600;background:var(--purple-bg);color:var(--purple);border:1px solid var(--purple-border);border-radius:20px;padding:3px 10px}
+
+.wrap{max-width:1000px;margin:0 auto;padding:2rem 1.5rem 5rem}
+
+/* Loading */
+.loading{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:60vh;gap:16px;color:var(--text3)}
+.spinner{width:32px;height:32px;border:2px solid var(--border2);border-top-color:var(--green);border-radius:50%;animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.loading p{font-size:13px}
+
+/* Page header */
+.page-head{margin-bottom:2rem}
+.page-eye{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--purple);margin-bottom:6px}
+.page-title{font-size:26px;font-weight:700;letter-spacing:-.03em;color:var(--text);margin-bottom:4px}
+.page-sub{font-size:13px;color:var(--text3)}
+
+/* Metric cards */
+.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:2rem}
+.metric{background:var(--navy2);border:1px solid var(--border);border-radius:var(--rl);padding:1.25rem}
+.metric-val{font-size:32px;font-weight:700;letter-spacing:-.04em;line-height:1;margin-bottom:4px}
+.metric-label{font-size:12px;color:var(--text3);font-weight:400}
+.mv-green{color:var(--green)}
+.mv-amber{color:var(--amber)}
+.mv-purple{color:var(--purple)}
+.mv-blue{color:var(--blue)}
+
+/* Section */
+.section-title{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);margin:2rem 0 1rem;display:flex;align-items:center;gap:10px}
+.section-title::before{content:'';width:3px;height:14px;border-radius:2px;background:var(--green);flex-shrink:0}
+.section-title::after{content:'';flex:1;height:1px;background:var(--border)}
+
+/* Insights block */
+.insights-block{background:var(--navy2);border:1px solid var(--purple-border);border-radius:var(--rl);overflow:hidden;margin-bottom:2rem}
+.insights-head{padding:1rem 1.5rem;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.insights-head-left{display:flex;align-items:center;gap:8px}
+.insights-icon{width:28px;height:28px;border-radius:6px;background:var(--purple-bg);border:1px solid var(--purple-border);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.insights-icon svg{width:14px;height:14px;stroke:var(--purple)}
+.insights-label{font-size:13px;font-weight:600;color:var(--text)}
+.insights-sub{font-size:11px;color:var(--text3)}
+.gen-btn{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;background:var(--purple);color:#fff;border:none;border-radius:4px;padding:7px 14px;cursor:pointer;transition:background .15s}
+.gen-btn:hover{background:#9C6FFF}
+.gen-btn:disabled{opacity:.5;cursor:not-allowed}
+.gen-btn svg{width:13px;height:13px}
+.insights-body{padding:1.5rem}
+.insights-empty{font-size:13px;color:var(--text3);text-align:center;padding:1rem 0}
+.insight-item{display:flex;gap:12px;margin-bottom:14px;align-items:flex-start}
+.insight-item:last-child{margin-bottom:0}
+.insight-num{width:22px;height:22px;border-radius:4px;background:var(--purple-bg);border:1px solid var(--purple-border);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:var(--purple);flex-shrink:0;margin-top:1px}
+.insight-text{font-size:13px;color:var(--text2);line-height:1.7}
+
+/* Important items */
+.imp-grid{display:grid;gap:10px}
+.imp-card{background:var(--navy2);border:1px solid var(--amber-border);border-radius:var(--rl);padding:1.1rem 1.25rem;display:flex;align-items:flex-start;gap:12px}
+.imp-check{width:22px;height:22px;border-radius:4px;background:var(--amber-bg);border:1px solid var(--amber-border);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.imp-check svg{width:12px;height:12px;stroke:var(--amber)}
+.imp-info{flex:1}
+.imp-title{font-size:14px;font-weight:600;color:var(--text);margin-bottom:3px;letter-spacing:-.01em}
+.imp-cat{font-size:11px;font-weight:600;letter-spacing:.04em;color:var(--text3)}
+.imp-empty{background:var(--navy2);border:1px solid var(--border);border-radius:var(--rl);padding:2rem;text-align:center;color:var(--text3);font-size:13px}
+
+/* Two col layout */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+
+/* Suggestions panel */
+.sug-panel{background:var(--navy2);border:1px solid var(--border);border-radius:var(--rl);overflow:hidden}
+.sug-head{padding:1rem 1.25rem;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.sug-head-title{font-size:14px;font-weight:600;color:var(--text)}
+.sug-count-badge{font-size:11px;font-weight:600;background:var(--green-bg);color:var(--green);border:1px solid var(--green-border);border-radius:4px;padding:2px 8px}
+.sug-list{padding:.75rem 1rem}
+.sug-item{border:1px solid var(--border);border-radius:var(--r);padding:.85rem 1rem;margin-bottom:8px;background:var(--navy)}
+.sug-item:last-child{margin-bottom:0}
+.sug-item-head{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:5px}
+.sug-author{display:flex;align-items:center;gap:7px}
+.av{width:26px;height:26px;border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0}
+.avcx{background:var(--green-bg);color:var(--green);border:1px solid var(--green-border)}
+.avop{background:var(--purple-bg);color:var(--purple);border:1px solid var(--purple-border)}
+.sug-name{font-size:12px;font-weight:500;color:var(--text)}
+.sug-role{font-size:11px;color:var(--text3)}
+.sug-date{font-size:11px;color:var(--text3)}
+.sug-text{font-size:13px;color:var(--text2);line-height:1.6}
+.sug-ref{font-size:11px;color:var(--text3);margin-top:5px;display:flex;align-items:center;gap:4px}
+.sug-ref span{color:var(--green)}
+.sug-empty{padding:1.5rem;text-align:center;color:var(--text3);font-size:13px}
+
+/* By-topic chart */
+.topic-row{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.topic-row:last-child{margin-bottom:0}
+.topic-name{font-size:12px;color:var(--text2);width:220px;flex-shrink:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.topic-bar-wrap{flex:1;background:var(--navy3);border-radius:4px;height:8px;overflow:hidden}
+.topic-bar{height:100%;border-radius:4px;background:var(--green);transition:width .6s ease}
+.topic-count{font-size:11px;font-weight:600;color:var(--text3);min-width:20px;text-align:right}
+
+/* Refresh */
+.refresh-btn{display:inline-flex;align-items:center;gap:5px;font-size:12px;color:var(--text3);background:none;border:1px solid var(--border);border-radius:4px;padding:5px 10px;cursor:pointer;transition:all .15s}
+.refresh-btn:hover{color:var(--green);border-color:var(--green)}
+.refresh-btn svg{width:12px;height:12px}
+
+@media(max-width:700px){
+  .metrics{grid-template-columns:repeat(2,1fr)}
+  .two-col{grid-template-columns:1fr}
+}
+@media(max-width:420px){
+  .metrics{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="hi">
+    <a class="logo" href="index.html">
+      <div class="lm"><svg viewBox="0 0 16 16"><path d="M2 3h5v5H2zM9 3h5v5H9zM2 9h5v5H2zM9 9h5v5H9z"/></svg></div>
+      <span class="ln">Zendesk Journal<span> · CX</span></span>
+    </a>
+    <div class="hright">
+      <span class="dash-badge">Dashboard executivo</span>
+      <a class="back-btn" href="index.html">
+        <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 2L3 6l4 4"/></svg>
+        Voltar ao journal
+      </a>
+    </div>
+  </div>
+</header>
+
+<div class="wrap" id="app">
+  <div class="loading" id="loading">
+    <div class="spinner"></div>
+    <p>Carregando dados...</p>
+  </div>
+</div>
+
+<script>
+const IMP_KEY = 'zd_apr2026_imp';
+const SUG_KEY = 'zd_apr2026_v3';
+
+const ITEMS = {
+  d1: { title: 'Nova aba "Conversation Journey" para IA avançada', cat: 'IA & Automação' },
+  d2: { title: 'Copilot com recomendações de roteamento omnichannel', cat: 'IA & Automação' },
+  d3: { title: 'Sumarização de tickets por grupo no Copilot', cat: 'IA & Automação' },
+  d4: { title: 'Monitoramento em tempo real com novos filtros de SLA', cat: 'Relatórios' },
+  d5: { title: 'Usuários podem encerrar sessões de messaging + novo label de IA', cat: 'Canais' },
+  d6: { title: 'Task lists — disponível para todos (GA)', cat: 'Agente' },
+  d7: { title: 'WFM: workstreams combinados e folgas mais precisas', cat: 'Agente' },
+};
+
+async function getData() {
+  let marked = [], suggestions = [];
+  try { const raw=localStorage.getItem(IMP_KEY); if(raw) marked=JSON.parse(raw); } catch(e) {}
+  try { const raw=localStorage.getItem(SUG_KEY); if(raw) suggestions=JSON.parse(raw); } catch(e) {}
+  return { marked, suggestions };
+}
+
+function topicCounts(suggestions) {
+  const counts = {};
+  suggestions.forEach(s => {
+    const k = s.ref && s.ref !== 'geral' && s.ref !== '' ? s.ref : 'Geral';
+    counts[k] = (counts[k] || 0) + 1;
+  });
+  return Object.entries(counts).sort((a,b) => b[1]-a[1]);
+}
+
+function renderApp(marked, suggestions) {
+  const app = document.getElementById('app');
+  const topics = topicCounts(suggestions);
+  const maxTopicCount = topics.length ? topics[0][1] : 1;
+  const byCx = suggestions.filter(s => s.role === 'cx').length;
+  const byOps = suggestions.filter(s => s.role === 'ops').length;
+
+  app.innerHTML = `
+    <div class="page-head">
+      <p class="page-eye">Abril 2026 · Visão executiva</p>
+      <h1 class="page-title">Dashboard do journal</h1>
+      <p class="page-sub">Itens marcados como importantes e feedback consolidado do time · <span id="ts"></span></p>
+    </div>
+
+    <div class="metrics">
+      <div class="metric">
+        <div class="metric-val mv-amber">${marked.length}</div>
+        <div class="metric-label">itens marcados como importantes</div>
+      </div>
+      <div class="metric">
+        <div class="metric-val mv-green">${suggestions.length}</div>
+        <div class="metric-label">sugestões do time</div>
+      </div>
+      <div class="metric">
+        <div class="metric-val mv-purple">${byCx}</div>
+        <div class="metric-label">de líderes de CX</div>
+      </div>
+      <div class="metric">
+        <div class="metric-val mv-blue">${byOps}</div>
+        <div class="metric-label">de produto / ops</div>
+      </div>
+    </div>
+
+    <div class="insights-block">
+      <div class="insights-head">
+        <div class="insights-head-left">
+          <div class="insights-icon"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 1l1.5 3L12 4.5l-2.5 2.4.6 3.4L7 8.8l-3.1 1.5.6-3.4L2 4.5 5.5 4z"/></svg></div>
+          <div>
+            <div class="insights-label">Insights gerados pela IA</div>
+            <div class="insights-sub">Análise dos dados de engajamento do time</div>
+          </div>
+        </div>
+        <button class="gen-btn" id="gen-btn" onclick="generateInsights(${marked.length}, ${suggestions.length})">
+          <svg viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6.5 1v11M1 6.5h11"/></svg>
+          Gerar insights
+        </button>
+      </div>
+      <div class="insights-body" id="insights-body">
+        <p class="insights-empty">Clique em "Gerar insights" para a IA analisar os dados do mês.</p>
+      </div>
+    </div>
+
+    <div class="section-title">Itens marcados como importantes</div>
+    <div class="imp-grid" id="imp-grid">
+      ${marked.length === 0
+        ? `<div class="imp-empty">Nenhum item marcado como importante ainda. Acesse o journal e marque os itens relevantes.</div>`
+        : marked.map(id => ITEMS[id] ? `
+          <div class="imp-card">
+            <div class="imp-check"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6l2.5 2.5L10 3"/></svg></div>
+            <div class="imp-info">
+              <div class="imp-title">${ITEMS[id].title}</div>
+              <div class="imp-cat">${ITEMS[id].cat}</div>
+            </div>
+          </div>` : '').join('')
+      }
+    </div>
+
+    <div class="section-title" style="margin-top:2.5rem">Engajamento por novidade</div>
+    <div style="background:var(--navy2);border:1px solid var(--border);border-radius:var(--rl);padding:1.25rem 1.5rem;margin-bottom:2rem">
+      ${topics.length === 0
+        ? `<p style="font-size:13px;color:var(--text3);text-align:center;padding:.5rem 0">Nenhuma sugestão recebida ainda.</p>`
+        : topics.map(([name, count]) => `
+          <div class="topic-row">
+            <span class="topic-name" title="${name}">${name}</span>
+            <div class="topic-bar-wrap"><div class="topic-bar" style="width:${Math.round(count/maxTopicCount*100)}%"></div></div>
+            <span class="topic-count">${count}</span>
+          </div>`).join('')
+      }
+    </div>
+
+    <div class="section-title">Sugestões do time</div>
+    <div class="two-col">
+      <div class="sug-panel">
+        <div class="sug-head">
+          <span class="sug-head-title">Líderes de CX</span>
+          <span class="sug-count-badge">${byCx}</span>
+        </div>
+        <div class="sug-list">
+          ${suggestions.filter(s => s.role === 'cx').length === 0
+            ? `<div class="sug-empty">Nenhuma sugestão de líderes de CX ainda.</div>`
+            : suggestions.filter(s => s.role === 'cx').map(s => suggestionCard(s)).join('')}
+        </div>
+      </div>
+      <div class="sug-panel">
+        <div class="sug-head">
+          <span class="sug-head-title">Produto / Ops</span>
+          <span class="sug-count-badge">${byOps}</span>
+        </div>
+        <div class="sug-list">
+          ${suggestions.filter(s => s.role === 'ops').length === 0
+            ? `<div class="sug-empty">Nenhuma sugestão de produto/ops ainda.</div>`
+            : suggestions.filter(s => s.role === 'ops').map(s => suggestionCard(s)).join('')}
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:2rem;display:flex;justify-content:flex-end">
+      <button class="refresh-btn" onclick="init()">
+        <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10.5 6A4.5 4.5 0 112 4m0 0V1m0 3H5"/></svg>
+        Atualizar dados
+      </button>
+    </div>
+  `;
+
+  document.getElementById('ts').textContent = 'Atualizado às ' + new Date().toLocaleTimeString('pt-BR', {hour:'2-digit', minute:'2-digit'});
+}
+
+function suggestionCard(s) {
+  const ini = s.name.trim().split(' ').map(n => n[0]).join('').slice(0,2).toUpperCase();
+  const ac = s.role === 'cx' ? 'avcx' : 'avop';
+  const rl = s.role === 'cx' ? 'Líder de CX' : 'Produto / Ops';
+  return `
+    <div class="sug-item">
+      <div class="sug-item-head">
+        <div class="sug-author">
+          <div class="av ${ac}">${ini}</div>
+          <div><div class="sug-name">${s.name}</div><div class="sug-role">${rl}</div></div>
+        </div>
+        <span class="sug-date">${s.date}</span>
+      </div>
+      <p class="sug-text">${s.text}</p>
+      ${s.ref && s.ref !== 'geral' && s.ref ? `<p class="sug-ref"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 6h8M6 2l4 4-4 4"/></svg> <span>${s.ref}</span></p>` : ''}
+    </div>`;
+}
+
+async function generateInsights(markedCount, sugCount) {
+  const btn = document.getElementById('gen-btn');
+  const body = document.getElementById('insights-body');
+  btn.disabled = true;
+  btn.innerHTML = '<div style="width:13px;height:13px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite"></div> Gerando...';
+  body.innerHTML = '<div style="display:flex;align-items:center;gap:8px;color:var(--text3);font-size:13px"><div style="width:14px;height:14px;border:2px solid var(--border2);border-top-color:var(--purple);border-radius:50%;animation:spin .7s linear infinite;flex-shrink:0"></div> Analisando dados do mês...</div>';
+
+  let marked = [], suggestions = [];
+  try { const raw=localStorage.getItem(IMP_KEY); if(raw) marked=JSON.parse(raw); } catch(e) {}
+  try { const raw=localStorage.getItem(SUG_KEY); if(raw) suggestions=JSON.parse(raw); } catch(e) {}
+
+  const impTitles = marked.map(id => ITEMS[id]?.title).filter(Boolean);
+  const sugTexts = suggestions.map(s => `[${s.role === 'cx' ? 'CX' : 'Ops'}] ${s.ref ? s.ref + ': ' : ''}${s.text}`);
+
+  const prompt = `Você é um analista estratégico de CX analisando o engajamento do time com as novidades mensais do Zendesk.
+
+Dados do mês de Abril 2026:
+
+ITENS MARCADOS COMO IMPORTANTES (${impTitles.length}):
+${impTitles.length ? impTitles.map((t,i) => `${i+1}. ${t}`).join('\n') : 'Nenhum item marcado ainda.'}
+
+SUGESTÕES DO TIME (${sugTexts.length}):
+${sugTexts.length ? sugTexts.map((t,i) => `${i+1}. ${t}`).join('\n') : 'Nenhuma sugestão ainda.'}
+
+Com base nesses dados, gere exatamente 4 insights estratégicos curtos em português para a liderança de CX. Cada insight deve ser direto, acionável e baseado nos dados reais acima. Se houver poucos dados, seja honesto sobre isso e sugira próximos passos para coletar mais.
+
+Retorne APENAS um JSON array com 4 strings, sem texto adicional, sem backticks:
+["insight 1","insight 2","insight 3","insight 4"]`;
+
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 600,
+        messages: [{ role: 'user', content: prompt }]
+      })
+    });
+    const data = await res.json();
+    const raw = (data.content.find(b => b.type === 'text')?.text || '[]').replace(/```json|```/g, '').trim();
+    let insights = [];
+    try { const m = raw.match(/\[[\s\S]*\]/); if (m) insights = JSON.parse(m[0]); } catch(e) {}
+
+    if (!insights.length) throw new Error('no insights');
+
+    body.innerHTML = insights.map((ins, i) => `
+      <div class="insight-item">
+        <div class="insight-num">${i+1}</div>
+        <p class="insight-text">${ins}</p>
+      </div>`).join('');
+  } catch(e) {
+    body.innerHTML = '<p class="insights-empty">Erro ao gerar insights. Tente novamente.</p>';
+  }
+
+  btn.disabled = false;
+  btn.innerHTML = '<svg viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 6.5a4.5 4.5 0 109-1m0 0V2m0 3.5H7.5"/></svg> Atualizar insights';
+}
+
+async function init() {
+  document.getElementById('app').innerHTML = `<div class="loading" id="loading"><div class="spinner"></div><p>Carregando dados...</p></div>`;
+  const { marked, suggestions } = await getData();
+  renderApp(marked, suggestions);
+}
+
+init();
+</script>
+</body>
+</html>
