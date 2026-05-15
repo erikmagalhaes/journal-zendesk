@@ -169,6 +169,10 @@ footer a:hover{color:var(--green)}
         <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="1" width="4" height="4" rx="1"/><rect x="7" y="1" width="4" height="4" rx="1"/><rect x="1" y="7" width="4" height="4" rx="1"/><rect x="7" y="7" width="4" height="4" rx="1"/></svg>
         Dashboard
       </a>
+      <a href="guia.html" style="display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:500;color:var(--text3);border:1px solid var(--border);border-radius:4px;padding:5px 12px;text-decoration:none;transition:all .15s" onmouseover="this.style.color='var(--green)';this.style.borderColor='var(--green-border)'" onmouseout="this.style.color='var(--text3)';this.style.borderColor='var(--border)'">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="6" cy="6" r="5"/><path d="M6 4v2.5M6 8.5h.01"/></svg>
+        Guia
+      </a>
       <a href="a3.html" style="display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:500;color:var(--text3);border:1px solid var(--border);border-radius:4px;padding:5px 12px;text-decoration:none;transition:all .15s" onmouseover="this.style.color='var(--amber)';this.style.borderColor='var(--amber-border)'" onmouseout="this.style.color='var(--text3)';this.style.borderColor='var(--border)'">
         <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1h10v10H1zM1 4h10M4 4v7"/></svg>
         A3
@@ -347,55 +351,6 @@ footer a:hover{color:var(--green)}
     </div>
   </div>
 
-  <!-- Sugestões do time -->
-  <div class="ss">
-    <div class="sh">
-      <div>
-        <p class="she" id="collab-eye">Colaboração do time</p>
-        <h2 class="sht" id="collab-title">Sugestões de iniciativas</h2>
-        <p class="shs" id="collab-sub">O que líderes de CX e produto/ops querem explorar a partir dessas novidades</p>
-      </div>
-      <span class="sc" id="scount">0 sugestões</span>
-    </div>
-    <div class="sl2" id="slist">
-      <div class="empty" id="empty">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
-        <p>Nenhuma sugestão ainda.<br>Seja o primeiro a contribuir abaixo.</p>
-      </div>
-    </div>
-    <div class="sf">
-      <p class="ftit" id="form-title-text-wrap"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 1v12M1 7h12"/></svg><span id="form-title-text">Adicionar sugestão</span></p>
-      <div class="fg">
-        <div class="fr"><label id="label-name">Seu nome</label><input type="text" id="iname" placeholder="Ex: Ana Lima"></div>
-        <div class="fr"><label id="label-area">Área</label>
-          <select id="irole">
-            <option value="">Selecione...</option>
-            <option value="cx">Líder de CX</option>
-            <option value="ops">Produto / Ops</option>
-          </select>
-        </div>
-      </div>
-      <div class="fr"><label id="label-ref">Relacionado a</label>
-        <select id="iref">
-          <option value="">Selecione a novidade...</option>
-          <option>Conversation Journey para IA avançada</option>
-          <option>Copilot com recomendações de roteamento</option>
-          <option>Sumarização de tickets por grupo</option>
-          <option>Monitoramento em tempo real com SLA</option>
-          <option>Encerramento de sessão + label de IA</option>
-          <option>Task lists (GA)</option>
-          <option>WFM: workstreams combinados</option>
-          <option value="geral">Geral / outro</option>
-        </select>
-      </div>
-      <div class="fr"><label id="label-sug">Sugestão de discovery ou iniciativa</label><textarea id="itext" placeholder="Ex: Quero explorar como usar o Conversation Journey para reduzir escalações no fluxo de cancelamento..."></textarea></div>
-      <button class="sbtn" id="sbtn" onclick="submit()">
-        <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7h10M7 2l5 5-5 5"/></svg>
-        Enviar sugestão
-      </button>
-      <div class="smsg" id="smsg"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7l3.5 3.5L12 3"/></svg>Sugestão enviada com sucesso!</div>
-    </div>
-  </div>
 
 </div>
 
@@ -602,36 +557,9 @@ function applyI18n() {
     item.disc.forEach((text, i) => { if (discEls[i]) discEls[i].textContent = text; });
   });
 
-  // Suggestions section
-  document.getElementById('collab-eye').textContent = t('collab');
-  document.getElementById('collab-title').textContent = t('sugTitle');
-  document.getElementById('collab-sub').textContent = t('sugSub');
-
-  // Form
-  document.getElementById('form-title-text').textContent = t('formTitle');
-  document.getElementById('label-name').textContent = t('labelName');
-  document.getElementById('iname').placeholder = t('namePlaceholder');
-  document.getElementById('label-area').textContent = t('labelArea');
-  document.getElementById('irole').options[0].text = t('areaPlaceholder');
-  document.getElementById('irole').options[1].text = t('areaCX');
-  document.getElementById('irole').options[2].text = t('areaOps');
-  document.getElementById('label-ref').textContent = t('labelRef');
-  document.getElementById('iref').options[0].text = t('refPlaceholder');
-  const refs = t('refs');
-  for (let i = 0; i < refs.length; i++) {
-    if (document.getElementById('iref').options[i+1]) document.getElementById('iref').options[i+1].text = refs[i];
-  }
-  document.getElementById('iref').options[document.getElementById('iref').options.length-1].text = t('refGeneral');
-  document.getElementById('label-sug').textContent = t('labelSug');
-  document.getElementById('itext').placeholder = t('sugPlaceholder');
-  document.getElementById('sbtn').innerHTML = `<svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7h10M7 2l5 5-5 5"/></svg>${t('submitBtn')}`;
-
   // Footer
   document.getElementById('footer-text').textContent = t('footerText');
   document.getElementById('footer-src').textContent = t('footerSource');
-
-  // Re-render suggestion list with new labels
-  renderSuggestionList();
 }
 </script>
 
@@ -672,60 +600,8 @@ function toggleDisc(btn,id){
   btn.querySelector('span').textContent=o?t('hide'):t('discoveryBtn');
 }
 
-const KEY='zd_apr2026_v3';
-let _suggestions=[];
-
-function load(){
-  try{const raw=localStorage.getItem(KEY);if(raw)_suggestions=JSON.parse(raw);}catch(e){}
-  renderSuggestionList();
-}
-
-function renderSuggestionList(){
-  const list=_suggestions;
-  const c=document.getElementById('slist');
-  const e=document.getElementById('empty');
-  document.getElementById('scount').textContent=t('sugCount')(list.length);
-  c.querySelectorAll('.scard').forEach(x=>x.remove());
-  if(!list.length){e.textContent=t('noneYet');e.style.display='block';return;}
-  e.style.display='none';
-  list.slice().reverse().forEach(s=>{
-    const ini=s.name.trim().split(' ').map(n=>n[0]).join('').slice(0,2).toUpperCase();
-    const ac=s.role==='cx'?'avcx':'avop';
-    const rl=s.role==='cx'?t('areaCX'):t('areaOps');
-    const d=document.createElement('div');
-    d.className='scard';
-    d.innerHTML=`<div class="sch"><div class="sau"><div class="av ${ac}">${ini}</div><div><div class="sn">${s.name}</div><div class="sr">${rl}</div></div></div><span class="sd">${s.date}</span></div><p class="st">${s.text}</p>${s.ref&&s.ref!=='geral'&&s.ref?`<p class="srf"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 6h8M6 2l4 4-4 4"/></svg>${t('refLabel')} <span>${s.ref}</span></p>`:''}`;
-    c.appendChild(d);
-  });
-}
-
-function submit(){
-  const name=document.getElementById('iname').value.trim();
-  const role=document.getElementById('irole').value;
-  const ref=document.getElementById('iref').value;
-  const text=document.getElementById('itext').value.trim();
-  if(!name||!role||!text){alert(t('fillAlert'));return;}
-  const btn=document.getElementById('sbtn');
-  btn.disabled=true;
-  btn.innerHTML=`<svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7h10M7 2l5 5-5 5"/></svg> ${t('sending')}`;
-  const entry={name,role,ref,text,date:new Date().toLocaleDateString(currentLang==='es'?'es-ES':'pt-BR',{day:'numeric',month:'short'})};
-  try{
-    try{const raw=localStorage.getItem(KEY);if(raw)_suggestions=JSON.parse(raw);}catch(e){}
-    _suggestions.push(entry);
-    localStorage.setItem(KEY,JSON.stringify(_suggestions));
-    renderSuggestionList();
-    ['iname','irole','iref','itext'].forEach(id=>{document.getElementById(id).value='';});
-    const m=document.getElementById('smsg');
-    m.textContent=t('successMsg');
-    m.classList.add('show');
-    setTimeout(()=>m.classList.remove('show'),3000);
-  }catch(e){alert(t('saveError'));}
-  btn.disabled=false;
-  btn.innerHTML=`<svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7h10M7 2l5 5-5 5"/></svg> ${t('submitBtn')}`;
-}
 
 applyI18n();
-load();
 loadImportant();
 </script>
 </body>
