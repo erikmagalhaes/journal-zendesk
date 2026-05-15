@@ -181,16 +181,29 @@ const ITEMS = {
   d7: { title: 'WFM: workstreams combinados e folgas mais precisas', cat: 'Agente' },
 };
 
-const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwCvyoXkdfbZUzgdYY_LzCCO_ts7hZ0axYmhrAZl6XVWtmMBxz05CbeWg92CknKoZsb/exec';
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxvr18etNNrllF4JDLFD3Mz4WO3xLG7Q-qoFnrrZMCMWg3cWkE27DvVRiPHbh_VC55v/exec';
 
-async function getData() {
-  try {
-    const res = await fetch(SCRIPT_URL + '?action=getData');
-    const data = await res.json();
-    return { counts: data.counts || {}, suggestions: data.suggestions || [] };
-  } catch(e) {
-    return { counts: {}, suggestions: [] };
-  }
+// JSONP — contorna o bloqueio de CORS do Apps Script
+function getData() {
+  return new Promise((resolve) => {
+    const cbName = 'zdcb_' + Date.now();
+    const script = document.createElement('script');
+
+    window[cbName] = (data) => {
+      delete window[cbName];
+      document.body.removeChild(script);
+      resolve({ counts: data.counts || {}, suggestions: data.suggestions || [] });
+    };
+
+    script.onerror = () => {
+      delete window[cbName];
+      document.body.removeChild(script);
+      resolve({ counts: {}, suggestions: [] });
+    };
+
+    script.src = SCRIPT_URL + '?action=getData&callback=' + cbName;
+    document.body.appendChild(script);
+  });
 }
 
 function topicCounts(suggestions) {
