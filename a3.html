@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A3 · Zendesk Journal CX</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0D1B2A;--navy2:#152236;--navy3:#1E2F45;--navy4:#243650;
+  --green:#00C853;--green2:#00E676;--green-bg:#003D1A;--green-border:#005C25;
+  --amber:#FFB300;--amber-bg:#2A1F00;--amber-border:#503300;
+  --coral:#FF5252;--coral-bg:#2A0A0A;--coral-border:#4A1010;
+  --purple:#7C4DFF;--purple-bg:#1A0F35;--purple-border:#3D2680;
+  --text:#E8EDF2;--text2:#8FA3BB;--text3:#4D6478;
+  --border:#1E3148;--border2:#253D58;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--navy);color:var(--text);font-size:14px;line-height:1.6;min-height:100vh}
+
+/* ── Header ── */
+header{background:var(--navy);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;print-color-adjust:exact;-webkit-print-color-adjust:exact}
+.hi{max-width:1100px;margin:0 auto;padding:0 1.5rem;height:56px;display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.lm{width:30px;height:30px;border-radius:6px;background:var(--green);display:flex;align-items:center;justify-content:center}
+.lm svg{width:16px;height:16px;fill:var(--navy)}
+.ln{font-size:15px;font-weight:700;color:var(--text);letter-spacing:-.02em}
+.ln span{color:var(--green)}
+.hlinks{display:flex;align-items:center;gap:8px}
+.hlink{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:500;color:var(--text3);border:1px solid var(--border);border-radius:4px;padding:5px 12px;text-decoration:none;transition:all .15s}
+.hlink:hover{color:var(--green);border-color:var(--green-border)}
+.hlink svg{width:12px;height:12px}
+.lang-sw{display:flex;align-items:center;border:1px solid var(--border);border-radius:4px;overflow:hidden}
+.lang-btn{font-family:'Inter',sans-serif;font-size:11px;font-weight:600;padding:5px 10px;background:none;border:none;cursor:pointer;color:var(--text3);transition:all .15s}
+.lang-btn.active{background:var(--navy3);color:var(--green)}
+.lang-sep{width:1px;background:var(--border);height:20px}
+
+/* ── Layout ── */
+.wrap{max-width:1100px;margin:0 auto;padding:2rem 1.5rem 5rem}
+
+/* ── Hero ── */
+.hero{background:var(--navy2);border:1px solid var(--border);border-radius:12px;padding:2rem;margin-bottom:1.5rem;display:flex;justify-content:space-between;align-items:flex-start;gap:1.5rem}
+.hero-eye{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--green);margin-bottom:6px}
+.hero-title{font-size:30px;font-weight:700;letter-spacing:-.03em;color:var(--text);margin-bottom:8px}
+.hero-title span{color:var(--green)}
+.hero-tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.tag{font-size:11px;font-weight:600;padding:3px 10px;border-radius:4px}
+.tag-green{background:var(--green-bg);color:var(--green);border:1px solid var(--green-border)}
+.tag-navy{background:var(--navy3);color:var(--text2);border:1px solid var(--border2)}
+.hero-links{display:flex;flex-direction:column;gap:8px;flex-shrink:0;text-align:right}
+.url-row{display:flex;flex-direction:column;align-items:flex-end}
+.url-label{font-size:11px;font-weight:600;color:var(--text3);letter-spacing:.06em;text-transform:uppercase;margin-bottom:2px}
+.url-val{font-size:13px;font-weight:600;color:var(--green);text-decoration:none}
+.url-val:hover{text-decoration:underline}
+
+/* ── Two-col grid ── */
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.col-left{}
+.col-right{}
+
+/* ── Section card ── */
+.sec{background:var(--navy2);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:12px}
+.sec-head{padding:.75rem 1.25rem;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px}
+.sec-head-bar{width:3px;height:16px;border-radius:2px;flex-shrink:0}
+.sec-head-title{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.sec-body{padding:1rem 1.25rem}
+.sec-body p{font-size:13px;color:var(--text2);line-height:1.7;margin-bottom:0}
+
+/* ── Bullet list ── */
+.blist{list-style:none;padding:0;margin:0}
+.blist li{display:flex;gap:8px;align-items:flex-start;font-size:13px;color:var(--text2);line-height:1.65;padding:4px 0;border-bottom:1px solid var(--border)}
+.blist li:last-child{border-bottom:none}
+.blist li::before{content:'▸';color:var(--green);flex-shrink:0;margin-top:1px;font-size:11px}
+.blist.bright li{color:var(--text)}
+
+/* ── Ishikawa ── */
+.ish-wrap{padding:1rem 1.25rem 1.25rem}
+.ish-title{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--amber);margin-bottom:.75rem}
+.ish-svg{width:100%;height:auto;display:block}
+
+/* ── State cards side-by-side ── */
+.state-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+
+/* ── Component grid ── */
+.comp-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:1rem 1.25rem}
+.comp-item{background:var(--navy3);border:1px solid var(--border2);border-radius:8px;padding:.75rem 1rem;font-size:12px;color:var(--text2);line-height:1.55}
+.comp-item::before{content:'';display:block;width:20px;height:2px;background:var(--green);border-radius:1px;margin-bottom:6px}
+
+/* ── Print ── */
+@media print{
+  header{position:relative}
+  .no-print{display:none}
+  body{background:#0D1B2A;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .wrap{padding:1rem}
+}
+
+@media(max-width:700px){
+  .grid{grid-template-columns:1fr}
+  .state-grid{grid-template-columns:1fr}
+  .comp-grid{grid-template-columns:1fr}
+  .hero{flex-direction:column}
+  .hero-title{font-size:22px}
+  .wrap{padding:1rem 1rem 4rem}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="hi">
+    <a class="logo" href="index.html">
+      <div class="lm"><svg viewBox="0 0 16 16"><path d="M2 3h5v5H2zM9 3h5v5H9zM2 9h5v5H2zM9 9h5v5H9z"/></svg></div>
+      <span class="ln">Zendesk Journal<span> · CX</span></span>
+    </a>
+    <div class="hlinks">
+      <div class="lang-sw no-print">
+        <button class="lang-btn active" id="btn-pt" onclick="setLang('pt')">PT</button>
+        <div class="lang-sep"></div>
+        <button class="lang-btn" id="btn-es" onclick="setLang('es')">ES</button>
+      </div>
+      <button class="hlink no-print" onclick="window.print()">
+        <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 4V1h6v3M3 8H1V5h10v3h-2M3 8v3h6V8"/></svg>
+        <span data-i="print">Imprimir</span>
+      </button>
+      <a class="hlink" href="index.html">
+        <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 2L3 6l4 4"/></svg>
+        Journal
+      </a>
+      <a class="hlink" href="dashboard.html">
+        <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="1" width="4" height="4" rx="1"/><rect x="7" y="1" width="4" height="4" rx="1"/><rect x="1" y="7" width="4" height="4" rx="1"/><rect x="7" y="7" width="4" height="4" rx="1"/></svg>
+        Dashboard
+      </a>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- Hero -->
+  <div class="hero">
+    <div>
+      <p class="hero-eye" data-i="eyebrow">A3 · Melhoria Contínua · Nuvemshop CX</p>
+      <h1 class="hero-title">Zendesk Journal<br><span data-i="heroSub">CX Intelligence</span></h1>
+      <div class="hero-tags">
+        <span class="tag tag-green" data-i="tag1">Customer Experience</span>
+        <span class="tag tag-green" data-i="tag2">IA & Automação</span>
+        <span class="tag tag-navy" data-i="tag3">Melhoria Contínua</span>
+      </div>
+    </div>
+    <div class="hero-links">
+      <div class="url-row">
+        <span class="url-label">Journal</span>
+        <a class="url-val" href="https://journal-zendesk.vercel.app">journal-zendesk.vercel.app</a>
+      </div>
+      <div class="url-row" style="margin-top:10px">
+        <span class="url-label">Dashboard</span>
+        <a class="url-val" href="https://journal-zendesk.vercel.app/dashboard.html">…/dashboard.html</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ishikawa — ocupa as 2 colunas -->
+  <div class="sec" style="margin-bottom:16px">
+    <div class="sec-head">
+      <div class="sec-head-bar" style="background:var(--amber)"></div>
+      <span class="sec-head-title" style="color:var(--amber)" data-i="ishTitle">Análise de Causa-Raiz — Ishikawa</span>
+    </div>
+    <div style="padding:1rem 1.25rem">
+      <svg viewBox="0 0 1100 320" xmlns="http://www.w3.org/2000/svg" id="ish-svg" style="width:100%;display:block"></svg>
+    </div>
+  </div>
+
+  <div class="grid">
+
+    <!-- LEFT: Problema + Estado Atual + Estado Futuro -->
+    <div>
+      <div class="sec" style="margin-bottom:12px">
+        <div class="sec-head">
+          <div class="sec-head-bar" style="background:var(--coral)"></div>
+          <span class="sec-head-title" style="color:var(--coral)" data-i="probTitle">Problema</span>
+        </div>
+        <div class="sec-body">
+          <p data-i="probText">A liderança de CX não tinha visibilidade sistemática das atualizações mensais do Zendesk, gerando perda de oportunidades de melhoria operacional e de IA para o time de atendimento.</p>
+        </div>
+      </div>
+      <div class="state-grid">
+        <div class="sec">
+          <div class="sec-head">
+            <div class="sec-head-bar" style="background:var(--text3)"></div>
+            <span class="sec-head-title" style="color:var(--text3)" data-i="currTitle">Estado Atual</span>
+          </div>
+          <div class="sec-body">
+            <ul class="blist" id="curr-list"></ul>
+          </div>
+        </div>
+        <div class="sec">
+          <div class="sec-head">
+            <div class="sec-head-bar" style="background:var(--green)"></div>
+            <span class="sec-head-title" style="color:var(--green)" data-i="futTitle">Estado Futuro</span>
+          </div>
+          <div class="sec-body">
+            <ul class="blist bright" id="fut-list"></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: Solução + Stack + Resultados -->
+    <div>
+      <div class="sec" style="margin-bottom:12px">
+        <div class="sec-head">
+          <div class="sec-head-bar" style="background:var(--green)"></div>
+          <span class="sec-head-title" style="color:var(--green)" data-i="solTitle">Solução — Zendesk Journal</span>
+        </div>
+        <div class="sec-body" style="padding-bottom:.5rem">
+          <p style="margin-bottom:.75rem;font-style:italic" data-i="solIntro">Plataforma web que automatiza curadoria, aprovação e publicação das novidades mensais do Zendesk para o time de CX.</p>
+        </div>
+        <div class="comp-grid" id="comp-grid"></div>
+      </div>
+      <div class="sec" style="margin-bottom:12px">
+        <div class="sec-head">
+          <div class="sec-head-bar" style="background:var(--text3)"></div>
+          <span class="sec-head-title" style="color:var(--text3)" data-i="techTitle">Stack Técnica</span>
+        </div>
+        <div class="sec-body">
+          <ul class="blist" id="tech-list"></ul>
+        </div>
+      </div>
+      <div class="sec" style="margin-bottom:12px">
+        <div class="sec-head">
+          <div class="sec-head-bar" style="background:var(--green)"></div>
+          <span class="sec-head-title" style="color:var(--green)" data-i="resTitle">Resultados Esperados</span>
+        </div>
+        <div class="sec-body">
+          <ul class="blist bright" id="res-list"></ul>
+        </div>
+      </div>
+      <div class="sec" id="next-card">
+        <div class="sec-head">
+          <div class="sec-head-bar" style="background:var(--purple)"></div>
+          <span class="sec-head-title" style="color:var(--purple)" data-i="nextTitle">Próximos Passos</span>
+        </div>
+        <div class="sec-body">
+          <ul class="blist" id="next-list"></ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+const I18N = {
+  pt:{
+    eyebrow:'A3 · Melhoria Contínua · Nuvemshop CX',
+    heroSub:'CX Intelligence',
+    tag1:'Customer Experience', tag2:'IA & Automação', tag3:'Melhoria Contínua',
+    probTitle:'Problema',
+    probText:'A liderança de CX não tinha visibilidade sistemática das atualizações mensais do Zendesk, gerando perda de oportunidades de melhoria operacional e de IA para o time de atendimento.',
+    ishTitle:'Análise de Causa-Raiz — Ishikawa',
+    currTitle:'Estado Atual',
+    futTitle:'Estado Futuro',
+    solTitle:'Solução — Zendesk Journal',
+    solIntro:'Plataforma web que automatiza curadoria, aprovação e publicação das novidades mensais do Zendesk para o time de CX.',
+    techTitle:'Stack Técnica',
+    resTitle:'Resultados Esperados',
+    nextTitle:'Próximos Passos',
+    print:'Imprimir / PDF',
+    curr:['Atualizações fragmentadas — sem tradução ou filtro de relevância','Sem canal estruturado para sugestões de discovery','Liderança sem visibilidade das features prioritárias','Processo manual e não escalável'],
+    fut:['Journal mensal PT/ES publicado toda primeira terça do mês','IA filtra e resume as novidades do Zendesk; liderança sugere discoveries','Liderança aprova e marca itens como importantes','Dashboard consolida prioridades e feedback do time'],
+    comp:['Busca automática via IA (web search)','Fluxo de aprovação híbrido','Sugestões de discovery por IA','Canal de sugestões do time','Dashboard com insights de IA','Detecção automática PT/ES'],
+    tech:['Claude Sonnet 4 (Anthropic) — busca e geração','Vercel — hospedagem e deploy automático','GitHub — repositório privado'],
+    res:['~2h manual → ~5 min/mês com o app','100% das novidades relevantes à liderança','Canal estruturado para discoveries'],
+    next:[],
+    ishBones:[
+      {label:'PROCESSO',  causes:['Sem fluxo desenhado','Sem cadência definida','Processo reativo']},
+      {label:'FERRAMENTA',causes:['Volume alto de updates','Artigos extensos e sem curadoria','Sem filtro de relevância']},
+      {label:'PESSOAS',   causes:['Processo difícil de manter','Problema invisível','Problema emergiu via feedback']},
+      {label:'GESTÃO',    causes:['Sem ritual de conhecimento','Dor não mapeada','Sem priorização']},
+    ],
+    ishEffect:['Liderança sem','visibilidade das','novidades Zendesk'],
+  },
+  es:{
+    eyebrow:'A3 · Mejora Continua · Nuvemshop CX',
+    heroSub:'CX Intelligence',
+    tag1:'Customer Experience', tag2:'IA & Automatización', tag3:'Mejora Continua',
+    probTitle:'Problema',
+    probText:'El liderazgo de CX no tenía visibilidad sistemática de las actualizaciones mensuales de Zendesk, generando pérdida de oportunidades de mejora operacional y de IA para el equipo de atención.',
+    ishTitle:'Análisis de Causa Raíz — Ishikawa',
+    currTitle:'Estado Actual',
+    futTitle:'Estado Futuro',
+    solTitle:'Solución — Zendesk Journal',
+    solIntro:'Plataforma web que automatiza la curaduría, aprobación y publicación de las novedades mensuales de Zendesk para el equipo de CX.',
+    techTitle:'Stack Técnico',
+    resTitle:'Resultados Esperados',
+    nextTitle:'Próximos Pasos',
+    print:'Imprimir / PDF',
+    curr:['Actualizaciones fragmentadas — sin traducción ni filtro de relevancia','Sin canal estructurado para sugerencias de discovery','Liderazgo sin visibilidad de features prioritarias','Proceso manual y no escalable'],
+    fut:['Journal mensual PT/ES publicado cada primer martes del mes','IA filtra y resume las novedades de Zendesk; liderazgo sugiere discoveries','Liderazgo aprueba y marca ítems como importantes','Dashboard consolida prioridades y feedback del equipo'],
+    comp:['Búsqueda automática vía IA (web search)','Flujo de aprobación híbrido','Sugerencias de discovery por IA','Canal de sugerencias del equipo','Dashboard con insights de IA','Detección automática PT/ES'],
+    tech:['Claude Sonnet 4 (Anthropic) — búsqueda y generación','Vercel — hosting y deploy automático','GitHub — repositorio privado'],
+    res:['~2h manual → ~5 min/mes con la app','100% de novedades relevantes al liderazgo','Canal estructurado para discoveries'],
+    next:[],
+    ishBones:[
+      {label:'PROCESO',    causes:['Sin flujo definido','Sin cadencia definida','Proceso reactivo']},
+      {label:'HERRAMIENTA',causes:['Alto volumen updates','Artículos extensos sin curaduría','Sin filtro relevancia']},
+      {label:'PERSONAS',   causes:['Proceso difícil de mantener','Problema invisible','Problema surgió vía feedback']},
+      {label:'GESTIÓN',    causes:['Sin ritual conocimiento','Dolor no mapeado','Sin priorización']},
+    ],
+    ishEffect:['Liderazgo sin','visibilidad de las','novedades Zendesk'],
+  }
+};
+
+let lang = (navigator.language||'pt').toLowerCase().startsWith('es') ? 'es' : 'pt';
+const saved = localStorage.getItem('a3_lang');
+if(saved) lang = saved;
+
+function setLang(l){
+  lang = l;
+  localStorage.setItem('a3_lang', l);
+  applyLang();
+}
+
+function list(id, items, bright=false){
+  const el = document.getElementById(id);
+  el.innerHTML = items.map(i=>`<li>${i}</li>`).join('');
+}
+
+function drawIshikawa(bones, effect){
+  const green='#00C853', greenBg='#003D1A', greenBorder='#005C25',
+        coral='#FF5252', coralBg='#330808',
+        text1='#E8EDF2', text2='#8FA3BB', text3='#4D6478',
+        border='#1E3148', border2='#253D58';
+
+  // Layout constants — viewBox 1100x320, spine at y=160
+  const cy = 160;
+  const spineX0 = 20, spineX1 = 880;
+
+  // 4 bone attach points + tip positions
+  // Left pair: attach at x=260, tips at x=160 (top) and x=160 (bottom)
+  // Right pair: attach at x=580, tips at x=480
+  const bones_layout = [
+    { ax:260, tipX:155, tipY: 50, top:true  }, // TL
+    { ax:580, tipX:475, tipY: 50, top:true  }, // TR
+    { ax:260, tipX:155, tipY:270, top:false }, // BL
+    { ax:580, tipX:475, tipY:270, top:false }, // BR
+  ];
+
+  const t = (x,y,text,fill,size,bold,anchor='middle') =>
+    `<text x="${x}" y="${y}" fill="${fill}" font-size="${size}" font-family="Inter,Arial,sans-serif" text-anchor="${anchor}" dominant-baseline="middle"${bold?' font-weight="700"':''}>${text}</text>`;
+
+  let svg = '';
+
+  // Spine
+  svg += `<line x1="${spineX0}" y1="${cy}" x2="${spineX1}" y2="${cy}" stroke="${text3}" stroke-width="2.5"/>`;
+  svg += `<polygon points="${spineX1},${cy} ${spineX1-14},${cy-8} ${spineX1-14},${cy+8}" fill="${text3}"/>`;
+
+  // Effect box — right side
+  const bw=170, bh=76, bx=920, by=cy-bh/2;
+  svg += `<rect x="${bx}" y="${by}" width="${bw}" height="${bh}" rx="6" fill="${coralBg}" stroke="${coral}" stroke-width="2"/>`;
+  effect.forEach((line,i) => svg += t(bx+bw/2, by+16+i*22, line, coral, 13, true));
+
+  // Draw bones
+  bones_layout.forEach((bl, i) => {
+    const bone = bones[i];
+    if(!bone) return;
+
+    // Diagonal line from tip to attach point on spine
+    svg += `<line x1="${bl.tipX}" y1="${bl.tipY}" x2="${bl.ax}" y2="${cy}" stroke="${border2}" stroke-width="2"/>`;
+
+    // Category pill — centered on tipX, pushed away from spine
+    const pw = bone.label.length * 9 + 24, ph = 24;
+    const pillY = bl.top ? bl.tipY - 18 : bl.tipY + 18;
+    svg += `<rect x="${bl.tipX - pw/2}" y="${pillY - ph/2}" width="${pw}" height="${ph}" rx="4" fill="${greenBg}" stroke="${green}" stroke-width="1.5"/>`;
+    svg += t(bl.tipX, pillY, bone.label, green, 13, true);
+
+    // Cause texts — stacked vertically, anchored to right of tipX
+    bone.causes.forEach((cause, j) => {
+      if(bl.top){
+        // Above spine: texts go downward from top, ending above spine
+        const ty = bl.tipY + 14 + j * 22;
+        svg += t(bl.tipX + 60, ty, cause, text2, 13, false, 'start');
+      } else {
+        // Below spine: texts go upward from bottom, ending below spine
+        const ty = bl.tipY - 14 - j * 22;
+        svg += t(bl.tipX + 60, ty, cause, text2, 13, false, 'start');
+      }
+    });
+  });
+
+  // Center divider line (subtle vertical)
+  svg += `<line x1="420" y1="20" x2="420" y2="300" stroke="${border}" stroke-width="1" stroke-dasharray="4 4"/>`;
+
+  document.getElementById('ish-svg').innerHTML = svg;
+}
+
+function applyLang(){
+  const T = I18N[lang];
+  document.documentElement.lang = lang==='pt'?'pt-BR':'es';
+
+  // Update all data-i elements
+  document.querySelectorAll('[data-i]').forEach(el=>{
+    const key = el.getAttribute('data-i');
+    if(T[key] !== undefined) el.textContent = T[key];
+  });
+
+  // Lang buttons
+  document.getElementById('btn-pt').classList.toggle('active', lang==='pt');
+  document.getElementById('btn-es').classList.toggle('active', lang==='es');
+
+  // Lists
+  list('curr-list', T.curr);
+  list('fut-list', T.fut, true);
+  list('tech-list', T.tech);
+  list('res-list', T.res, true);
+  list('next-list', T.next);
+
+  // Hide next card if empty
+  document.getElementById('next-card').style.display = T.next.length ? 'block' : 'none';
+
+  // Components grid
+  document.getElementById('comp-grid').innerHTML = T.comp.map(c=>`<div class="comp-item">${c}</div>`).join('');
+
+  // Ishikawa
+  drawIshikawa(T.ishBones, T.ishEffect);
+}
+
+applyLang();
+</script>
+</body>
+</html>
