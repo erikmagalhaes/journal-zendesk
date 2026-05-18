@@ -758,7 +758,10 @@ const SUG_KEY = 'zj_apr2026_sugs';
 let currentSugs = [];
 
 async function loadSugs() {
-  try { const r = await window.storage.get(SUG_KEY, true); if(r) currentSugs = JSON.parse(r.value); } catch(e) {}
+  try {
+    const saved = localStorage.getItem(SUG_KEY);
+    if (saved) currentSugs = JSON.parse(saved);
+  } catch(e) {}
   renderSugs(currentSugs);
 }
 
@@ -786,28 +789,36 @@ async function submitSug() {
   const T = I18N[lang];
   const name = document.getElementById('iname').value.trim();
   const role = document.getElementById('irole').value;
-  const ref = document.getElementById('iref').value;
+  const ref  = document.getElementById('iref').value;
   const text = document.getElementById('itext').value.trim();
   if (!name || !role || !text) { alert(T['f-alert']); return; }
+
   const btn = document.getElementById('sbtn');
   btn.disabled = true;
-  const entry = { name, role, ref, text, date: new Date().toLocaleDateString(lang==='pt'?'pt-BR':'es-ES',{day:'numeric',month:'short'}) };
-  try {
-    let list = [];
-    try { const r = await window.storage.get(SUG_KEY, true); if(r) list = JSON.parse(r.value); } catch(e) {}
-    list.push(entry);
-    await window.storage.set(SUG_KEY, JSON.stringify(list), true);
-    currentSugs = list;
-    renderSugs(list);
-    ['iname','itext'].forEach(id => document.getElementById(id).value = '');
-    document.getElementById('irole').value = '';
-    document.getElementById('iref').value = '';
-    const m = document.getElementById('smsg');
-    m.classList.add('show');
-    setTimeout(() => m.classList.remove('show'), 3000);
-    // Write to sheets
-    writeSheets('sugestoes', { Data: entry.date, Nome: name, Area: role, Referencia: ref, Sugestao: text });
-  } catch(e) { alert('Erro ao salvar.'); }
+
+  const entry = {
+    name, role, ref, text,
+    date: new Date().toLocaleDateString(lang==='pt'?'pt-BR':'es-ES',{day:'numeric',month:'short'})
+  };
+
+  // Salva localmente
+  currentSugs.push(entry);
+  try { localStorage.setItem(SUG_KEY, JSON.stringify(currentSugs)); } catch(e) {}
+  renderSugs(currentSugs);
+
+  // Limpa formulário
+  ['iname','itext'].forEach(id => document.getElementById(id).value = '');
+  document.getElementById('irole').value = '';
+  document.getElementById('iref').value  = '';
+
+  // Mostra confirmação
+  const m = document.getElementById('smsg');
+  m.classList.add('show');
+  setTimeout(() => m.classList.remove('show'), 3000);
+
+  // Envia para a planilha (fire and forget — não bloqueia nem exibe erro ao usuário)
+  writeSheets('sugestoes', { Data: entry.date, Nome: name, Area: role, Referencia: ref, Sugestao: text });
+
   btn.disabled = false;
 }
 
