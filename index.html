@@ -817,10 +817,10 @@ const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxN6ATFNU-lD6sg
 async function writeSheets(tab, row) {
   if (!APPS_SCRIPT_URL || APPS_SCRIPT_URL === 'COLE_AQUI_A_URL_DO_APPS_SCRIPT') return;
   try {
-    await fetch(APPS_SCRIPT_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'text/plain' },
-      body: JSON.stringify({ tab, row })
+    const params = new URLSearchParams({ tab, ...row });
+    await fetch(APPS_SCRIPT_URL + '?' + params.toString(), {
+      method: 'GET',
+      mode: 'no-cors'
     });
   } catch(e) { console.error('Sheets:', e); }
 }
