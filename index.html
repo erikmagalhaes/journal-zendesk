@@ -13,677 +13,822 @@
   --amber:#FFB300;--amber-bg:#2A1F00;--amber-border:#503300;
   --coral:#FF5252;--coral-bg:#2A0A0A;--coral-border:#4A1010;
   --purple:#7C4DFF;--purple-bg:#1A0F35;--purple-border:#3D2680;
-  --blue:#2979FF;--blue-bg:#0A1A3A;--blue-border:#1A3A6A;
   --text:#E8EDF2;--text2:#8FA3BB;--text3:#4D6478;
   --border:#1E3148;--border2:#253D58;
+  --r:8px;--rl:12px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',sans-serif;background:var(--navy);color:var(--text);font-size:14px;line-height:1.6;min-height:100vh}
 
+/* Header */
 header{background:var(--navy);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100}
-.hi{max-width:1200px;margin:0 auto;padding:0 1.5rem;height:56px;display:flex;align-items:center;justify-content:space-between}
-.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
-.lm{width:30px;height:30px;border-radius:6px;background:var(--green);display:flex;align-items:center;justify-content:center}
+.hi{max-width:900px;margin:0 auto;padding:0 1.5rem;height:56px;display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:10px}
+.lm{width:30px;height:30px;border-radius:6px;background:var(--green);display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .lm svg{width:16px;height:16px;fill:var(--navy)}
-.ln{font-size:15px;font-weight:700;color:var(--text);letter-spacing:-.02em}
+.ln{font-size:15px;font-weight:700;color:var(--text);letter-spacing:-0.02em}
 .ln span{color:var(--green)}
-.hlinks{display:flex;align-items:center;gap:8px}
-.hlink{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:500;color:var(--text3);border:1px solid var(--border);border-radius:4px;padding:5px 12px;text-decoration:none;transition:all .15s;cursor:pointer;background:none;font-family:'Inter',sans-serif}
-.hlink:hover{color:var(--green);border-color:var(--green-border)}
-.hlink svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:1.5}
-.hlink-green{background:var(--green-bg);color:var(--green);border-color:var(--green-border)}
-.hlink-green:hover{background:#005C25;color:var(--green2)}
+.hr{display:flex;align-items:center;gap:10px}
+.hbadge{font-size:11px;font-weight:600;background:var(--green-bg);color:var(--green);border:1px solid var(--green-border);border-radius:20px;padding:3px 10px;display:flex;align-items:center;gap:5px}
+.hbadge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--green);flex-shrink:0}
+.hdate{font-size:12px;color:var(--text3)}
+.lang-sw{display:flex;align-items:center;border:1px solid var(--border);border-radius:4px;overflow:hidden}
+.lang-btn{font-family:'Inter',sans-serif;font-size:11px;font-weight:600;padding:4px 10px;background:none;border:none;cursor:pointer;color:var(--text3);transition:all .15s}
+.lang-btn.active{background:var(--navy3);color:var(--green)}
+.lang-sep{width:1px;background:var(--border);height:18px}
+.a3-btn{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:500;color:var(--text3);border:1px solid var(--border);border-radius:4px;padding:5px 12px;text-decoration:none;transition:all .15s;background:none;cursor:pointer;font-family:'Inter',sans-serif}
+.a3-btn:hover{color:var(--green);border-color:var(--green-border)}
+.a3-btn svg{width:11px;height:11px;stroke:currentColor;fill:none;stroke-width:1.5}
 
-.nav-tabs{background:var(--navy2);border-bottom:1px solid var(--border)}
-.nav-tabs-inner{max-width:1200px;margin:0 auto;padding:0 1.5rem;display:flex}
-.nav-tab{font-size:13px;font-weight:500;color:var(--text3);padding:12px 18px;border-bottom:2px solid transparent;cursor:pointer;transition:all .15s;display:flex;align-items:center;gap:6px;background:none;border-left:none;border-right:none;border-top:none;font-family:'Inter',sans-serif}
-.nav-tab:hover{color:var(--text2)}
-.nav-tab.active{color:var(--green);border-bottom-color:var(--green)}
-.nav-tab svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:1.5}
+/* Layout */
+.wrap{max-width:900px;margin:0 auto;padding:2rem 1.5rem 5rem}
 
-.wrap{max-width:1200px;margin:0 auto;padding:1.5rem 1.5rem 5rem}
-.page{display:none}
-.page.active{display:block}
-
-.hero{background:var(--navy2);border:1px solid var(--border);border-radius:12px;padding:1.75rem 2rem;margin-bottom:1.25rem;display:flex;justify-content:space-between;align-items:flex-start;gap:1.5rem}
-.hero-eye{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--green);margin-bottom:6px}
-.hero-title{font-size:26px;font-weight:700;letter-spacing:-.03em;color:var(--text);margin-bottom:6px}
+/* Hero */
+.hero{background:var(--navy2);border:1px solid var(--border);border-radius:var(--rl);padding:2rem;margin-bottom:2rem;display:flex;justify-content:space-between;align-items:flex-start;gap:1.5rem}
+.hero-eye{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--green);margin-bottom:8px}
+.hero-title{font-size:28px;font-weight:700;letter-spacing:-.03em;color:var(--text);line-height:1.15;margin-bottom:10px}
 .hero-title span{color:var(--green)}
-.hero-sub{font-size:13px;color:var(--text2);max-width:520px;line-height:1.65}
-.hero-tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
-.tag{font-size:11px;font-weight:600;padding:3px 10px;border-radius:4px}
-.tag-green{background:var(--green-bg);color:var(--green);border:1px solid var(--green-border)}
-.tag-navy{background:var(--navy3);color:var(--text2);border:1px solid var(--border2)}
-.tag-amber{background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-border)}
-.hero-meta{flex-shrink:0;display:flex;flex-direction:column;gap:8px}
-.meta-badge{background:var(--navy3);border:1px solid var(--border2);border-radius:8px;padding:.75rem 1rem;text-align:right;min-width:130px}
-.meta-label{font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text3);margin-bottom:3px}
-.meta-val{font-size:15px;font-weight:700;color:var(--green)}
+.hero-intro{font-size:13px;color:var(--text2);line-height:1.7;max-width:480px}
+.hero-src{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:500;color:var(--text2);border:1px solid var(--border2);border-radius:20px;padding:5px 12px;text-decoration:none;margin-top:14px;transition:all .15s;white-space:nowrap}
+.hero-src:hover{border-color:var(--green);color:var(--green)}
+.hero-src svg{width:11px;height:11px;stroke:currentColor;fill:none;stroke-width:1.5}
+.stats{display:flex;flex-direction:column;gap:8px;flex-shrink:0}
+.stat{background:var(--navy3);border:1px solid var(--border2);border-radius:var(--r);padding:10px 16px;text-align:right;min-width:130px}
+.stat-n{font-size:22px;font-weight:700;color:var(--green);letter-spacing:-.03em;line-height:1}
+.stat-l{font-size:11px;color:var(--text3);margin-top:2px}
 
-.stats-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:1.25rem}
-.stat-card{background:var(--navy2);border:1px solid var(--border);border-radius:8px;padding:.875rem 1rem}
-.stat-lbl{font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text3);margin-bottom:4px}
-.stat-val{font-size:24px;font-weight:700;color:var(--text);letter-spacing:-.02em}
+/* Section label */
+.sl{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);margin:2rem 0 1rem;display:flex;align-items:center;gap:10px}
+.sl::before{content:'';width:3px;height:14px;border-radius:2px;background:var(--green);flex-shrink:0}
+.sl::after{content:'';flex:1;height:1px;background:var(--border)}
 
-.toolbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;gap:10px;flex-wrap:wrap}
-.toolbar-left{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
-.toolbar-right{display:flex;align-items:center;gap:8px}
-.filter-btn{font-size:12px;font-weight:500;padding:5px 12px;border-radius:4px;border:1px solid var(--border);background:none;color:var(--text3);cursor:pointer;transition:all .15s;font-family:'Inter',sans-serif}
-.filter-btn:hover{border-color:var(--border2);color:var(--text2)}
-.filter-btn.active{background:var(--green-bg);border-color:var(--green-border);color:var(--green)}
-.search-inp{background:var(--navy2);border:1px solid var(--border);border-radius:4px;padding:6px 12px;font-size:12px;color:var(--text);font-family:'Inter',sans-serif;width:200px;outline:none;transition:border-color .15s}
-.search-inp:focus{border-color:var(--green-border)}
-.search-inp::placeholder{color:var(--text3)}
-.month-sel{background:var(--navy2);border:1px solid var(--border);border-radius:4px;padding:5px 10px;font-size:12px;color:var(--text);font-family:'Inter',sans-serif;outline:none;cursor:pointer}
-.month-sel:focus{border-color:var(--green-border)}
-.fetch-btn{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;padding:6px 14px;border-radius:4px;border:none;background:var(--green);color:var(--navy);font-family:'Inter',sans-serif;cursor:pointer;transition:all .15s}
-.fetch-btn:hover{background:var(--green2)}
-.fetch-btn:disabled{opacity:.5;cursor:not-allowed}
-.fetch-btn svg{width:13px;height:13px;stroke:var(--navy);fill:none;stroke-width:2}
+/* Card */
+.card{background:var(--navy2);border:1px solid var(--border);border-radius:var(--rl);overflow:hidden;margin-bottom:12px;transition:border-color .2s}
+.card:hover{border-color:var(--border2)}
+.card-important{border-color:var(--amber-border)!important}
+.img-wrap{background:var(--navy3);border-bottom:1px solid var(--border);overflow:hidden;max-height:220px;display:flex;align-items:flex-start}
+.img-wrap img{width:100%;display:block;object-fit:cover;object-position:top;transition:transform .3s}
+.card:hover .img-wrap img{transform:scale(1.01)}
+.cb{padding:1.25rem 1.5rem}
+.meta{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:10px}
+.b{display:inline-flex;align-items:center;font-size:11px;font-weight:600;letter-spacing:.02em;padding:3px 9px;border-radius:4px}
+.bai{background:var(--purple-bg);color:var(--purple);border:1px solid var(--purple-border)}
+.brp{background:var(--green-bg);color:var(--green);border:1px solid var(--green-border)}
+.bch{background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-border)}
+.bag{background:var(--navy3);color:var(--text2);border:1px solid var(--border2)}
 
-.cards-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.card{background:var(--navy2);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:border-color .2s,transform .2s;display:flex;flex-direction:column}
-.card:hover{border-color:var(--border2);transform:translateY(-2px)}
-.card.marked{border-color:var(--green-border);background:#0B1E10}
-.card.marked:hover{border-color:var(--green2)}
-.card-img{width:100%;height:140px;object-fit:cover;object-position:top;display:block;background:var(--navy3)}
-.card-img-placeholder{width:100%;height:140px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
-.ph-ai{background:linear-gradient(135deg,#1A0F35 0%,#2D1A5A 100%)}
-.ph-automation{background:linear-gradient(135deg,#0A1F10 0%,#0E3018 100%)}
-.ph-reporting{background:linear-gradient(135deg,#2A1F00 0%,#3D2D00 100%)}
-.ph-ticketing{background:linear-gradient(135deg,#0A1A3A 0%,#0E2550 100%)}
-.ph-voice{background:linear-gradient(135deg,#2A0A0A 0%,#3D1010 100%)}
-.ph-other{background:linear-gradient(135deg,var(--navy3) 0%,var(--navy4) 100%)}
-.card-img-placeholder::before{content:'';position:absolute;inset:0;background-image:repeating-linear-gradient(0deg,rgba(255,255,255,.03) 0,rgba(255,255,255,.03) 1px,transparent 1px,transparent 24px),repeating-linear-gradient(90deg,rgba(255,255,255,.03) 0,rgba(255,255,255,.03) 1px,transparent 1px,transparent 24px)}
-.card-img-placeholder .ph-lbl{position:absolute;bottom:10px;right:12px;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;opacity:.35;color:var(--text)}
-.card-inner{padding:.875rem 1.25rem;flex:1;display:flex;flex-direction:column}
-.card-meta{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:6px}
-.cc{font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:2px 8px;border-radius:3px}
-.cc-ai{background:#1A0F35;color:#7C4DFF;border:1px solid #3D2680}
-.cc-automation{background:#0A1F10;color:#00C853;border:1px solid #005C25}
-.cc-reporting{background:#2A1F00;color:#FFB300;border:1px solid #503300}
-.cc-ticketing{background:#0A1A3A;color:#2979FF;border:1px solid #1A3A6A}
-.cc-voice{background:#2A0A0A;color:#FF5252;border:1px solid #4A1010}
-.cc-other{background:var(--navy3);color:var(--text2);border:1px solid var(--border2)}
-.card-title{font-size:14px;font-weight:600;color:var(--text);line-height:1.4;margin-bottom:6px}
-.card-body{font-size:12.5px;color:var(--text2);line-height:1.65;flex:1}
-.card-foot{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:12px;padding-top:10px;border-top:1px solid var(--border)}
-.mark-btn{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600;padding:5px 12px;border-radius:4px;cursor:pointer;transition:all .15s;border:1px solid var(--border);background:none;color:var(--text3);font-family:'Inter',sans-serif}
-.mark-btn:hover{border-color:var(--green-border);color:var(--green);background:var(--green-bg)}
-.mark-btn.active{background:var(--green-bg);border-color:var(--green-border);color:var(--green)}
-.mark-btn svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:1.8}
-.mark-btn.active svg{fill:var(--green)}
-.zd-link{font-size:11px;color:var(--text3);text-decoration:none;display:inline-flex;align-items:center;gap:4px;transition:color .15s}
-.zd-link:hover{color:var(--green)}
-.zd-link svg{width:11px;height:11px;stroke:currentColor;fill:none;stroke-width:1.5}
-.marked-chip{font-size:10px;font-weight:700;letter-spacing:.06em;color:var(--green);background:var(--green-bg);border:1px solid var(--green-border);border-radius:3px;padding:2px 7px;flex-shrink:0}
+/* Importance button */
+.imp-btn{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:500;color:var(--text3);background:var(--navy3);border:1px solid var(--border);border-radius:4px;padding:4px 10px;cursor:pointer;transition:all .15s;user-select:none;font-family:'Inter',sans-serif}
+.imp-btn:hover{border-color:var(--amber);color:var(--amber);background:var(--amber-bg)}
+.imp-btn.marked{background:var(--amber-bg);color:var(--amber);border-color:var(--amber-border)}
+.imp-btn svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:1.5;transition:all .15s}
+.imp-btn.marked svg{stroke:var(--amber)}
 
-.loading-wrap{padding:3rem 2rem;text-align:center}
-.spinner{width:38px;height:38px;border:3px solid var(--border2);border-top-color:var(--green);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 1rem}
-@keyframes spin{to{transform:rotate(360deg)}}
-.loading-text{font-size:14px;color:var(--text2)}
-.loading-sub{font-size:12px;color:var(--text3);margin-top:4px}
-.loading-steps{margin-top:1.5rem;text-align:left;max-width:300px;margin-left:auto;margin-right:auto}
-.lstep{font-size:12px;color:var(--text3);padding:5px 0;display:flex;align-items:center;gap:8px;border-bottom:1px solid var(--border)}
-.lstep:last-child{border-bottom:none}
-.lstep.done{color:var(--green)}
-.lstep.cur{color:var(--text2)}
-.lstep svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2;flex-shrink:0}
-.pbar-wrap{background:var(--navy3);border-radius:4px;height:3px;overflow:hidden;margin-top:1.25rem;max-width:300px;margin-left:auto;margin-right:auto}
-.pbar{height:100%;background:var(--green);border-radius:4px;transition:width .5s ease;width:0}
+/* Card text */
+.ct{font-size:16px;font-weight:600;letter-spacing:-.02em;color:var(--text);margin-bottom:6px;line-height:1.35}
+.cs{font-size:13px;color:var(--text2);margin-bottom:8px;line-height:1.7}
+.ci{font-size:12px;color:var(--text2);padding:8px 12px;background:var(--navy3);border-left:3px solid var(--green);border-radius:0 var(--r) var(--r) 0;margin-bottom:12px;line-height:1.6}
+.ci strong{color:var(--green);font-weight:500}
+.cf{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;padding-top:12px;border-top:1px solid var(--border)}
+.al{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:500;color:var(--green);text-decoration:none}
+.al:hover{text-decoration:underline}
+.al svg{width:11px;height:11px;stroke:currentColor;fill:none;stroke-width:1.5}
+.cf-right{display:flex;align-items:center;gap:6px}
 
-.empty{padding:3rem 2rem;text-align:center;color:var(--text3);grid-column:1/-1}
-.empty svg{width:44px;height:44px;margin:0 auto 1rem;display:block;opacity:.3;stroke:currentColor;fill:none;stroke-width:1.2}
-.empty h3{font-size:15px;color:var(--text2);margin-bottom:6px}
-.empty p{font-size:13px;max-width:320px;margin:0 auto;line-height:1.6}
-.init-card{background:var(--navy2);border:1px solid var(--border);border-radius:12px;padding:2.25rem 2rem;text-align:center}
-.init-card h3{font-size:17px;font-weight:700;color:var(--text);margin-bottom:8px}
-.init-card p{font-size:13px;color:var(--text2);max-width:420px;margin:0 auto 1.5rem;line-height:1.65}
-.init-ctrls{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap}
-.callout{border-radius:8px;padding:.75rem 1rem;font-size:13px;line-height:1.6;display:flex;gap:9px;align-items:flex-start}
-.c-green{background:var(--green-bg);border:1px solid var(--green-border);color:#7AD89A;margin:1rem auto}
-.callout svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:1.5;flex-shrink:0;margin-top:2px}
+/* Discovery toggle */
+.dt-btn{font-size:12px;font-weight:500;color:var(--text3);background:var(--navy3);border:1px solid var(--border);border-radius:4px;padding:4px 10px;cursor:pointer;display:inline-flex;align-items:center;gap:5px;transition:all .15s;font-family:'Inter',sans-serif}
+.dt-btn:hover,.dt-btn.open{background:var(--purple-bg);color:var(--purple);border-color:var(--purple-border)}
+.dt-btn svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:1.5}
+.dp{display:none;border-top:1px solid var(--border);background:var(--navy);padding:1.25rem 1.5rem}
+.dp.open{display:block}
+.dpt{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--purple);margin-bottom:10px;display:flex;align-items:center;gap:6px}
+.dpt svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:1.5}
+.di{display:flex;gap:10px;align-items:flex-start;margin-bottom:8px}
+.di:last-child{margin-bottom:0}
+.dd{width:5px;height:5px;border-radius:50%;background:var(--purple);flex-shrink:0;margin-top:7px;opacity:.6}
+.dt2{font-size:13px;color:var(--text2);line-height:1.65}
 
-.sec{background:var(--navy2);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:12px}
-.sec-head{padding:.75rem 1.25rem;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px}
-.sec-bar{width:3px;height:16px;border-radius:2px;flex-shrink:0}
-.sec-title{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
-.sec-body{padding:1.25rem}
-.sec-body p{font-size:13px;color:var(--text2);line-height:1.7;margin-bottom:.75rem}
-.sec-body p:last-child{margin-bottom:0}
-.guide-steps{list-style:none;padding:0;margin:0}
-.gstep{display:flex;gap:14px;padding:14px 0;border-bottom:1px solid var(--border)}
-.gstep:last-child{border-bottom:none}
-.step-num{width:26px;height:26px;border-radius:50%;background:var(--green-bg);border:1.5px solid var(--green-border);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:var(--green);flex-shrink:0;margin-top:2px}
-.step-h{font-size:13px;font-weight:600;color:var(--text);margin-bottom:3px}
-.step-p{font-size:12px;color:var(--text2);line-height:1.6}
-.tip{font-size:11px;color:var(--green);background:var(--green-bg);border:1px solid var(--green-border);border-radius:4px;padding:3px 9px;margin-top:5px;display:inline-block}
-.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:start}
+/* Suggestions section */
+.ss{background:var(--navy2);border:1px solid var(--border);border-radius:var(--rl);overflow:hidden;margin-top:2.5rem}
+.sh{padding:1.25rem 1.5rem;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:flex-start;gap:1rem}
+.she{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--green);margin-bottom:4px}
+.sht{font-size:17px;font-weight:600;letter-spacing:-.02em;color:var(--text)}
+.shs{font-size:12px;color:var(--text3);margin-top:2px}
+.sc{font-size:12px;font-weight:600;background:var(--green-bg);color:var(--green);border:1px solid var(--green-border);border-radius:4px;padding:4px 12px;white-space:nowrap;flex-shrink:0}
+.sl2{padding:1rem 1.5rem}
+.scard{border:1px solid var(--border);border-radius:var(--r);padding:1rem;margin-bottom:10px;background:var(--navy)}
+.scard:last-child{margin-bottom:0}
+.sch{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:6px}
+.sau{display:flex;align-items:center;gap:8px}
+.av{width:30px;height:30px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0}
+.avcx{background:var(--green-bg);color:var(--green);border:1px solid var(--green-border)}
+.avop{background:var(--purple-bg);color:var(--purple);border:1px solid var(--purple-border)}
+.sn{font-size:13px;font-weight:500;color:var(--text);line-height:1.2}
+.sr{font-size:11px;color:var(--text3)}
+.sd{font-size:11px;color:var(--text3);white-space:nowrap}
+.st{font-size:13px;color:var(--text2);line-height:1.65}
+.srf{font-size:11px;color:var(--text3);margin-top:6px;display:flex;align-items:center;gap:4px}
+.srf span{color:var(--green)}
+.srf svg{width:10px;height:10px;stroke:currentColor;fill:none;stroke-width:1.5}
+.empty{text-align:center;padding:2.5rem 1rem;color:var(--text3);font-size:13px}
+.empty svg{width:32px;height:32px;stroke:var(--text3);margin:0 auto 10px;display:block;opacity:.4;fill:none;stroke-width:1.5}
 
-.panel-overlay{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:140;opacity:0;pointer-events:none;transition:opacity .25s}
-.panel-overlay.open{opacity:1;pointer-events:all}
-.sug-panel{position:fixed;right:0;top:0;height:100vh;width:390px;background:var(--navy2);border-left:1px solid var(--border2);z-index:150;transform:translateX(100%);transition:transform .3s ease;display:flex;flex-direction:column}
-.sug-panel.open{transform:translateX(0)}
-.panel-head{padding:1.25rem 1.5rem;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
-.panel-title{font-size:14px;font-weight:700;color:var(--text)}
-.close-btn{background:none;border:none;cursor:pointer;color:var(--text3);transition:color .15s;padding:2px;display:flex}
-.close-btn:hover{color:var(--text)}
-.close-btn svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2}
-.panel-body{padding:1.25rem 1.5rem;overflow-y:auto;flex:1}
-.form-row{margin-bottom:12px}
-.form-lbl{font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--text3);margin-bottom:5px;display:block}
-.form-inp,.form-ta,.form-sel{width:100%;background:var(--navy3);border:1px solid var(--border2);border-radius:6px;padding:8px 11px;font-size:13px;color:var(--text);font-family:'Inter',sans-serif;outline:none;transition:border-color .15s;resize:vertical}
-.form-inp:focus,.form-ta:focus,.form-sel:focus{border-color:var(--green-border)}
-.form-inp::placeholder,.form-ta::placeholder{color:var(--text3)}
-.form-ta{min-height:80px}
-.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.sub-btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;font-size:13px;font-weight:600;padding:9px 18px;border-radius:6px;cursor:pointer;border:none;background:var(--green);color:var(--navy);font-family:'Inter',sans-serif;transition:all .15s;width:100%}
-.sub-btn:hover{background:var(--green2)}
-.sending-msg{display:none;text-align:center;padding:.75rem 0;font-size:12px;color:var(--text2)}
-.sending-msg .spinner{width:22px;height:22px;border-width:2px;margin:0 auto 6px}
+/* Suggestion form */
+.sf{padding:1.25rem 1.5rem;border-top:1px solid var(--border);background:var(--navy)}
+.ftit{font-size:13px;font-weight:600;color:var(--text);margin-bottom:1rem;display:flex;align-items:center;gap:6px}
+.ftit svg{width:14px;height:14px;stroke:var(--green);fill:none;stroke-width:1.5}
+.fg{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.fr{margin-bottom:10px}
+.fr label{display:block;font-size:11px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--text3);margin-bottom:5px}
+.fr input,.fr select,.fr textarea{width:100%;font-family:'Inter',sans-serif;font-size:13px;color:var(--text);background:var(--navy2);border:1px solid var(--border2);border-radius:var(--r);padding:9px 12px;outline:none;transition:border-color .15s}
+.fr input::placeholder,.fr textarea::placeholder{color:var(--text3)}
+.fr input:focus,.fr select:focus,.fr textarea:focus{border-color:var(--green)}
+.fr textarea{resize:vertical;min-height:80px;line-height:1.6}
+.fr select{cursor:pointer}
+.fr select option{background:var(--navy2)}
+.sbtn{background:var(--green);color:var(--navy);border:none;border-radius:var(--r);padding:10px 20px;font-family:'Inter',sans-serif;font-size:13px;font-weight:700;cursor:pointer;transition:all .15s;display:inline-flex;align-items:center;gap:6px}
+.sbtn:hover{background:var(--green2)}
+.sbtn:active{transform:scale(.98)}
+.sbtn:disabled{opacity:.4;cursor:not-allowed}
+.sbtn svg{width:14px;height:14px;stroke:var(--navy);fill:none;stroke-width:2}
+.smsg{display:none;font-size:12px;color:var(--green);background:var(--green-bg);border:1px solid var(--green-border);border-radius:var(--r);padding:9px 14px;margin-top:10px;align-items:center;gap:6px}
+.smsg.show{display:flex}
+.smsg svg{width:14px;height:14px;stroke:var(--green);fill:none;stroke-width:2;flex-shrink:0}
 
-.fab{position:fixed;bottom:1.75rem;right:1.75rem;z-index:130;display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;padding:10px 18px;border-radius:8px;border:none;background:var(--purple);color:#fff;font-family:'Inter',sans-serif;cursor:pointer;transition:all .2s;box-shadow:0 4px 24px rgba(124,77,255,.4)}
-.fab:hover{background:#9575ff;transform:translateY(-1px)}
-.fab svg{width:16px;height:16px;stroke:#fff;fill:none;stroke-width:2}
+/* Footer */
+footer{border-top:1px solid var(--border);text-align:center;padding:1.5rem;font-size:11px;color:var(--text3);letter-spacing:.02em}
+footer a{color:var(--text3);text-decoration:none}
+footer a:hover{color:var(--green)}
 
-.toast{position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%) translateY(80px);background:var(--navy3);border:1px solid var(--border2);border-radius:8px;padding:.65rem 1.25rem;font-size:13px;color:var(--text);display:flex;align-items:center;gap:8px;opacity:0;transition:all .3s;z-index:999;white-space:nowrap;pointer-events:none}
-.toast.show{transform:translateX(-50%) translateY(0);opacity:1}
-.toast.success{border-color:var(--green-border);background:var(--green-bg);color:var(--green)}
-.toast.error{border-color:var(--coral-border);background:var(--coral-bg);color:var(--coral)}
-.toast svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2.5;flex-shrink:0}
-
-@media(max-width:900px){.cards-grid{grid-template-columns:1fr}}
-@media(max-width:768px){
-  .hero{flex-direction:column}.hero-title{font-size:20px}
-  .stats-strip{grid-template-columns:1fr 1fr}
-  .grid-2{grid-template-columns:1fr}
-  .sug-panel{width:100%}
-  .toolbar{flex-direction:column;align-items:flex-start}
-  .search-inp{width:100%}
-  .fab{bottom:1.25rem;right:1.25rem}
+@media(max-width:640px){
+  .fg{grid-template-columns:1fr}
+  .hero{flex-direction:column}
+  .stats{flex-direction:row;flex-wrap:wrap}
+  .hero-title{font-size:22px}
+  .wrap{padding:1.25rem 1rem 4rem}
+  .cf{flex-direction:column;align-items:flex-start}
 }
 </style>
 </head>
 <body>
 
-<div class="toast" id="toast">
-  <svg id="t-ico" viewBox="0 0 14 14"><polyline points="2,8 5,12 12,3"/></svg>
-  <span id="t-msg"></span>
-</div>
-
-<div class="panel-overlay" id="ov" onclick="closePanel()"></div>
-
-<div class="sug-panel" id="sug-panel">
-  <div class="panel-head">
-    <span class="panel-title">💡 Sugerir Oportunidade</span>
-    <button class="close-btn" onclick="closePanel()">
-      <svg viewBox="0 0 18 18"><path d="M2 2l14 14M16 2L2 16"/></svg>
-    </button>
-  </div>
-  <div class="panel-body">
-    <p style="font-size:12px;color:var(--text2);margin-bottom:1rem;line-height:1.6">Compartilhe uma ideia de melhoria, automação ou feature para o time de CX.</p>
-    <div class="form-row">
-      <label class="form-lbl">Seu nome *</label>
-      <input type="text" class="form-inp" id="sug-nome" placeholder="Ex: Ana Lima">
-    </div>
-    <div class="form-grid">
-      <div class="form-row">
-        <label class="form-lbl">Área / Squad</label>
-        <input type="text" class="form-inp" id="sug-area" placeholder="Ex: CX Brasil">
-      </div>
-      <div class="form-row">
-        <label class="form-lbl">Tipo *</label>
-        <select class="form-sel" id="sug-tipo">
-          <option value="">Selecione...</option>
-          <option>Automação</option>
-          <option>IA / Bot</option>
-          <option>Relatório / Dashboard</option>
-          <option>Processo interno</option>
-          <option>Integração</option>
-          <option>Feature Zendesk</option>
-          <option>Outro</option>
-        </select>
-      </div>
-    </div>
-    <div class="form-row">
-      <label class="form-lbl">Título *</label>
-      <input type="text" class="form-inp" id="sug-titulo" placeholder="Ex: Automatizar triagem por idioma">
-    </div>
-    <div class="form-row">
-      <label class="form-lbl">Descrição *</label>
-      <textarea class="form-ta" id="sug-desc" placeholder="O que resolve? Como deveria funcionar? Qual o impacto esperado?"></textarea>
-    </div>
-    <div class="form-row">
-      <label class="form-lbl">Impacto esperado</label>
-      <select class="form-sel" id="sug-impacto">
-        <option value="">Selecione...</option>
-        <option>Alto — afeta toda a equipe</option>
-        <option>Médio — melhoria significativa</option>
-        <option>Baixo — melhoria incremental</option>
-      </select>
-    </div>
-    <button class="sub-btn" id="sub-btn" onclick="submitSugestao()">
-      <svg viewBox="0 0 14 14"><path d="M2 7h10M7 2l5 5-5 5"/></svg>
-      Enviar Sugestão
-    </button>
-    <div class="sending-msg" id="sending">
-      <div class="spinner"></div>
-      Registrando sugestão...
-    </div>
-  </div>
-</div>
-
-<button class="fab" onclick="openPanel()">
-  <svg viewBox="0 0 16 16"><circle cx="8" cy="6" r="3"/><path d="M1 14c0-3.9 3.1-7 7-7s7 3.1 7 7"/><line x1="12" y1="2" x2="12" y2="6"/><line x1="10" y1="4" x2="14" y2="4"/></svg>
-  Sugerir Oportunidade
-</button>
-
 <header>
   <div class="hi">
-    <a class="logo" href="#">
-      <div class="lm"><svg viewBox="0 0 16 16" fill="var(--navy)"><path d="M2 3h5v5H2zM9 3h5v5H9zM2 9h5v5H2zM9 9h5v5H9z"/></svg></div>
+    <div class="logo">
+      <div class="lm"><svg viewBox="0 0 16 16"><path d="M2 3h5v5H2zM9 3h5v5H9zM2 9h5v5H2zM9 9h5v5H9z"/></svg></div>
       <span class="ln">Zendesk Journal<span> · CX</span></span>
-    </a>
-    <div class="hlinks">
-      <a class="hlink" href="https://support.zendesk.com/hc/pt-br/categories/4405298749210" target="_blank">
-        <svg viewBox="0 0 12 12"><path d="M7 2h3v3M10 2L5 7M2 5v5h5"/></svg>
-        Zendesk
-      </a>
-      <button class="hlink hlink-green" onclick="window.open('a3.html','_blank')">
+    </div>
+    <div class="hr">
+      <div class="hbadge" id="hbadge">Atualizado</div>
+      <div class="lang-sw">
+        <button class="lang-btn active" id="btn-pt" onclick="setLang('pt')">PT</button>
+        <div class="lang-sep"></div>
+        <button class="lang-btn" id="btn-es" onclick="setLang('es')">ES</button>
+      </div>
+      <button class="a3-btn" onclick="window.open('a3.html','_blank')">
         <svg viewBox="0 0 12 12"><rect x="1" y="1" width="10" height="10" rx="1.5"/><path d="M4 6h4M6 4v4"/></svg>
-        Ver A3
+        <span id="h-a3">Ver A3</span>
       </button>
+      <span class="hdate" id="hd"></span>
     </div>
   </div>
 </header>
 
-<nav class="nav-tabs">
-  <div class="nav-tabs-inner">
-    <button class="nav-tab active" onclick="showPage('journal',this)">
-      <svg viewBox="0 0 14 14"><rect x="2" y="2" width="10" height="10" rx="1.5"/><path d="M5 5h4M5 7h4M5 9h2"/></svg>
-      Journal do Mês
-    </button>
-    <button class="nav-tab" onclick="showPage('guia',this)">
-      <svg viewBox="0 0 14 14"><circle cx="7" cy="7" r="6"/><path d="M7 6.5v3.5M7 4.5v.5"/></svg>
-      Guia de Uso
-    </button>
-  </div>
-</nav>
-
 <div class="wrap">
 
-<div class="page active" id="page-journal">
+  <!-- Hero -->
   <div class="hero">
     <div>
-      <p class="hero-eye">Nuvemshop CX · Publicado toda 1ª terça do mês</p>
-      <h1 class="hero-title">Zendesk Journal <span id="hero-month">— selecione um mês</span></h1>
-      <p class="hero-sub">Curadoria inteligente das novidades do Zendesk relevantes para Customer Experience. Filtradas por IA, direto para o seu time.</p>
-      <div class="hero-tags">
-        <span class="tag tag-green">CX Intelligence</span>
-        <span class="tag tag-amber">IA & Automação</span>
-        <span class="tag tag-navy" id="tag-ref">Referência: —</span>
+      <p class="hero-eye" id="hero-eye">Journal mensal · Primeira terça</p>
+      <h1 class="hero-title" id="hero-title">Novidades de<br><span>Abril 2026</span></h1>
+      <p class="hero-intro" id="hero-intro">Abril trouxe avanços em IA e observabilidade. O Zendesk expandiu a visibilidade dos agentes de IA, melhorou o roteamento omnichannel com recomendações inteligentes e reforçou os dashboards de SLA em tempo real.</p>
+      <a class="hero-src" href="https://support.zendesk.com/hc/en-us/articles/10479706763162" target="_blank">
+        <svg viewBox="0 0 12 12"><path d="M2 10L10 2M10 2H5M10 2v5"/></svg>
+        <span id="hero-src-lbl">Fonte oficial Zendesk</span>
+      </a>
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="stat-n">7</div><div class="stat-l" id="stat1-lbl">novidades selecionadas</div></div>
+      <div class="stat"><div class="stat-n">20+</div><div class="stat-l" id="stat2-lbl">total de atualizações</div></div>
+    </div>
+  </div>
+
+  <!-- ── IA & Automação ─────────────────────────────────── -->
+  <div class="sl" id="sl-ia">IA &amp; Automação</div>
+
+  <!-- Card 1 -->
+  <div class="card">
+    <div class="img-wrap">
+      <img src="https://zen-marketing-documentation.s3.amazonaws.com/docs/en/aiaa_conversation_journey_single_step.png" alt="Conversation Journey" onerror="this.closest('.img-wrap').remove()">
+    </div>
+    <div class="cb">
+      <div class="meta"><span class="b bai" data-i="badge-ia">IA &amp; Automação</span></div>
+      <h2 class="ct" data-i="c1-title">Nova aba "Conversation Journey" para IA avançada</h2>
+      <p class="cs" data-i="c1-sum">O dashboard de AI agents ganhou uma aba que visualiza os fluxos de conversa entre clientes e agentes de IA, mostrando onde ocorrem escalações e quais caminhos têm maior taxa de resolução automática.</p>
+      <div class="ci"><strong data-i="impact-lbl">Impacto CX:</strong> <span data-i="c1-impact">Identifique gargalos na automação e replique os caminhos de conversa mais eficientes, reduzindo escalações desnecessárias.</span></div>
+      <div class="cf">
+        <a class="al" href="https://support.zendesk.com/hc/en-us/articles/10468587676442" target="_blank">
+          <svg viewBox="0 0 12 12"><path d="M2 10L10 2M10 2H5M10 2v5"/></svg>
+          <span data-i="read-more">Ver artigo completo</span>
+        </a>
+        <div class="cf-right">
+          <button class="imp-btn" id="imp-c1" onclick="toggleImp('c1')">
+            <svg viewBox="0 0 14 14"><path d="M12 2l-6.5 6.5L2 5"/><rect x="1" y="1" width="12" height="12" rx="2"/></svg>
+            <span data-i="mark-btn">Marcar como importante</span>
+          </button>
+          <button class="dt-btn" onclick="toggleDisc(this,'dp-c1')">
+            <svg viewBox="0 0 12 12"><circle cx="6" cy="6" r="4.5"/><path d="M6 4v2.5M6 8h.01"/></svg>
+            <span data-i="disc-btn">Oportunidades de discovery</span>
+          </button>
+        </div>
       </div>
     </div>
-    <div class="hero-meta">
-      <div class="meta-badge"><div class="meta-label">Próxima edição</div><div class="meta-val" id="next-ed">—</div></div>
-      <div class="meta-badge"><div class="meta-label">Atualizações</div><div class="meta-val" id="total-c">—</div></div>
-      <div class="meta-badge"><div class="meta-label">Marcadas ⭐</div><div class="meta-val" id="marked-c">0</div></div>
+    <div class="dp" id="dp-c1">
+      <p class="dpt">
+        <svg viewBox="0 0 12 12"><path d="M6 1l1.2 2.5L10 4l-2 1.9.5 2.8L6 7.5 3.5 8.7l.5-2.8L2 4l2.8-.5z"/></svg>
+        <span data-i="disc-title">Sugestões geradas pela IA</span>
+      </p>
+      <div class="di"><div class="dd"></div><p class="dt2" data-i="c1-d1">Mapear os top 5 fluxos onde a IA escala para humano — entender se são lacunas de base de conhecimento ou limitação do modelo.</p></div>
+      <div class="di"><div class="dd"></div><p class="dt2" data-i="c1-d2">Criar benchmark mensal de taxa de deflexão por intenção para medir o impacto das otimizações de conversa.</p></div>
+      <div class="di"><div class="dd"></div><p class="dt2" data-i="c1-d3">Discovery: quais caminhos com maior CSAT podem ser replicados como templates para outros fluxos?</p></div>
     </div>
   </div>
 
-  <div class="stats-strip" id="sstats" style="display:none">
-    <div class="stat-card"><div class="stat-lbl">Total filtrado</div><div class="stat-val" id="s0">0</div></div>
-    <div class="stat-card"><div class="stat-lbl">IA & Automação</div><div class="stat-val" id="s1">0</div></div>
-    <div class="stat-card"><div class="stat-lbl">Marcadas ⭐</div><div class="stat-val" id="s2">0</div></div>
-    <div class="stat-card"><div class="stat-lbl">Sugestões enviadas</div><div class="stat-val" id="s3">0</div></div>
-  </div>
-
-  <div class="toolbar" id="toolbar" style="display:none">
-    <div class="toolbar-left">
-      <button class="filter-btn active" onclick="setFilter('all',this)">Todos</button>
-      <button class="filter-btn" onclick="setFilter('ai',this)">IA & Copilot</button>
-      <button class="filter-btn" onclick="setFilter('automation',this)">Automação</button>
-      <button class="filter-btn" onclick="setFilter('reporting',this)">Relatórios</button>
-      <button class="filter-btn" onclick="setFilter('ticketing',this)">Tickets</button>
-      <button class="filter-btn" onclick="setFilter('voice',this)">Voz / Chat</button>
-      <button class="filter-btn" onclick="setFilter('marked',this)">⭐ Marcados</button>
-    </div>
-    <div class="toolbar-right">
-      <input type="text" class="search-inp" placeholder="Buscar..." oninput="setSearch(this.value)">
-      <select class="month-sel" id="msel">
-        <option value="2025-04">Abril 2025</option>
-        <option value="2025-03">Março 2025</option>
-        <option value="2025-02">Fevereiro 2025</option>
-        <option value="2025-01">Janeiro 2025</option>
-      </select>
-      <button class="fetch-btn" id="fetch-btn" onclick="fetchUpdates(false)">
-        <svg viewBox="0 0 13 13"><path d="M11 6.5A4.5 4.5 0 1 1 6.5 2M11 2v4H7"/></svg>
-        Recarregar
-      </button>
-    </div>
-  </div>
-
-  <div id="content-area">
-    <div class="init-card">
-      <svg style="width:44px;height:44px;margin:0 auto 1rem;display:block;stroke:var(--green);fill:none;stroke-width:1.3" viewBox="0 0 44 44"><circle cx="22" cy="22" r="20"/><path d="M22 13v11l7 4"/></svg>
-      <h3>Carregar atualizações do mês</h3>
-      <p>Selecione o mês de referência e clique em <strong style="color:var(--text)">Buscar com IA</strong>. Em ~30–60 segundos a IA filtra e resume as novidades relevantes para CX.</p>
-      <div class="callout c-green" style="max-width:440px">
-        <svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="7"/><path d="M8 7v4M8 5v.5"/></svg>
-        <span>Publicado toda <strong>1ª terça-feira do mês</strong>, referente ao mês anterior. Próxima: <strong id="next-inline">—</strong></span>
+  <!-- Card 2 -->
+  <div class="card">
+    <div class="cb">
+      <div class="meta"><span class="b bai" data-i="badge-ia">IA &amp; Automação</span></div>
+      <h2 class="ct" data-i="c2-title">Copilot com recomendações de roteamento omnichannel</h2>
+      <p class="cs" data-i="c2-sum">O Copilot agora oferece 21 tipos de recomendações baseadas em IA para otimizar configurações de roteamento, cobrindo todos os aspectos do omnichannel setup — acessíveis direto no Admin Center com filtros por tipo.</p>
+      <div class="ci"><strong data-i="impact-lbl">Impacto CX:</strong> <span data-i="c2-impact">Reduz tempo de configuração e aumenta eficiência do roteamento sem depender de trial and error manual.</span></div>
+      <div class="cf">
+        <a class="al" href="https://support.zendesk.com/hc/en-us/articles/9598690362010" target="_blank">
+          <svg viewBox="0 0 12 12"><path d="M2 10L10 2M10 2H5M10 2v5"/></svg>
+          <span data-i="read-more">Ver artigo completo</span>
+        </a>
+        <div class="cf-right">
+          <button class="imp-btn" id="imp-c2" onclick="toggleImp('c2')">
+            <svg viewBox="0 0 14 14"><path d="M12 2l-6.5 6.5L2 5"/><rect x="1" y="1" width="12" height="12" rx="2"/></svg>
+            <span data-i="mark-btn">Marcar como importante</span>
+          </button>
+          <button class="dt-btn" onclick="toggleDisc(this,'dp-c2')">
+            <svg viewBox="0 0 12 12"><circle cx="6" cy="6" r="4.5"/><path d="M6 4v2.5M6 8h.01"/></svg>
+            <span data-i="disc-btn">Oportunidades de discovery</span>
+          </button>
+        </div>
       </div>
-      <div class="init-ctrls">
-        <select class="month-sel" id="msel-init">
-          <option value="2025-04">Abril 2025</option>
-          <option value="2025-03">Março 2025</option>
-          <option value="2025-02">Fevereiro 2025</option>
-          <option value="2025-01">Janeiro 2025</option>
+    </div>
+    <div class="dp" id="dp-c2">
+      <p class="dpt"><svg viewBox="0 0 12 12"><path d="M6 1l1.2 2.5L10 4l-2 1.9.5 2.8L6 7.5 3.5 8.7l.5-2.8L2 4l2.8-.5z"/></svg><span data-i="disc-title">Sugestões geradas pela IA</span></p>
+      <div class="di"><div class="dd"></div><p class="dt2" data-i="c2-d1">Revisar as 21 categorias de recomendação com o time de operações — priorizar as que mais impactam tempo de resposta.</p></div>
+      <div class="di"><div class="dd"></div><p class="dt2" data-i="c2-d2">Discovery: comparar configuração atual de roteamento com as recomendações para identificar gaps de eficiência.</p></div>
+    </div>
+  </div>
+
+  <!-- Card 3 -->
+  <div class="card">
+    <div class="img-wrap">
+      <img src="https://zen-marketing-documentation.s3.amazonaws.com/docs/en/copilot_writingtools_customprompt_enter.png" alt="Ferramentas IA escrita" onerror="this.closest('.img-wrap').remove()">
+    </div>
+    <div class="cb">
+      <div class="meta"><span class="b bai" data-i="badge-ia">IA &amp; Automação</span></div>
+      <h2 class="ct" data-i="c3-title">Ferramentas de escrita por IA disponíveis em todos os planos</h2>
+      <p class="cs" data-i="c3-sum">Tom de voz, Simplificar e Prompt personalizado deixaram de exigir o add-on Copilot. A busca generativa e Quick Answers também migraram para o motor RAG dos AI agents, com respostas mais precisas no help center e Agent Workspace.</p>
+      <div class="ci"><strong data-i="impact-lbl">Impacto CX:</strong> <span data-i="c3-impact">Times sem Copilot agora têm acesso à IA de escrita — impacto direto na qualidade de resposta de agentes novatos.</span></div>
+      <div class="cf">
+        <a class="al" href="https://support.zendesk.com/hc/en-us/articles/6267360002714" target="_blank">
+          <svg viewBox="0 0 12 12"><path d="M2 10L10 2M10 2H5M10 2v5"/></svg>
+          <span data-i="read-more">Ver artigo completo</span>
+        </a>
+        <div class="cf-right">
+          <button class="imp-btn" id="imp-c3" onclick="toggleImp('c3')">
+            <svg viewBox="0 0 14 14"><path d="M12 2l-6.5 6.5L2 5"/><rect x="1" y="1" width="12" height="12" rx="2"/></svg>
+            <span data-i="mark-btn">Marcar como importante</span>
+          </button>
+          <button class="dt-btn" onclick="toggleDisc(this,'dp-c3')">
+            <svg viewBox="0 0 12 12"><circle cx="6" cy="6" r="4.5"/><path d="M6 4v2.5M6 8h.01"/></svg>
+            <span data-i="disc-btn">Oportunidades de discovery</span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="dp" id="dp-c3">
+      <p class="dpt"><svg viewBox="0 0 12 12"><path d="M6 1l1.2 2.5L10 4l-2 1.9.5 2.8L6 7.5 3.5 8.7l.5-2.8L2 4l2.8-.5z"/></svg><span data-i="disc-title">Sugestões geradas pela IA</span></p>
+      <div class="di"><div class="dd"></div><p class="dt2" data-i="c3-d1">Ativar as ferramentas de escrita para o time e medir impacto em CSAT e tempo de resolução após 30 dias.</p></div>
+      <div class="di"><div class="dd"></div><p class="dt2" data-i="c3-d2">Criar guidelines de tom de voz por marca e configurar como padrão — padronizar a comunicação sem treinamento extra.</p></div>
+    </div>
+  </div>
+
+  <!-- ── Relatórios ─────────────────────────────────────── -->
+  <div class="sl" id="sl-rel" data-i="sl-rel">Relatórios &amp; Dados</div>
+
+  <!-- Card 4 -->
+  <div class="card">
+    <div class="img-wrap">
+      <img src="https://zen-marketing-documentation.s3.amazonaws.com/docs/en/zea_tickets_in_queue.png" alt="Dashboards tempo real SLA" onerror="this.closest('.img-wrap').remove()">
+    </div>
+    <div class="cb">
+      <div class="meta"><span class="b brp" data-i="badge-rel">Relatórios</span></div>
+      <h2 class="ct" data-i="c4-title">Dashboards de tempo real com SLA e filtros avançados</h2>
+      <p class="cs" data-i="c4-sum">Os dashboards de monitoramento ganharam abas de status de SLA para filas padrão e customizadas, visualizações por percentil, filtros de progresso de fila e visões por marca e grupo.</p>
+      <div class="ci"><strong data-i="impact-lbl">Impacto CX:</strong> <span data-i="c4-impact">Visibilidade de SLA em tempo real para a liderança — agir preventivamente antes do breach, não após.</span></div>
+      <div class="cf">
+        <a class="al" href="https://support.zendesk.com/hc/en-us/articles/10369700284826" target="_blank">
+          <svg viewBox="0 0 12 12"><path d="M2 10L10 2M10 2H5M10 2v5"/></svg>
+          <span data-i="read-more">Ver artigo completo</span>
+        </a>
+        <div class="cf-right">
+          <button class="imp-btn" id="imp-c4" onclick="toggleImp('c4')">
+            <svg viewBox="0 0 14 14"><path d="M12 2l-6.5 6.5L2 5"/><rect x="1" y="1" width="12" height="12" rx="2"/></svg>
+            <span data-i="mark-btn">Marcar como importante</span>
+          </button>
+          <button class="dt-btn" onclick="toggleDisc(this,'dp-c4')">
+            <svg viewBox="0 0 12 12"><circle cx="6" cy="6" r="4.5"/><path d="M6 4v2.5M6 8h.01"/></svg>
+            <span data-i="disc-btn">Oportunidades de discovery</span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="dp" id="dp-c4">
+      <p class="dpt"><svg viewBox="0 0 12 12"><path d="M6 1l1.2 2.5L10 4l-2 1.9.5 2.8L6 7.5 3.5 8.7l.5-2.8L2 4l2.8-.5z"/></svg><span data-i="disc-title">Sugestões geradas pela IA</span></p>
+      <div class="di"><div class="dd"></div><p class="dt2" data-i="c4-d1">Configurar alertas de SLA em risco para supervisores receberem notificação antes do breach.</p></div>
+      <div class="di"><div class="dd"></div><p class="dt2" data-i="c4-d2">Criar view por brand para times multi-marca — medir se SLA varia por país ou produto.</p></div>
+    </div>
+  </div>
+
+  <!-- ── Canais ──────────────────────────────────────────── -->
+  <div class="sl" id="sl-ch" data-i="sl-ch">Canais</div>
+
+  <!-- Card 5 -->
+  <div class="card">
+    <div class="img-wrap">
+      <img src="https://zen-marketing-documentation.s3.amazonaws.com/docs/en/AI_label.png" alt="Generated by AI label" onerror="this.closest('.img-wrap').remove()">
+    </div>
+    <div class="cb">
+      <div class="meta"><span class="b bch" data-i="badge-ch">Canais</span></div>
+      <h2 class="ct" data-i="c5-title">Usuários podem encerrar sessões de messaging + novo label de IA</h2>
+      <p class="cs" data-i="c5-sum">Clientes agora podem fechar a própria sessão de chat no Web Widget. O label "Generated by AI" foi redesenhado para aparecer uma vez por grupo de mensagens em vez de em cada mensagem individualmente.</p>
+      <div class="ci"><strong data-i="impact-lbl">Impacto CX:</strong> <span data-i="c5-impact">Melhora eficiência operacional e deixa a transparência da IA menos intrusiva na conversa.</span></div>
+      <div class="cf">
+        <a class="al" href="https://support.zendesk.com/hc/en-us/articles/10408069561626" target="_blank">
+          <svg viewBox="0 0 12 12"><path d="M2 10L10 2M10 2H5M10 2v5"/></svg>
+          <span data-i="read-more">Ver artigo completo</span>
+        </a>
+        <div class="cf-right">
+          <button class="imp-btn" id="imp-c5" onclick="toggleImp('c5')">
+            <svg viewBox="0 0 14 14"><path d="M12 2l-6.5 6.5L2 5"/><rect x="1" y="1" width="12" height="12" rx="2"/></svg>
+            <span data-i="mark-btn">Marcar como importante</span>
+          </button>
+          <button class="dt-btn" onclick="toggleDisc(this,'dp-c5')">
+            <svg viewBox="0 0 12 12"><circle cx="6" cy="6" r="4.5"/><path d="M6 4v2.5M6 8h.01"/></svg>
+            <span data-i="disc-btn">Oportunidades de discovery</span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="dp" id="dp-c5">
+      <p class="dpt"><svg viewBox="0 0 12 12"><path d="M6 1l1.2 2.5L10 4l-2 1.9.5 2.8L6 7.5 3.5 8.7l.5-2.8L2 4l2.8-.5z"/></svg><span data-i="disc-title">Sugestões geradas pela IA</span></p>
+      <div class="di"><div class="dd"></div><p class="dt2" data-i="c5-d1">Ativar encerramento pelo usuário e monitorar por 30 dias — medir impacto no volume de tickets reabertos.</p></div>
+      <div class="di"><div class="dd"></div><p class="dt2" data-i="c5-d2">Avaliar se o novo label mais discreto afeta percepção de confiança — incluir pergunta na próxima pesquisa de CSAT.</p></div>
+    </div>
+  </div>
+
+  <!-- ── Agente ──────────────────────────────────────────── -->
+  <div class="sl" id="sl-ag" data-i="sl-ag">Agente</div>
+
+  <!-- Card 6 -->
+  <div class="card">
+    <div class="cb">
+      <div class="meta"><span class="b bag" data-i="badge-ag">Agente</span></div>
+      <h2 class="ct" data-i="c6-title">Task lists — disponível para todos (GA)</h2>
+      <p class="cs" data-i="c6-sum">Admins criam listas de tarefas para tipos de tickets recorrentes. Agentes adicionam ao ticket e garantem que nenhuma etapa seja esquecida no processo de resolução.</p>
+      <div class="ci"><strong data-i="impact-lbl">Impacto CX:</strong> <span data-i="c6-impact">Reduz erros de processo e padroniza atendimento em fluxos críticos como onboarding, cancelamento ou trocas.</span></div>
+      <div class="cf">
+        <a class="al" href="https://support.zendesk.com/hc/en-us/articles/9676917386650" target="_blank">
+          <svg viewBox="0 0 12 12"><path d="M2 10L10 2M10 2H5M10 2v5"/></svg>
+          <span data-i="read-more">Ver artigo completo</span>
+        </a>
+        <div class="cf-right">
+          <button class="imp-btn" id="imp-c6" onclick="toggleImp('c6')">
+            <svg viewBox="0 0 14 14"><path d="M12 2l-6.5 6.5L2 5"/><rect x="1" y="1" width="12" height="12" rx="2"/></svg>
+            <span data-i="mark-btn">Marcar como importante</span>
+          </button>
+          <button class="dt-btn" onclick="toggleDisc(this,'dp-c6')">
+            <svg viewBox="0 0 12 12"><circle cx="6" cy="6" r="4.5"/><path d="M6 4v2.5M6 8h.01"/></svg>
+            <span data-i="disc-btn">Oportunidades de discovery</span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="dp" id="dp-c6">
+      <p class="dpt"><svg viewBox="0 0 12 12"><path d="M6 1l1.2 2.5L10 4l-2 1.9.5 2.8L6 7.5 3.5 8.7l.5-2.8L2 4l2.8-.5z"/></svg><span data-i="disc-title">Sugestões geradas pela IA</span></p>
+      <div class="di"><div class="dd"></div><p class="dt2" data-i="c6-d1">Mapear os 3 tipos de ticket com maior variação de qualidade — criar task lists e medir impacto em CSAT após 60 dias.</p></div>
+      <div class="di"><div class="dd"></div><p class="dt2" data-i="c6-d2">Envolver agentes sênior na criação das listas — eles conhecem os passos críticos que novatos costumam pular.</p></div>
+    </div>
+  </div>
+
+  <!-- Card 7 -->
+  <div class="card">
+    <div class="img-wrap">
+      <img src="https://zen-marketing-documentation.s3.amazonaws.com/docs/en/wfm_create_combined_workstream.png" alt="WFM workstreams combinados" onerror="this.closest('.img-wrap').remove()">
+    </div>
+    <div class="cb">
+      <div class="meta"><span class="b bag" data-i="badge-ag">Agente</span></div>
+      <h2 class="ct" data-i="c7-title">WFM: workstreams combinados e folgas mais precisas</h2>
+      <p class="cs" data-i="c7-sum">Possível combinar workstreams (ex: voz + tickets) para escalar agentes multitarefa simultaneamente. Folgas agora mapeiam turnos reais em vez de blocos de 24h, e um novo indicador de horas faturáveis considera folgas pagas parciais.</p>
+      <div class="ci"><strong data-i="impact-lbl">Impacto CX:</strong> <span data-i="c7-impact">Planejamento de capacidade mais preciso para times que operam em múltiplos canais simultaneamente.</span></div>
+      <div class="cf">
+        <a class="al" href="https://support.zendesk.com/hc/en-us/articles/10379843022234" target="_blank">
+          <svg viewBox="0 0 12 12"><path d="M2 10L10 2M10 2H5M10 2v5"/></svg>
+          <span data-i="read-more">Ver artigo completo</span>
+        </a>
+        <div class="cf-right">
+          <button class="imp-btn" id="imp-c7" onclick="toggleImp('c7')">
+            <svg viewBox="0 0 14 14"><path d="M12 2l-6.5 6.5L2 5"/><rect x="1" y="1" width="12" height="12" rx="2"/></svg>
+            <span data-i="mark-btn">Marcar como importante</span>
+          </button>
+          <button class="dt-btn" onclick="toggleDisc(this,'dp-c7')">
+            <svg viewBox="0 0 12 12"><circle cx="6" cy="6" r="4.5"/><path d="M6 4v2.5M6 8h.01"/></svg>
+            <span data-i="disc-btn">Oportunidades de discovery</span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="dp" id="dp-c7">
+      <p class="dpt"><svg viewBox="0 0 12 12"><path d="M6 1l1.2 2.5L10 4l-2 1.9.5 2.8L6 7.5 3.5 8.7l.5-2.8L2 4l2.8-.5z"/></svg><span data-i="disc-title">Sugestões geradas pela IA</span></p>
+      <div class="di"><div class="dd"></div><p class="dt2" data-i="c7-d1">Identificar agentes que atuam alternadamente em voz e tickets — criar workstream combinado e comparar aderência ao schedule.</p></div>
+    </div>
+  </div>
+
+  <!-- ── Sugestões do time ──────────────────────────────── -->
+  <div class="ss">
+    <div class="sh">
+      <div>
+        <p class="she" data-i="sug-eye">Colaboração do time</p>
+        <h2 class="sht" data-i="sug-title">Sugestões de iniciativas</h2>
+        <p class="shs" data-i="sug-sub">O que líderes de CX e produto/ops querem explorar a partir dessas novidades</p>
+      </div>
+      <span class="sc" id="scount">0 sugestões</span>
+    </div>
+    <div class="sl2" id="slist">
+      <div class="empty" id="empty">
+        <svg viewBox="0 0 24 24"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+        <p data-i="empty-sug">Nenhuma sugestão ainda.<br>Seja o primeiro a contribuir abaixo.</p>
+      </div>
+    </div>
+    <div class="sf">
+      <p class="ftit">
+        <svg viewBox="0 0 14 14"><path d="M7 1v12M1 7h12"/></svg>
+        <span data-i="form-title">Adicionar sugestão</span>
+      </p>
+      <div class="fg">
+        <div class="fr"><label data-i="f-name">Seu nome</label><input type="text" id="iname" placeholder="Ex: Ana Lima"></div>
+        <div class="fr">
+          <label data-i="f-role">Área</label>
+          <select id="irole">
+            <option value="" data-i="f-sel">Selecione...</option>
+            <option value="cx" data-i="f-cx">Líder de CX</option>
+            <option value="ops" data-i="f-ops">Produto / Ops</option>
+          </select>
+        </div>
+      </div>
+      <div class="fr">
+        <label data-i="f-ref">Relacionado a</label>
+        <select id="iref">
+          <option value="" data-i="f-ref-sel">Selecione a novidade...</option>
+          <option data-i="ref-c1">Conversation Journey para IA avançada</option>
+          <option data-i="ref-c2">Copilot com recomendações de roteamento</option>
+          <option data-i="ref-c3">Ferramentas de IA em todos os planos</option>
+          <option data-i="ref-c4">Dashboards de SLA em tempo real</option>
+          <option data-i="ref-c5">Encerramento de sessão + label de IA</option>
+          <option data-i="ref-c6">Task lists (GA)</option>
+          <option data-i="ref-c7">WFM: workstreams combinados</option>
+          <option value="geral" data-i="ref-geral">Geral / outro</option>
         </select>
-        <button class="fetch-btn" style="font-size:13px;padding:8px 20px" onclick="fetchUpdates(true)">
-          <svg viewBox="0 0 13 13"><path d="M11 6.5A4.5 4.5 0 1 1 6.5 2M11 2v4H7"/></svg>
-          Buscar com IA
-        </button>
+      </div>
+      <div class="fr"><label data-i="f-text">Sugestão de discovery ou iniciativa</label><textarea id="itext" placeholder="Ex: Quero explorar como usar o Conversation Journey para reduzir escalações no fluxo de cancelamento..."></textarea></div>
+      <button class="sbtn" id="sbtn" onclick="submitSug()">
+        <svg viewBox="0 0 14 14"><path d="M2 7h10M7 2l5 5-5 5"/></svg>
+        <span data-i="f-submit">Enviar sugestão</span>
+      </button>
+      <div class="smsg" id="smsg">
+        <svg viewBox="0 0 14 14"><path d="M2 7l3.5 3.5L12 3"/></svg>
+        <span data-i="f-ok">Sugestão enviada com sucesso!</span>
       </div>
     </div>
   </div>
-  <div class="cards-grid" id="cards-list"></div>
-</div>
-
-<div class="page" id="page-guia">
-  <div class="hero" style="margin-bottom:1.25rem">
-    <div>
-      <p class="hero-eye">Documentação · Zendesk Journal CX</p>
-      <h1 class="hero-title">Guia de <span>Uso da Plataforma</span></h1>
-      <p class="hero-sub">Como acompanhar novidades, marcar updates importantes e enviar sugestões de oportunidade para a liderança de CX.</p>
-    </div>
-  </div>
-  <div class="grid-2">
-    <div>
-      <div class="sec">
-        <div class="sec-head"><div class="sec-bar" style="background:var(--green)"></div><span class="sec-title" style="color:var(--green)">O que é o Zendesk Journal CX</span></div>
-        <div class="sec-body">
-          <p>Plataforma que automatiza a curadoria das novidades mensais do Zendesk, filtrando o que é relevante para o time de Customer Experience.</p>
-          <ul style="list-style:none;padding:0;margin:.25rem 0">
-            <li style="display:flex;gap:8px;padding:4px 0;font-size:13px;color:var(--text2)"><span style="color:var(--green);font-size:11px;margin-top:3px">▸</span>IA busca e filtra as atualizações do Zendesk</li>
-            <li style="display:flex;gap:8px;padding:4px 0;font-size:13px;color:var(--text2)"><span style="color:var(--green);font-size:11px;margin-top:3px">▸</span>Time marca os itens mais importantes</li>
-            <li style="display:flex;gap:8px;padding:4px 0;font-size:13px;color:var(--text2)"><span style="color:var(--green);font-size:11px;margin-top:3px">▸</span>Marcações e sugestões são registradas automaticamente</li>
-            <li style="display:flex;gap:8px;padding:4px 0;font-size:13px;color:var(--text2)"><span style="color:var(--green);font-size:11px;margin-top:3px">▸</span>Liderança acompanha prioridades e discoveries do time</li>
-          </ul>
-          <div class="callout c-green" style="margin-top:.75rem;margin-bottom:0">
-            <svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="7"/><path d="M8 7v4M8 5v.5"/></svg>
-            <span>Publicado toda <strong>1ª terça-feira do mês</strong>, referente ao mês anterior.</span>
-          </div>
-        </div>
-      </div>
-      <div class="sec">
-        <div class="sec-head"><div class="sec-bar" style="background:var(--amber)"></div><span class="sec-title" style="color:var(--amber)">Como marcar uma atualização como importante</span></div>
-        <div class="sec-body" style="padding:.5rem 1.25rem">
-          <ol class="guide-steps">
-            <li class="gstep"><div class="step-num">1</div><div><div class="step-h">Acesse o Journal e busque com IA</div><p class="step-p">Selecione o mês e clique em <strong style="color:var(--text)">Buscar com IA</strong>.</p></div></li>
-            <li class="gstep"><div class="step-num">2</div><div><div class="step-h">Use os filtros para navegar</div><p class="step-p">Filtre por categoria ou busque por palavras-chave.</p><span class="tip">💡 "IA & Copilot" traz as novidades de inteligência artificial</span></div></li>
-            <li class="gstep"><div class="step-num">3</div><div><div class="step-h">Clique em "⭐ Marcar como Importante"</div><p class="step-p">O card fica com borda verde e o registro é salvo automaticamente para acompanhamento da liderança.</p><span class="tip">📌 Acontece em tempo real, sem nenhum passo extra</span></div></li>
-          </ol>
-        </div>
-      </div>
-    </div>
-    <div>
-      <div class="sec">
-        <div class="sec-head"><div class="sec-bar" style="background:var(--purple)"></div><span class="sec-title" style="color:var(--purple)">Como enviar uma sugestão de oportunidade</span></div>
-        <div class="sec-body" style="padding:.5rem 1.25rem">
-          <ol class="guide-steps">
-            <li class="gstep"><div class="step-num">1</div><div><div class="step-h">Clique em "Sugerir Oportunidade"</div><p class="step-p">O botão roxo fica fixo no canto inferior direito — disponível em qualquer página.</p></div></li>
-            <li class="gstep"><div class="step-num">2</div><div><div class="step-h">Preencha o formulário</div><p class="step-p">Informe nome, tipo de oportunidade e descreva a ideia.</p><span class="tip">💡 Ex: "Dashboard de SLA por país", "Bot de triagem por idioma"</span></div></li>
-            <li class="gstep"><div class="step-num">3</div><div><div class="step-h">Clique em "Enviar Sugestão"</div><p class="step-p">A sugestão é registrada automaticamente para acompanhamento da liderança.</p></div></li>
-          </ol>
-        </div>
-      </div>
-      <div class="sec">
-        <div class="sec-head"><div class="sec-bar" style="background:var(--text3)"></div><span class="sec-title" style="color:var(--text2)">Categorias das atualizações</span></div>
-        <div class="sec-body">
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
-            <div style="display:flex;align-items:center;gap:8px"><span class="cc cc-ai">IA</span><span style="font-size:12px;color:var(--text2)">IA & Copilot</span></div>
-            <div style="display:flex;align-items:center;gap:8px"><span class="cc cc-automation">AUTO</span><span style="font-size:12px;color:var(--text2)">Automações</span></div>
-            <div style="display:flex;align-items:center;gap:8px"><span class="cc cc-reporting">REL</span><span style="font-size:12px;color:var(--text2)">Relatórios</span></div>
-            <div style="display:flex;align-items:center;gap:8px"><span class="cc cc-ticketing">TICK</span><span style="font-size:12px;color:var(--text2)">Tickets</span></div>
-            <div style="display:flex;align-items:center;gap:8px"><span class="cc cc-voice">VOZ</span><span style="font-size:12px;color:var(--text2)">Voz / Chat</span></div>
-            <div style="display:flex;align-items:center;gap:8px"><span class="cc cc-other">GERAL</span><span style="font-size:12px;color:var(--text2)">Outras</span></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
 
 </div>
+
+<footer>
+  Zendesk Journal · Nuvemshop CX Intelligence · <span data-i="footer-cadence">Gerado na primeira terça de cada mês</span> ·
+  <a href="https://support.zendesk.com/hc/en-us/articles/10479706763162" target="_blank">Fonte: Zendesk April 2026</a>
+</footer>
 
 <script>
-// ── ÚNICA mudança em relação ao arquivo local: chama /api/claude em vez da API diretamente
-const API = '/api/claude';
-const SHEETS_ID = '1TVj-ub26y_Z3yZ323zu7gbYoq9Djr-AHmpwVJ459iZc';
+// ── DATE ──────────────────────────────────────────────────────────────────────
+document.getElementById('hd').textContent = new Date().toLocaleDateString('pt-BR',{day:'numeric',month:'long',year:'numeric'});
 
-const CAT_IMGS_FB = {
-  ai:         'https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=600&q=80',
-  automation: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80',
-  reporting:  'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80',
-  ticketing:  'https://images.unsplash.com/photo-1556155092-490a1ba16284?w=600&q=80',
-  voice:      'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600&q=80',
-  other:      'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80'
-};
-const CAT_CLS = {ai:'cc-ai',automation:'cc-automation',reporting:'cc-reporting',ticketing:'cc-ticketing',voice:'cc-voice'};
-const CAT_LBL = {ai:'IA & Copilot',automation:'Automação',reporting:'Relatórios',ticketing:'Tickets',voice:'Voz / Chat',other:'Geral'};
-const CAT_ICON = {
-  ai:`<svg viewBox="0 0 40 40" fill="none" stroke="#7C4DFF" stroke-width="1.2"><circle cx="20" cy="20" r="8"/><path d="M20 4v4M20 32v4M4 20h4M32 20h4M7.5 7.5l3 3M29.5 29.5l3 3M29.5 7.5l-3 3M7.5 29.5l3-3"/></svg>`,
-  automation:`<svg viewBox="0 0 40 40" fill="none" stroke="#00C853" stroke-width="1.2"><rect x="6" y="14" width="10" height="12" rx="2"/><rect x="24" y="14" width="10" height="12" rx="2"/><path d="M16 20h8M20 8v6M20 26v6"/></svg>`,
-  reporting:`<svg viewBox="0 0 40 40" fill="none" stroke="#FFB300" stroke-width="1.2"><rect x="5" y="5" width="30" height="30" rx="3"/><path d="M11 28l6-8 5 4 6-10"/></svg>`,
-  ticketing:`<svg viewBox="0 0 40 40" fill="none" stroke="#2979FF" stroke-width="1.2"><rect x="7" y="9" width="26" height="22" rx="2"/><path d="M13 16h14M13 21h10M13 26h7"/></svg>`,
-  voice:`<svg viewBox="0 0 40 40" fill="none" stroke="#FF5252" stroke-width="1.2"><path d="M10 16c0-5.5 4.5-10 10-10s10 4.5 10 10v4c0 5.5-4.5 10-10 10S10 25.5 10 20"/><path d="M20 30v4M14 34h12"/></svg>`,
-  other:`<svg viewBox="0 0 40 40" fill="none" stroke="#8FA3BB" stroke-width="1.2"><circle cx="20" cy="20" r="14"/><path d="M20 14v6l4 4"/></svg>`
-};
-const PH_CLS = {ai:'ph-ai',automation:'ph-automation',reporting:'ph-reporting',ticketing:'ph-ticketing',voice:'ph-voice',other:'ph-other'};
-const IMP = {
-  bg:i=>i==='alto'?'#2A0A0A':i==='médio'?'#2A1F00':'#1E2F45',
-  cl:i=>i==='alto'?'#FF5252':i==='médio'?'#FFB300':'#4D6478',
-  bd:i=>i==='alto'?'#4A1010':i==='médio'?'#503300':'#253D58',
-};
-
-let updates=[], markedIds=new Set(JSON.parse(localStorage.getItem('zj_marked')||'[]'));
-let sugCount=+localStorage.getItem('zj_sug_count')||0;
-let curFilter='all', curSearch='', curMonth='2025-04';
-
-(function init(){
-  const d=new Date(); d.setDate(1); d.setMonth(d.getMonth()+1);
-  while(d.getDay()!==2) d.setDate(d.getDate()+1);
-  const lbl=d.toLocaleDateString('pt-BR',{day:'numeric',month:'short',year:'numeric'});
-  document.getElementById('next-ed').textContent=lbl;
-  document.getElementById('next-inline').textContent=lbl;
-  const ref=new Date(); ref.setMonth(ref.getMonth()-1);
-  const rl=ref.toLocaleDateString('pt-BR',{month:'long',year:'numeric'});
-  document.getElementById('tag-ref').textContent='Referência: '+rl[0].toUpperCase()+rl.slice(1);
-  updateStats();
-})();
-
-function showPage(id,el){
-  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
-  document.querySelectorAll('.nav-tab').forEach(t=>t.classList.remove('active'));
-  document.getElementById('page-'+id).classList.add('active'); el.classList.add('active');
-}
-
-async function fetchUpdates(fromInit){
-  const val=fromInit?document.getElementById('msel-init').value:document.getElementById('msel').value;
-  curMonth=val;
-  document.getElementById('msel').value=val;
-  document.getElementById('msel-init').value=val;
-  const [y,m]=val.split('-');
-  const ml=new Date(+y,+m-1,1).toLocaleDateString('pt-BR',{month:'long',year:'numeric'});
-  const mc=ml[0].toUpperCase()+ml.slice(1);
-  document.getElementById('hero-month').textContent='— '+mc;
-  document.getElementById('content-area').innerHTML='';
-  document.getElementById('cards-list').innerHTML='';
-  document.getElementById('toolbar').style.display='none';
-  document.getElementById('sstats').style.display='none';
-  document.getElementById('content-area').innerHTML=`
-    <div class="loading-wrap">
-      <div class="spinner"></div>
-      <div class="loading-text">Buscando atualizações de ${mc}...</div>
-      <div class="loading-sub">IA filtrando o que é relevante para CX</div>
-      <div class="pbar-wrap"><div class="pbar" id="pbar"></div></div>
-      <div class="loading-steps">
-        <div class="lstep cur" id="ls1"><svg viewBox="0 0 12 12"><circle cx="6" cy="6" r="5"/><path d="M6 4v2.5l1.5 1"/></svg>Acessando página do Zendesk...</div>
-        <div class="lstep" id="ls2"><svg viewBox="0 0 12 12"><path d="M2 4h8M2 7h8M2 10h5"/></svg>Filtrando por relevância CX...</div>
-        <div class="lstep" id="ls3"><svg viewBox="0 0 12 12"><rect x="1" y="2" width="10" height="8" rx="1"/><path d="M4 5h4M4 7h2"/></svg>Gerando resumos em PT-BR...</div>
-      </div>
-    </div>`;
-  const fb=document.getElementById('fetch-btn'); fb.disabled=true;
-  let p=0;
-  const iv=setInterval(()=>{ p=Math.min(p+1.5,88); const b=document.getElementById('pbar'); if(!b){clearInterval(iv);return;} b.style.width=p+'%'; },350);
-  setTimeout(()=>lstep('ls1','ls2'),700);
-  setTimeout(()=>lstep('ls2','ls3'),1800);
-  setTimeout(()=>{ const e=document.getElementById('ls3'); if(e){e.classList.remove('cur');e.classList.add('done');} },3200);
-  try {
-    const res=await fetch(API,{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({
-        model:'claude-sonnet-4-20250514',
-        max_tokens:4000,
-        tools:[{type:'web_search_20250305',name:'web_search'}],
-        messages:[{role:'user',content:`Você é especialista em Customer Experience e Zendesk. Busque as atualizações do Zendesk referentes a ${mc} na página https://support.zendesk.com/hc/pt-br/categories/4405298749210 e retorne SOMENTE um JSON válido, sem nenhum texto fora do JSON, sem markdown:
-
-{"month":"${mc}","updates":[{"id":"upd_1","title":"título em português","category":"ai|automation|reporting|ticketing|voice|other","summary":"resumo 2-3 frases PT-BR sobre o que muda e por que é relevante para CX/suporte","impact":"alto|médio|baixo","url":"url do artigo"}]}
-
-Categorias: ai=IA/Copilot, automation=automações/flows/triggers, reporting=relatórios/dashboards, ticketing=tickets/formulários, voice=voz/chat/WhatsApp, other=outros. Filtre APENAS o que afeta times de suporte. Retorne 6 a 15 atualizações.`}]
-      })
-    });
-    clearInterval(iv);
-    const data=await res.json();
-    let raw=(data.content||[]).filter(b=>b.type==='text').map(b=>b.text).join('');
-    raw=raw.replace(/```json|```/g,'').trim();
-    const match=raw.match(/\{[\s\S]*\}/);
-    if(!match) throw new Error('JSON inválido na resposta');
-    const parsed=JSON.parse(match[0]);
-    updates=(parsed.updates||[]).map(u=>({...u,marked:markedIds.has(u.id)}));
-    document.getElementById('content-area').innerHTML='';
-    document.getElementById('toolbar').style.display='flex';
-    document.getElementById('sstats').style.display='grid';
-    renderCards(); updateStats();
-    toast('Atualizações carregadas!','success');
-  } catch(e) {
-    clearInterval(iv);
-    document.getElementById('content-area').innerHTML=`<div class="empty"><svg viewBox="0 0 44 44"><circle cx="22" cy="22" r="20"/><path d="M22 14v10M22 30v1"/></svg><h3>Erro ao carregar</h3><p>${e.message}</p></div>`;
-    toast('Erro ao carregar. Tente novamente.','error');
+// ── I18N ──────────────────────────────────────────────────────────────────────
+const I18N = {
+  pt: {
+    'hbadge':'Atualizado','h-a3':'Ver A3',
+    'hero-eye':'Journal mensal · Primeira terça',
+    'hero-title':'Novidades de\n<span>Abril 2026</span>',
+    'hero-intro':'Abril trouxe avanços em IA e observabilidade. O Zendesk expandiu a visibilidade dos agentes de IA, melhorou o roteamento omnichannel com recomendações inteligentes e reforçou os dashboards de SLA em tempo real.',
+    'hero-src-lbl':'Fonte oficial Zendesk',
+    'stat1-lbl':'novidades selecionadas','stat2-lbl':'total de atualizações',
+    'sl-ia':'IA & Automação','sl-rel':'Relatórios & Dados','sl-ch':'Canais','sl-ag':'Agente',
+    'badge-ia':'IA & Automação','badge-rel':'Relatórios','badge-ch':'Canais','badge-ag':'Agente',
+    'impact-lbl':'Impacto CX:','read-more':'Ver artigo completo',
+    'mark-btn':'Marcar como importante','mark-btn-done':'Importante',
+    'disc-btn':'Oportunidades de discovery','disc-btn-hide':'Ocultar',
+    'disc-title':'Sugestões geradas pela IA',
+    'c1-title':'Nova aba "Conversation Journey" para IA avançada',
+    'c1-sum':'O dashboard de AI agents ganhou uma aba que visualiza os fluxos de conversa entre clientes e agentes de IA, mostrando onde ocorrem escalações e quais caminhos têm maior taxa de resolução automática.',
+    'c1-impact':'Identifique gargalos na automação e replique os caminhos de conversa mais eficientes, reduzindo escalações desnecessárias.',
+    'c1-d1':'Mapear os top 5 fluxos onde a IA escala para humano — entender se são lacunas de base de conhecimento ou limitação do modelo.',
+    'c1-d2':'Criar benchmark mensal de taxa de deflexão por intenção para medir o impacto das otimizações de conversa.',
+    'c1-d3':'Discovery: quais caminhos com maior CSAT podem ser replicados como templates para outros fluxos?',
+    'c2-title':'Copilot com recomendações de roteamento omnichannel',
+    'c2-sum':'O Copilot agora oferece 21 tipos de recomendações baseadas em IA para otimizar configurações de roteamento, cobrindo todos os aspectos do omnichannel setup — acessíveis direto no Admin Center com filtros por tipo.',
+    'c2-impact':'Reduz tempo de configuração e aumenta eficiência do roteamento sem depender de trial and error manual.',
+    'c2-d1':'Revisar as 21 categorias de recomendação com o time de operações — priorizar as que mais impactam tempo de resposta.',
+    'c2-d2':'Discovery: comparar configuração atual de roteamento com as recomendações para identificar gaps de eficiência.',
+    'c3-title':'Ferramentas de escrita por IA disponíveis em todos os planos',
+    'c3-sum':'Tom de voz, Simplificar e Prompt personalizado deixaram de exigir o add-on Copilot. A busca generativa e Quick Answers também migraram para o motor RAG dos AI agents, com respostas mais precisas no help center e Agent Workspace.',
+    'c3-impact':'Times sem Copilot agora têm acesso à IA de escrita — impacto direto na qualidade de resposta de agentes novatos.',
+    'c3-d1':'Ativar as ferramentas de escrita para o time e medir impacto em CSAT e tempo de resolução após 30 dias.',
+    'c3-d2':'Criar guidelines de tom de voz por marca e configurar como padrão — padronizar a comunicação sem treinamento extra.',
+    'c4-title':'Dashboards de tempo real com SLA e filtros avançados',
+    'c4-sum':'Os dashboards de monitoramento ganharam abas de status de SLA para filas padrão e customizadas, visualizações por percentil, filtros de progresso de fila e visões por marca e grupo.',
+    'c4-impact':'Visibilidade de SLA em tempo real para a liderança — agir preventivamente antes do breach, não após.',
+    'c4-d1':'Configurar alertas de SLA em risco para supervisores receberem notificação antes do breach.',
+    'c4-d2':'Criar view por brand para times multi-marca — medir se SLA varia por país ou produto.',
+    'c5-title':'Usuários podem encerrar sessões de messaging + novo label de IA',
+    'c5-sum':'Clientes agora podem fechar a própria sessão de chat no Web Widget. O label "Generated by AI" foi redesenhado para aparecer uma vez por grupo de mensagens em vez de em cada mensagem individualmente.',
+    'c5-impact':'Melhora eficiência operacional e deixa a transparência da IA menos intrusiva na conversa.',
+    'c5-d1':'Ativar encerramento pelo usuário e monitorar por 30 dias — medir impacto no volume de tickets reabertos.',
+    'c5-d2':'Avaliar se o novo label mais discreto afeta percepção de confiança — incluir pergunta na próxima pesquisa de CSAT.',
+    'c6-title':'Task lists — disponível para todos (GA)',
+    'c6-sum':'Admins criam listas de tarefas para tipos de tickets recorrentes. Agentes adicionam ao ticket e garantem que nenhuma etapa seja esquecida no processo de resolução.',
+    'c6-impact':'Reduz erros de processo e padroniza atendimento em fluxos críticos como onboarding, cancelamento ou trocas.',
+    'c6-d1':'Mapear os 3 tipos de ticket com maior variação de qualidade — criar task lists e medir impacto em CSAT após 60 dias.',
+    'c6-d2':'Envolver agentes sênior na criação das listas — eles conhecem os passos críticos que novatos costumam pular.',
+    'c7-title':'WFM: workstreams combinados e folgas mais precisas',
+    'c7-sum':'Possível combinar workstreams (ex: voz + tickets) para escalar agentes multitarefa simultaneamente. Folgas agora mapeiam turnos reais em vez de blocos de 24h, e um novo indicador de horas faturáveis considera folgas pagas parciais.',
+    'c7-impact':'Planejamento de capacidade mais preciso para times que operam em múltiplos canais simultaneamente.',
+    'c7-d1':'Identificar agentes que atuam alternadamente em voz e tickets — criar workstream combinado e comparar aderência ao schedule.',
+    'sug-eye':'Colaboração do time','sug-title':'Sugestões de iniciativas',
+    'sug-sub':'O que líderes de CX e produto/ops querem explorar a partir dessas novidades',
+    'empty-sug':'Nenhuma sugestão ainda.<br>Seja o primeiro a contribuir abaixo.',
+    'form-title':'Adicionar sugestão','f-name':'Seu nome','f-role':'Área',
+    'f-sel':'Selecione...','f-cx':'Líder de CX','f-ops':'Produto / Ops',
+    'f-ref':'Relacionado a','f-ref-sel':'Selecione a novidade...',
+    'ref-c1':'Conversation Journey para IA avançada',
+    'ref-c2':'Copilot com recomendações de roteamento',
+    'ref-c3':'Ferramentas de IA em todos os planos',
+    'ref-c4':'Dashboards de SLA em tempo real',
+    'ref-c5':'Encerramento de sessão + label de IA',
+    'ref-c6':'Task lists (GA)',
+    'ref-c7':'WFM: workstreams combinados',
+    'ref-geral':'Geral / outro',
+    'f-text':'Sugestão de discovery ou iniciativa',
+    'f-submit':'Enviar sugestão','f-ok':'Sugestão enviada com sucesso!',
+    'footer-cadence':'Gerado na primeira terça de cada mês',
+    'f-alert':'Preencha nome, área e sugestão.',
+    'sug-count-s':'sugestão','sug-count-p':'sugestões',
+  },
+  es: {
+    'hbadge':'Actualizado','h-a3':'Ver A3',
+    'hero-eye':'Journal mensual · Primer martes',
+    'hero-title':'Novedades de\n<span>Abril 2026</span>',
+    'hero-intro':'Abril trajo avances en IA y observabilidad. Zendesk amplió la visibilidad de los agentes de IA, mejoró el enrutamiento omnicanal con recomendaciones inteligentes y reforzó los dashboards de SLA en tiempo real.',
+    'hero-src-lbl':'Fuente oficial Zendesk',
+    'stat1-lbl':'novedades seleccionadas','stat2-lbl':'total de actualizaciones',
+    'sl-ia':'IA & Automatización','sl-rel':'Reportes & Datos','sl-ch':'Canales','sl-ag':'Agente',
+    'badge-ia':'IA & Automatización','badge-rel':'Reportes','badge-ch':'Canales','badge-ag':'Agente',
+    'impact-lbl':'Impacto CX:','read-more':'Ver artículo completo',
+    'mark-btn':'Marcar como importante','mark-btn-done':'Importante',
+    'disc-btn':'Oportunidades de discovery','disc-btn-hide':'Ocultar',
+    'disc-title':'Sugerencias generadas por IA',
+    'c1-title':'Nueva pestaña "Conversation Journey" para IA avanzada',
+    'c1-sum':'El dashboard de AI agents obtuvo una pestaña que visualiza los flujos de conversación entre clientes y agentes de IA, mostrando dónde ocurren escalaciones y qué caminos tienen mayor tasa de resolución automática.',
+    'c1-impact':'Identifica cuellos de botella en la automatización y replica los caminos de conversación más eficientes, reduciendo escalaciones innecesarias.',
+    'c1-d1':'Mapear los top 5 flujos donde la IA escala a humano — entender si son brechas de base de conocimiento o limitación del modelo.',
+    'c1-d2':'Crear benchmark mensual de tasa de deflexión por intención para medir el impacto de las optimizaciones de conversación.',
+    'c1-d3':'Discovery: ¿qué caminos con mayor CSAT pueden replicarse como templates para otros flujos?',
+    'c2-title':'Copilot con recomendaciones de enrutamiento omnicanal',
+    'c2-sum':'Copilot ahora ofrece 21 tipos de recomendaciones basadas en IA para optimizar configuraciones de enrutamiento, cubriendo todos los aspectos del omnichannel setup — accesibles directamente en Admin Center con filtros por tipo.',
+    'c2-impact':'Reduce el tiempo de configuración y aumenta la eficiencia del enrutamiento sin depender de trial and error manual.',
+    'c2-d1':'Revisar las 21 categorías de recomendación con el equipo de operaciones — priorizar las que más impactan el tiempo de respuesta.',
+    'c2-d2':'Discovery: comparar la configuración actual de enrutamiento con las recomendaciones para identificar brechas de eficiencia.',
+    'c3-title':'Herramientas de escritura por IA disponibles en todos los planes',
+    'c3-sum':'Tono de voz, Simplificar y Prompt personalizado dejaron de requerir el add-on Copilot. La búsqueda generativa y Quick Answers también migraron al motor RAG de los AI agents, con respuestas más precisas en el help center y Agent Workspace.',
+    'c3-impact':'Equipos sin Copilot ahora tienen acceso a la IA de escritura — impacto directo en la calidad de respuesta de agentes nuevos.',
+    'c3-d1':'Activar las herramientas de escritura para el equipo y medir impacto en CSAT y tiempo de resolución tras 30 días.',
+    'c3-d2':'Crear guidelines de tono de voz por marca y configurar como predeterminado — estandarizar la comunicación sin entrenamiento extra.',
+    'c4-title':'Dashboards en tiempo real con SLA y filtros avanzados',
+    'c4-sum':'Los dashboards de monitoreo ganaron pestañas de estado de SLA para filas estándar y personalizadas, visualizaciones por percentil, filtros de progreso de fila y vistas por marca y grupo.',
+    'c4-impact':'Visibilidad de SLA en tiempo real para el liderazgo — actuar de forma preventiva antes del breach, no después.',
+    'c4-d1':'Configurar alertas de SLA en riesgo para que supervisores reciban notificación antes del breach.',
+    'c4-d2':'Crear vista por brand para equipos multi-marca — medir si el SLA varía por país o producto.',
+    'c5-title':'Usuarios pueden cerrar sesiones de messaging + nuevo label de IA',
+    'c5-sum':'Los clientes ahora pueden cerrar su propia sesión de chat en el Web Widget. El label "Generated by AI" fue rediseñado para aparecer una vez por grupo de mensajes en lugar de en cada mensaje individualmente.',
+    'c5-impact':'Mejora la eficiencia operacional y hace que la transparencia de la IA sea menos intrusiva en la conversación.',
+    'c5-d1':'Activar cierre de sesión por el usuario y monitorear por 30 días — medir impacto en el volumen de tickets reabiertos.',
+    'c5-d2':'Evaluar si el nuevo label más discreto afecta la percepción de confianza — incluir pregunta en la próxima encuesta de CSAT.',
+    'c6-title':'Task lists — disponible para todos (GA)',
+    'c6-sum':'Los admins crean listas de tareas para tipos de tickets recurrentes. Los agentes las agregan al ticket y garantizan que ningún paso sea olvidado en el proceso de resolución.',
+    'c6-impact':'Reduce errores de proceso y estandariza la atención en flujos críticos como onboarding, cancelación o cambios.',
+    'c6-d1':'Mapear los 3 tipos de ticket con mayor variación de calidad — crear task lists y medir impacto en CSAT tras 60 días.',
+    'c6-d2':'Involucrar a agentes senior en la creación de las listas — conocen los pasos críticos que los nuevos suelen omitir.',
+    'c7-title':'WFM: workstreams combinados y licencias más precisas',
+    'c7-sum':'Es posible combinar workstreams (ej: voz + tickets) para programar agentes multitarea simultáneamente. Las licencias ahora mapean turnos reales en lugar de bloques de 24h, con un nuevo indicador de horas facturables que considera licencias pagas parciales.',
+    'c7-impact':'Planificación de capacidad más precisa para equipos que operan en múltiples canales simultáneamente.',
+    'c7-d1':'Identificar agentes que alternan entre voz y tickets — crear workstream combinado y comparar adherencia al schedule.',
+    'sug-eye':'Colaboración del equipo','sug-title':'Sugerencias de iniciativas',
+    'sug-sub':'Lo que líderes de CX y producto/ops quieren explorar a partir de estas novedades',
+    'empty-sug':'Sin sugerencias aún.<br>Sé el primero en contribuir abajo.',
+    'form-title':'Agregar sugerencia','f-name':'Tu nombre','f-role':'Área',
+    'f-sel':'Selecciona...','f-cx':'Líder de CX','f-ops':'Producto / Ops',
+    'f-ref':'Relacionado con','f-ref-sel':'Selecciona la novedad...',
+    'ref-c1':'Conversation Journey para IA avanzada',
+    'ref-c2':'Copilot con recomendaciones de enrutamiento',
+    'ref-c3':'Herramientas de IA en todos los planes',
+    'ref-c4':'Dashboards de SLA en tiempo real',
+    'ref-c5':'Cierre de sesión + label de IA',
+    'ref-c6':'Task lists (GA)',
+    'ref-c7':'WFM: workstreams combinados',
+    'ref-geral':'General / otro',
+    'f-text':'Sugerencia de discovery o iniciativa',
+    'f-submit':'Enviar sugerencia','f-ok':'¡Sugerencia enviada con éxito!',
+    'footer-cadence':'Generado el primer martes de cada mes',
+    'f-alert':'Completa nombre, área y sugerencia.',
+    'sug-count-s':'sugerencia','sug-count-p':'sugerencias',
   }
-  fb.disabled=false;
+};
+
+let lang = localStorage.getItem('zj_lang') || (navigator.language||'pt').toLowerCase().startsWith('es') ? 'es' : 'pt';
+if(!localStorage.getItem('zj_lang')) lang = (navigator.language||'pt').toLowerCase().startsWith('es') ? 'es' : 'pt';
+
+function setLang(l) {
+  lang = l;
+  localStorage.setItem('zj_lang', l);
+  applyLang();
 }
 
-function lstep(done,next){
-  const d=document.getElementById(done),n=document.getElementById(next);
-  if(d){d.classList.remove('cur');d.classList.add('done');} if(n) n.classList.add('cur');
+function applyLang() {
+  const T = I18N[lang];
+  document.documentElement.lang = lang === 'pt' ? 'pt-BR' : 'es';
+  document.getElementById('btn-pt').classList.toggle('active', lang==='pt');
+  document.getElementById('btn-es').classList.toggle('active', lang==='es');
+
+  document.querySelectorAll('[data-i]').forEach(el => {
+    const key = el.getAttribute('data-i');
+    if (T[key] === undefined) return;
+    if (el.tagName === 'INPUT' && el.type === 'text') { el.placeholder = T[key]; return; }
+    if (el.tagName === 'TEXTAREA') { el.placeholder = T[key]; return; }
+    if (el.id === 'hero-title') { el.innerHTML = T[key].replace('\n','<br>'); return; }
+    el.textContent = T[key];
+  });
+
+  // Update date locale
+  document.getElementById('hd').textContent = new Date().toLocaleDateString(lang==='pt'?'pt-BR':'es-ES',{day:'numeric',month:'long',year:'numeric'});
+
+  // Re-render suggestions with correct locale
+  renderSugs(currentSugs);
 }
 
-function cardImage(u){
-  const imgUrl=CAT_IMGS_FB[u.category]||CAT_IMGS_FB.other;
-  return `<img class="card-img" src="${imgUrl}" alt="${CAT_LBL[u.category]||'Geral'}" loading="lazy" onerror="this.outerHTML=makePh('${u.category}')">`;
-}
-function makePh(cat){
-  return `<div class="card-img-placeholder ${PH_CLS[cat]||'ph-other'}">${CAT_ICON[cat]||CAT_ICON.other}<span class="ph-lbl">${CAT_LBL[cat]||'Geral'}</span></div>`;
-}
+// ── IMPORTANCE ─────────────────────────────────────────────────────────────────
+const IMP_KEY = 'zj_apr2026_imp';
 
-function renderCards(){
-  let list=updates;
-  if(curFilter==='marked') list=list.filter(u=>u.marked);
-  else if(curFilter!=='all') list=list.filter(u=>u.category===curFilter);
-  if(curSearch){ const q=curSearch.toLowerCase(); list=list.filter(u=>u.title.toLowerCase().includes(q)||u.summary.toLowerCase().includes(q)); }
-  const c=document.getElementById('cards-list');
-  if(!list.length){ c.innerHTML=`<div class="empty"><svg viewBox="0 0 44 44"><circle cx="22" cy="22" r="20"/><path d="M14 22h16M22 14l8 8-8 8"/></svg><h3>Nenhum resultado</h3><p>Tente outro filtro.</p></div>`; return; }
-  c.innerHTML=list.map(u=>`
-    <div class="card ${u.marked?'marked':''}" id="card-${u.id}">
-      ${cardImage(u)}
-      <div class="card-inner">
-        <div class="card-meta">
-          <span class="cc ${CAT_CLS[u.category]||'cc-other'}">${CAT_LBL[u.category]||'Geral'}</span>
-          <span class="cc" style="background:${IMP.bg(u.impact)};color:${IMP.cl(u.impact)};border:1px solid ${IMP.bd(u.impact)}">${(u.impact||'').toUpperCase()}</span>
-          ${u.marked?'<span class="marked-chip">✓ Importante</span>':''}
-        </div>
-        <div class="card-title">${u.title}</div>
-        <div class="card-body">${u.summary}</div>
-        <div class="card-foot">
-          <button class="mark-btn ${u.marked?'active':''}" onclick="toggleMark('${u.id}')">
-            <svg viewBox="0 0 13 13"><path d="M6.5 1l1.5 4h4l-3.2 2.5 1.2 4L6.5 9l-3.7 2.5 1.2-4L1.5 5.5h4z"/></svg>
-            ${u.marked?'Marcado':'Marcar como Importante'}
-          </button>
-          ${u.url?`<a class="zd-link" href="${u.url}" target="_blank">Ver no Zendesk <svg viewBox="0 0 11 11"><path d="M6 2h3v3M9 2L4.5 6.5M2 5v4h4"/></svg></a>`:''}
-        </div>
-      </div>
-    </div>`).join('');
-}
-
-function setFilter(f,el){curFilter=f;document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));el.classList.add('active');renderCards();}
-function setSearch(v){curSearch=v;renderCards();}
-
-async function toggleMark(id){
-  const u=updates.find(x=>x.id===id); if(!u) return;
-  u.marked=!u.marked;
-  u.marked?markedIds.add(id):markedIds.delete(id);
-  localStorage.setItem('zj_marked',JSON.stringify([...markedIds]));
-  renderCards(); updateStats();
-  if(u.marked){
-    toast('⭐ Marcado como importante!','success');
-    writeSheets('marcacoes',[{Data:new Date().toLocaleDateString('pt-BR'),Mes:curMonth,Titulo:u.title,Categoria:CAT_LBL[u.category]||'Geral',Impacto:u.impact||'',Resumo:u.summary,URL:u.url||''}]);
-  } else { toast('Marcação removida',null); }
-}
-
-function openPanel(){document.getElementById('sug-panel').classList.add('open');document.getElementById('ov').classList.add('open');}
-function closePanel(){document.getElementById('sug-panel').classList.remove('open');document.getElementById('ov').classList.remove('open');}
-
-async function submitSugestao(){
-  const nome=document.getElementById('sug-nome').value.trim();
-  const tipo=document.getElementById('sug-tipo').value;
-  const titulo=document.getElementById('sug-titulo').value.trim();
-  const desc=document.getElementById('sug-desc').value.trim();
-  if(!nome||!tipo||!titulo||!desc){toast('Preencha os campos obrigatórios (*)','error');return;}
-  document.getElementById('sub-btn').style.display='none';
-  document.getElementById('sending').style.display='block';
-  await writeSheets('sugestoes',[{Data:new Date().toLocaleDateString('pt-BR'),Nome:nome,Area:document.getElementById('sug-area').value.trim(),Tipo:tipo,Titulo:titulo,Descricao:desc,Impacto:document.getElementById('sug-impacto').value}]);
-  document.getElementById('sub-btn').style.display='flex';
-  document.getElementById('sending').style.display='none';
-  sugCount++; localStorage.setItem('zj_sug_count',sugCount); updateStats();
-  ['sug-nome','sug-area','sug-titulo','sug-desc'].forEach(i=>document.getElementById(i).value='');
-  document.getElementById('sug-tipo').value=''; document.getElementById('sug-impacto').value='';
-  closePanel(); toast('Sugestão enviada!','success');
-}
-
-async function writeSheets(tab,rows){
-  const headers={marcacoes:'Data, Mês, Título, Categoria, Impacto, Resumo, URL',sugestoes:'Data, Nome, Área, Tipo, Título, Descrição, Impacto'};
+async function loadImportant() {
   try {
-    await fetch(API,{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({
-        model:'claude-sonnet-4-20250514',
-        max_tokens:200,
-        mcp_servers:[{type:'url',url:'https://sheets.googleapis.com/mcp/v1',name:'google-sheets'}],
-        messages:[{role:'user',content:`Adicione na aba "${tab}" da planilha ID "${SHEETS_ID}" as linhas: Colunas: ${headers[tab]}. Dados: ${JSON.stringify(rows)}. Responda só "ok".`}]
-      })
+    const r = await window.storage.get(IMP_KEY, false);
+    if (!r) return;
+    JSON.parse(r.value).forEach(id => {
+      const btn = document.getElementById('imp-' + id);
+      if (!btn) return;
+      btn.classList.add('marked');
+      btn.querySelector('span').textContent = I18N[lang]['mark-btn-done'];
+      btn.closest('.card').classList.add('card-important');
     });
-  } catch(e){ console.error(e); }
+  } catch(e) {}
 }
 
-function updateStats(){
-  const m=updates.filter(u=>u.marked).length;
-  const ai=updates.filter(u=>u.category==='ai'||u.category==='automation').length;
-  ['s0','s1','s2','s3'].forEach((id,i)=>document.getElementById(id).textContent=[updates.length,ai,m,sugCount][i]);
-  document.getElementById('total-c').textContent=updates.length||'—';
-  document.getElementById('marked-c').textContent=m;
+async function toggleImp(id) {
+  const btn = document.getElementById('imp-' + id);
+  const isMarked = btn.classList.toggle('marked');
+  btn.querySelector('span').textContent = isMarked ? I18N[lang]['mark-btn-done'] : I18N[lang]['mark-btn'];
+  btn.closest('.card').classList.toggle('card-important', isMarked);
+  // Persist + send to sheets
+  try {
+    let marked = [];
+    try { const r = await window.storage.get(IMP_KEY, false); if(r) marked = JSON.parse(r.value); } catch(e) {}
+    marked = isMarked ? [...new Set([...marked, id])] : marked.filter(x => x !== id);
+    await window.storage.set(IMP_KEY, JSON.stringify(marked), false);
+  } catch(e) {}
+  // Write to Google Sheets via Apps Script
+  if (isMarked) {
+    const card = btn.closest('.card');
+    writeSheets('marcacoes', {
+      Data:      new Date().toLocaleDateString('pt-BR'),
+      Mes:       'Abril 2026',
+      Titulo:    card?.querySelector('.ct')?.textContent?.trim() || '',
+      Categoria: card?.querySelector('.b')?.textContent?.trim() || '',
+      Resumo:    card?.querySelector('.cs')?.textContent?.trim() || '',
+      Impacto:   card?.querySelector('.ci span')?.textContent?.trim() || '',
+      URL:       card?.querySelector('a.al')?.href || '',
+    });
+  }
 }
 
-function toast(msg,type){
-  const t=document.getElementById('toast');
-  document.getElementById('t-msg').textContent=msg;
-  document.getElementById('t-ico').innerHTML=type==='error'?'<path d="M2 2l10 10M12 2L2 12"/>':'<polyline points="2,8 5,12 12,3"/>';
-  t.className='toast show'+(type?' '+type:'');
-  clearTimeout(t._t); t._t=setTimeout(()=>t.classList.remove('show'),3000);
+// ── DISCOVERY TOGGLE ──────────────────────────────────────────────────────────
+function toggleDisc(btn, id) {
+  const panel = document.getElementById(id);
+  const isOpen = panel.classList.toggle('open');
+  btn.classList.toggle('open', isOpen);
+  btn.querySelector('span').textContent = isOpen ? I18N[lang]['disc-btn-hide'] : I18N[lang]['disc-btn'];
 }
+
+// ── SUGGESTIONS ────────────────────────────────────────────────────────────────
+const SUG_KEY = 'zj_apr2026_sugs';
+let currentSugs = [];
+
+async function loadSugs() {
+  try { const r = await window.storage.get(SUG_KEY, true); if(r) currentSugs = JSON.parse(r.value); } catch(e) {}
+  renderSugs(currentSugs);
+}
+
+function renderSugs(list) {
+  const T = I18N[lang];
+  const c = document.getElementById('slist');
+  const e = document.getElementById('empty');
+  const count = list.length;
+  document.getElementById('scount').textContent = count + ' ' + (count === 1 ? T['sug-count-s'] : T['sug-count-p']);
+  c.querySelectorAll('.scard').forEach(x => x.remove());
+  if (!count) { e.style.display = 'block'; return; }
+  e.style.display = 'none';
+  list.slice().reverse().forEach(s => {
+    const ini = s.name.trim().split(' ').map(n=>n[0]).join('').slice(0,2).toUpperCase();
+    const ac = s.role === 'cx' ? 'avcx' : 'avop';
+    const rl = s.role === 'cx' ? T['f-cx'] : T['f-ops'];
+    const d = document.createElement('div');
+    d.className = 'scard';
+    d.innerHTML = `<div class="sch"><div class="sau"><div class="av ${ac}">${ini}</div><div><div class="sn">${s.name}</div><div class="sr">${rl}</div></div></div><span class="sd">${s.date}</span></div><p class="st">${s.text}</p>${s.ref&&s.ref!=='geral'&&s.ref?`<p class="srf"><svg viewBox="0 0 12 12"><path d="M2 6h8M6 2l4 4-4 4"/></svg>${lang==='pt'?'Referente a':'Referente a'}: <span>${s.ref}</span></p>`:''}`;
+    c.appendChild(d);
+  });
+}
+
+async function submitSug() {
+  const T = I18N[lang];
+  const name = document.getElementById('iname').value.trim();
+  const role = document.getElementById('irole').value;
+  const ref = document.getElementById('iref').value;
+  const text = document.getElementById('itext').value.trim();
+  if (!name || !role || !text) { alert(T['f-alert']); return; }
+  const btn = document.getElementById('sbtn');
+  btn.disabled = true;
+  const entry = { name, role, ref, text, date: new Date().toLocaleDateString(lang==='pt'?'pt-BR':'es-ES',{day:'numeric',month:'short'}) };
+  try {
+    let list = [];
+    try { const r = await window.storage.get(SUG_KEY, true); if(r) list = JSON.parse(r.value); } catch(e) {}
+    list.push(entry);
+    await window.storage.set(SUG_KEY, JSON.stringify(list), true);
+    currentSugs = list;
+    renderSugs(list);
+    ['iname','itext'].forEach(id => document.getElementById(id).value = '');
+    document.getElementById('irole').value = '';
+    document.getElementById('iref').value = '';
+    const m = document.getElementById('smsg');
+    m.classList.add('show');
+    setTimeout(() => m.classList.remove('show'), 3000);
+    // Write to sheets
+    writeSheets('sugestoes', { Data: entry.date, Nome: name, Area: role, Referencia: ref, Sugestao: text });
+  } catch(e) { alert('Erro ao salvar.'); }
+  btn.disabled = false;
+}
+
+// ── SHEETS (Apps Script) ──────────────────────────────────────────────────────
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxN6ATFNU-lD6sgWKpQWZruwON7xxAajsSQ05kwlYH6JHkRJBL_067s4qONOHUS0ZIUKw/exec';
+
+async function writeSheets(tab, row) {
+  if (!APPS_SCRIPT_URL || APPS_SCRIPT_URL === 'COLE_AQUI_A_URL_DO_APPS_SCRIPT') return;
+  try {
+    await fetch(APPS_SCRIPT_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain' },
+      body: JSON.stringify({ tab, row })
+    });
+  } catch(e) { console.error('Sheets:', e); }
+}
+
+// ── INIT ──────────────────────────────────────────────────────────────────────
+applyLang();
+loadSugs();
+loadImportant();
 </script>
 </body>
 </html>
