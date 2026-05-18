@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guia de Uso · Zendesk Journal CX</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0D1B2A;--navy2:#152236;--navy3:#1E2F45;--navy4:#243650;
+  --green:#00C853;--green2:#00E676;--green-bg:#003D1A;--green-border:#005C25;
+  --amber:#FFB300;--amber-bg:#2A1F00;--amber-border:#503300;
+  --purple:#7C4DFF;--purple-bg:#1A0F35;--purple-border:#3D2680;
+  --text:#E8EDF2;--text2:#8FA3BB;--text3:#4D6478;
+  --border:#1E3148;--border2:#253D58;
+  --r:8px;--rl:12px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--navy);color:var(--text);font-size:14px;line-height:1.6;min-height:100vh}
+
+header{background:var(--navy);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100}
+.hi{max-width:900px;margin:0 auto;padding:0 1.5rem;height:56px;display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.lm{width:30px;height:30px;border-radius:6px;background:var(--green);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.lm svg{width:16px;height:16px;fill:var(--navy)}
+.ln{font-size:15px;font-weight:700;color:var(--text);letter-spacing:-0.02em}
+.ln span{color:var(--green)}
+.back{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:500;color:var(--text3);border:1px solid var(--border);border-radius:4px;padding:5px 12px;text-decoration:none;transition:all .15s}
+.back:hover{color:var(--green);border-color:var(--green-border)}
+.back svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:1.5}
+
+.wrap{max-width:900px;margin:0 auto;padding:2rem 1.5rem 5rem}
+
+.hero{background:var(--navy2);border:1px solid var(--border);border-radius:var(--rl);padding:2rem;margin-bottom:2rem}
+.hero-eye{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--green);margin-bottom:8px}
+.hero-title{font-size:28px;font-weight:700;letter-spacing:-.03em;color:var(--text);line-height:1.15;margin-bottom:10px}
+.hero-title span{color:var(--green)}
+.hero-intro{font-size:13px;color:var(--text2);line-height:1.7;max-width:620px}
+
+.sl{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);margin:2rem 0 1rem;display:flex;align-items:center;gap:10px}
+.sl::before{content:'';width:3px;height:14px;border-radius:2px;background:var(--green);flex-shrink:0}
+.sl::after{content:'';flex:1;height:1px;background:var(--border)}
+
+.card{background:var(--navy2);border:1px solid var(--border);border-radius:var(--rl);overflow:hidden;margin-bottom:12px}
+.cb{padding:1.25rem 1.5rem}
+
+/* Steps */
+.steps{list-style:none;padding:0;margin:0}
+.step{display:flex;gap:16px;padding:1.25rem 0;border-bottom:1px solid var(--border)}
+.step:last-child{border-bottom:none}
+.step-num{width:32px;height:32px;border-radius:50%;background:var(--green-bg);border:1.5px solid var(--green-border);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:var(--green);flex-shrink:0;margin-top:2px}
+.step-body h3{font-size:14px;font-weight:600;color:var(--text);margin-bottom:4px}
+.step-body p{font-size:13px;color:var(--text2);line-height:1.7}
+.tip{display:inline-block;font-size:11px;color:var(--green);background:var(--green-bg);border:1px solid var(--green-border);border-radius:4px;padding:3px 10px;margin-top:6px;line-height:1.5}
+
+/* Visual demo boxes */
+.demo{background:var(--navy3);border:1px solid var(--border2);border-radius:var(--r);padding:.875rem 1rem;margin-top:10px;font-size:12px;color:var(--text2);line-height:1.6}
+.demo strong{color:var(--text);font-weight:600}
+.demo-row{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.demo-row:last-child{margin-bottom:0}
+.demo-badge{font-size:10px;font-weight:700;padding:2px 8px;border-radius:3px;white-space:nowrap}
+.dbai{background:var(--purple-bg);color:var(--purple);border:1px solid var(--purple-border)}
+.dbgreen{background:var(--green-bg);color:var(--green);border:1px solid var(--green-border)}
+.dbamber{background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-border)}
+.dbgray{background:var(--navy3);color:var(--text2);border:1px solid var(--border2)}
+.mock-btn{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:500;padding:3px 9px;border-radius:4px;border:1px solid var(--border);color:var(--text3);background:var(--navy3)}
+.mock-btn-amber{background:var(--amber-bg);color:var(--amber);border-color:var(--amber-border)}
+.mock-btn-purple{background:var(--purple-bg);color:var(--purple);border-color:var(--purple-border)}
+.mock-card{background:var(--navy);border:1px solid var(--border);border-radius:var(--r);padding:.75rem 1rem;margin-top:8px}
+.mock-card-marked{border-color:var(--amber-border)}
+
+/* Info boxes */
+.infobox{border-radius:var(--r);padding:.875rem 1rem;font-size:13px;line-height:1.6;display:flex;gap:10px;align-items:flex-start;margin-top:1rem}
+.infobox svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:1.5;flex-shrink:0;margin-top:2px}
+.ib-green{background:var(--green-bg);border:1px solid var(--green-border);color:#7AD89A}
+.ib-amber{background:var(--amber-bg);border:1px solid var(--amber-border);color:#FFC94D}
+.ib-purple{background:var(--purple-bg);border:1px solid var(--purple-border);color:#B39DFF}
+
+/* Category legend */
+.cat-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:.5rem}
+.cat-item{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text2)}
+
+footer{border-top:1px solid var(--border);text-align:center;padding:1.5rem;font-size:11px;color:var(--text3)}
+footer a{color:var(--text3);text-decoration:none}
+footer a:hover{color:var(--green)}
+
+.lang-sw{display:flex;align-items:center;border:1px solid var(--border);border-radius:4px;overflow:hidden}
+.lang-btn{font-family:'Inter',sans-serif;font-size:11px;font-weight:600;padding:4px 10px;background:none;border:none;cursor:pointer;color:var(--text3);transition:all .15s}
+.lang-btn.active{background:var(--navy3);color:var(--green)}
+.lang-sep{width:1px;background:var(--border);height:18px}
+
+.pt-content{display:block}
+.es-content{display:none}
+.es .pt-content{display:none}
+.es .es-content{display:block}
+
+@media(max-width:640px){
+  .cat-grid{grid-template-columns:1fr}
+  .hero-title{font-size:22px}
+  .wrap{padding:1.25rem 1rem 4rem}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="hi">
+    <a class="logo" href="index.html">
+      <div class="lm"><svg viewBox="0 0 16 16"><path d="M2 3h5v5H2zM9 3h5v5H9zM2 9h5v5H2zM9 9h5v5H9z"/></svg></div>
+      <span class="ln">Zendesk Journal<span> · CX</span></span>
+    </a>
+    <div style="display:flex;align-items:center;gap:10px">
+      <div class="lang-sw">
+        <button class="lang-btn active" id="btn-pt" onclick="setLang('pt')">PT</button>
+        <div class="lang-sep"></div>
+        <button class="lang-btn" id="btn-es" onclick="setLang('es')">ES</button>
+      </div>
+      <a class="back" href="index.html">
+        <svg viewBox="0 0 12 12"><path d="M8 2L4 6l4 4"/></svg>
+        <span class="pt-content">Voltar ao Journal</span>
+        <span class="es-content">Volver al Journal</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- Hero -->
+  <div class="hero">
+    <p class="hero-eye pt-content">Documentação · Zendesk Journal CX</p>
+    <p class="hero-eye es-content">Documentación · Zendesk Journal CX</p>
+    <h1 class="hero-title pt-content">Guia de <span>Uso da Plataforma</span></h1>
+    <h1 class="hero-title es-content">Guía de <span>Uso de la Plataforma</span></h1>
+    <p class="hero-intro pt-content">Tudo que você precisa saber para acompanhar as novidades mensais do Zendesk, marcar atualizações como importantes e enviar sugestões de oportunidade para a liderança de CX.</p>
+    <p class="hero-intro es-content">Todo lo que necesitas saber para seguir las novedades mensuales de Zendesk, marcar actualizaciones como importantes y enviar sugerencias al liderazgo de CX.</p>
+  </div>
+
+  <!-- O que é -->
+  <div class="sl pt-content">O que é o Zendesk Journal CX</div>
+  <div class="sl es-content">Qué es el Zendesk Journal CX</div>
+
+  <div class="card">
+    <div class="cb">
+      <p class="pt-content" style="font-size:13px;color:var(--text2);line-height:1.7;margin-bottom:1rem">
+        O <strong style="color:var(--text)">Zendesk Journal CX</strong> é uma curadoria mensal das novidades do Zendesk relevantes para o time de Customer Experience da Nuvemshop. Em vez de ler todos os artigos de atualização do Zendesk, a liderança de CX recebe um resumo filtrado, com impacto prático e sugestões de discovery para cada novidade.
+      </p>
+      <p class="es-content" style="font-size:13px;color:var(--text2);line-height:1.7;margin-bottom:1rem">
+        El <strong style="color:var(--text)">Zendesk Journal CX</strong> es una curaduría mensual de las novedades de Zendesk relevantes para el equipo de Customer Experience de Nuvemshop. En vez de leer todos los artículos de actualización de Zendesk, el liderazgo de CX recibe un resumen filtrado, con impacto práctico y sugerencias de discovery para cada novedad.
+      </p>
+
+      <div class="infobox ib-green">
+        <svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="7"/><path d="M8 7v4M8 5v.5"/></svg>
+        <div class="pt-content">Publicado toda <strong>1ª terça-feira do mês</strong>, referente ao mês anterior. Exemplo: na 1ª terça de junho, você vê as novidades de maio.</div>
+        <div class="es-content">Publicado cada <strong>1er martes del mes</strong>, referente al mes anterior. Ejemplo: el 1er martes de junio, ves las novedades de mayo.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Como marcar -->
+  <div class="sl pt-content">Como marcar uma atualização como importante</div>
+  <div class="sl es-content">Cómo marcar una actualización como importante</div>
+
+  <div class="card">
+    <div class="cb">
+      <ol class="steps">
+        <li class="step">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <h3 class="pt-content">Acesse o Journal do mês</h3>
+            <h3 class="es-content">Accede al Journal del mes</h3>
+            <p class="pt-content">Abra a página principal em <strong style="color:var(--green)">journal-zendesk.vercel.app</strong>. As atualizações do mês atual são carregadas automaticamente.</p>
+            <p class="es-content">Abre la página principal en <strong style="color:var(--green)">journal-zendesk.vercel.app</strong>. Las actualizaciones del mes actual se cargan automáticamente.</p>
+          </div>
+        </li>
+        <li class="step">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <h3 class="pt-content">Leia o card da atualização</h3>
+            <h3 class="es-content">Lee la tarjeta de la actualización</h3>
+            <p class="pt-content">Cada card mostra a categoria, um resumo em português, o impacto prático para o time de CX e um link para o artigo original no Zendesk.</p>
+            <p class="es-content">Cada tarjeta muestra la categoría, un resumen en español, el impacto práctico para el equipo de CX y un enlace al artículo original en Zendesk.</p>
+            <div class="demo">
+              <div class="demo-row"><span class="demo-badge dbai">IA & Automação</span> <span style="color:var(--text3)">categoria da novidade</span></div>
+              <div style="font-size:13px;color:var(--text);font-weight:600;margin:4px 0">Nova aba "Conversation Journey" para IA avançada</div>
+              <div style="font-size:12px;color:var(--text2)">O dashboard de AI agents ganhou uma aba que visualiza os fluxos...</div>
+              <div style="font-size:12px;margin-top:6px;padding:6px 8px;background:var(--navy);border-left:2px solid var(--green);border-radius:0 4px 4px 0"><strong style="color:var(--green)">Impacto CX:</strong> Identifique gargalos na automação...</div>
+            </div>
+            <span class="tip pt-content">💡 Use os filtros no topo para ver só IA & Automação, Relatórios etc.</span>
+            <span class="tip es-content">💡 Usa los filtros en la parte superior para ver solo IA & Automatización, Reportes, etc.</span>
+          </div>
+        </li>
+        <li class="step">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <h3 class="pt-content">Clique em "Oportunidades de discovery" (opcional)</h3>
+            <h3 class="es-content">Haz clic en "Oportunidades de discovery" (opcional)</h3>
+            <p class="pt-content">Cada card tem um botão que expande sugestões práticas geradas pela IA sobre o que fazer com aquela novidade — ideias de experimentos, métricas para acompanhar e possíveis iniciativas.</p>
+            <p class="es-content">Cada tarjeta tiene un botón que expande sugerencias prácticas generadas por IA sobre qué hacer con esa novedad — ideas de experimentos, métricas a seguir y posibles iniciativas.</p>
+            <div class="demo" style="margin-top:8px">
+              <span class="mock-btn mock-btn-purple">💡 <span class="pt-content">Oportunidades de discovery</span><span class="es-content">Oportunidades de discovery</span></span>
+              <div style="margin-top:8px;font-size:12px;color:var(--text2)">▪ Mapear os top 5 fluxos onde a IA escala para humano...</div>
+              <div style="font-size:12px;color:var(--text2)">▪ Criar benchmark mensal de taxa de deflexão por intenção...</div>
+            </div>
+          </div>
+        </li>
+        <li class="step">
+          <div class="step-num">4</div>
+          <div class="step-body">
+            <h3 class="pt-content">Clique em "Marcar como importante"</h3>
+            <h3 class="es-content">Haz clic en "Marcar como importante"</h3>
+            <p class="pt-content">No rodapé de cada card há o botão de marcação. Ao clicar, o card fica com borda âmbar e o item é registrado automaticamente na planilha de acompanhamento da liderança.</p>
+            <p class="es-content">En el pie de cada tarjeta hay un botón de marcado. Al hacer clic, la tarjeta queda con borde ámbar y el ítem se registra automáticamente en la planilla de seguimiento del liderazgo.</p>
+            <div class="demo mock-card mock-card-marked" style="margin-top:8px">
+              <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:8px">Nova aba "Conversation Journey"...</div>
+              <div style="display:flex;justify-content:space-between;align-items:center">
+                <span class="mock-btn mock-btn-amber">✓ <span class="pt-content">Importante</span><span class="es-content">Importante</span></span>
+                <span style="font-size:11px;color:var(--text3)" class="pt-content">Ver artigo completo ↗</span>
+                <span style="font-size:11px;color:var(--text3)" class="es-content">Ver artículo completo ↗</span>
+              </div>
+            </div>
+            <span class="tip pt-content">📊 O registro vai direto para a aba <strong>marcacoes</strong> da planilha — sem nenhum passo extra</span>
+            <span class="tip es-content">📊 El registro va directo a la pestaña <strong>marcacoes</strong> de la planilla — sin ningún paso extra</span>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- Como enviar sugestão -->
+  <div class="sl pt-content">Como enviar uma sugestão de oportunidade</div>
+  <div class="sl es-content">Cómo enviar una sugerencia de oportunidad</div>
+
+  <div class="card">
+    <div class="cb">
+      <ol class="steps">
+        <li class="step">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <h3 class="pt-content">Role até o final da página</h3>
+            <h3 class="es-content">Desplázate hasta el final de la página</h3>
+            <p class="pt-content">Na parte inferior da página há a seção <strong style="color:var(--text)">Sugestões de iniciativas</strong> com o formulário de envio.</p>
+            <p class="es-content">En la parte inferior de la página está la sección <strong style="color:var(--text)">Sugerencias de iniciativas</strong> con el formulario de envío.</p>
+          </div>
+        </li>
+        <li class="step">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <h3 class="pt-content">Preencha o formulário</h3>
+            <h3 class="es-content">Completa el formulario</h3>
+            <p class="pt-content">Informe seu nome, selecione sua área (Líder de CX ou Produto/Ops), escolha a qual novidade a sugestão se relaciona e descreva a ideia.</p>
+            <p class="es-content">Ingresa tu nombre, selecciona tu área (Líder de CX o Producto/Ops), elige a qué novedad se relaciona la sugerencia y describe la idea.</p>
+            <span class="tip pt-content">💡 Exemplo: "Quero criar uma task list para o fluxo de cancelamento e medir o impacto em CSAT"</span>
+            <span class="tip es-content">💡 Ejemplo: "Quiero crear una task list para el flujo de cancelación y medir el impacto en CSAT"</span>
+          </div>
+        </li>
+        <li class="step">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <h3 class="pt-content">Clique em "Enviar sugestão"</h3>
+            <h3 class="es-content">Haz clic en "Enviar sugerencia"</h3>
+            <p class="pt-content">A sugestão aparece imediatamente na lista da seção e é registrada automaticamente na aba <strong style="color:var(--text)">sugestoes</strong> da planilha para acompanhamento da liderança.</p>
+            <p class="es-content">La sugerencia aparece inmediatamente en la lista de la sección y se registra automáticamente en la pestaña <strong style="color:var(--text)">sugestoes</strong> de la planilla para seguimiento del liderazgo.</p>
+            <span class="tip pt-content">📊 Registro automático — sem precisar de nenhuma ação adicional</span>
+            <span class="tip es-content">📊 Registro automático — sin necesidad de ninguna acción adicional</span>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- Categorias -->
+  <div class="sl pt-content">Categorias das atualizações</div>
+  <div class="sl es-content">Categorías de las actualizaciones</div>
+
+  <div class="card">
+    <div class="cb">
+      <p style="font-size:13px;color:var(--text2);margin-bottom:1rem" class="pt-content">Cada novidade é classificada em uma das categorias abaixo para facilitar a filtragem:</p>
+      <p style="font-size:13px;color:var(--text2);margin-bottom:1rem" class="es-content">Cada novedad está clasificada en una de las siguientes categorías para facilitar el filtrado:</p>
+      <div class="cat-grid">
+        <div class="cat-item"><span class="demo-badge dbai">IA & Automação</span> <span class="pt-content">IA, Copilot, agentes de IA</span><span class="es-content">IA, Copilot, agentes de IA</span></div>
+        <div class="cat-item"><span class="demo-badge dbgreen">Relatórios</span> <span class="pt-content">Dashboards, Analytics, Explore</span><span class="es-content">Dashboards, Analytics, Explore</span></div>
+        <div class="cat-item"><span class="demo-badge dbamber">Canais</span> <span class="pt-content">Messaging, Web Widget, WhatsApp</span><span class="es-content">Messaging, Web Widget, WhatsApp</span></div>
+        <div class="cat-item"><span class="demo-badge dbgray">Agente</span> <span class="pt-content">Interface, tickets, WFM</span><span class="es-content">Interfaz, tickets, WFM</span></div>
+      </div>
+      <div class="infobox ib-amber" style="margin-top:1rem">
+        <svg viewBox="0 0 16 16"><path d="M8 2l1.5 3.5L13 6l-2.5 2.5.6 3.5L8 10.5l-3.1 1.5.6-3.5L3 6l3.5-.5z"/></svg>
+        <div class="pt-content">Use os <strong>filtros no topo da página</strong> para navegar por categoria. O filtro <strong>Marcados</strong> mostra só as novidades que você já marcou como importantes.</div>
+        <div class="es-content">Usa los <strong>filtros en la parte superior de la página</strong> para navegar por categoría. El filtro <strong>Marcados</strong> muestra solo las novedades que ya marcaste como importantes.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PT/ES -->
+  <div class="sl pt-content">Português e Espanhol</div>
+  <div class="sl es-content">Português y Español</div>
+
+  <div class="card">
+    <div class="cb">
+      <p style="font-size:13px;color:var(--text2);line-height:1.7" class="pt-content">O Journal está disponível em português e espanhol. Para alternar o idioma, clique nos botões <strong style="color:var(--text)">PT</strong> / <strong style="color:var(--text)">ES</strong> no canto superior direito do header. A preferência fica salva no navegador.</p>
+      <p style="font-size:13px;color:var(--text2);line-height:1.7" class="es-content">El Journal está disponible en portugués y español. Para cambiar el idioma, haz clic en los botones <strong style="color:var(--text)">PT</strong> / <strong style="color:var(--text)">ES</strong> en la esquina superior derecha del header. La preferencia queda guardada en el navegador.</p>
+    </div>
+  </div>
+
+  <!-- Cadência -->
+  <div class="sl pt-content">Cadência de atualização</div>
+  <div class="sl es-content">Cadencia de actualización</div>
+
+  <div class="card">
+    <div class="cb">
+      <div class="infobox ib-green" style="margin-top:0">
+        <svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="7"/><path d="M8 5v3.5l2.5 1.5"/></svg>
+        <div>
+          <div class="pt-content" style="font-weight:600;color:var(--text);margin-bottom:4px">Toda 1ª terça-feira do mês</div>
+          <div class="es-content" style="font-weight:600;color:var(--text);margin-bottom:4px">Cada 1er martes del mes</div>
+          <div class="pt-content" style="font-size:12px">A página é atualizada com as novidades do mês anterior. Exemplo: 1ª terça de junho → novidades de maio. O time é responsável por visitar a página, marcar as novidades importantes e enviar sugestões até o final da semana.</div>
+          <div class="es-content" style="font-size:12px">La página se actualiza con las novedades del mes anterior. Ejemplo: 1er martes de junio → novedades de mayo. El equipo es responsable de visitar la página, marcar las novedades importantes y enviar sugerencias hasta el final de la semana.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  Zendesk Journal · Nuvemshop CX Intelligence ·
+  <a href="index.html" class="pt-content">Voltar ao Journal</a>
+  <a href="index.html" class="es-content">Volver al Journal</a>
+</footer>
+
+<script>
+let lang = localStorage.getItem('zj_lang') || ((navigator.language||'pt').toLowerCase().startsWith('es') ? 'es' : 'pt');
+
+function setLang(l) {
+  lang = l;
+  localStorage.setItem('zj_lang', l);
+  document.documentElement.lang = l === 'pt' ? 'pt-BR' : 'es';
+  document.body.classList.toggle('es', l === 'es');
+  document.getElementById('btn-pt').classList.toggle('active', l === 'pt');
+  document.getElementById('btn-es').classList.toggle('active', l === 'es');
+}
+
+setLang(lang);
+</script>
+</body>
+</html>
