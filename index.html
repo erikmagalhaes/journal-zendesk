@@ -951,4 +951,32 @@ async function submitSug() {
   const btn = document.getElementById('sbtn');
   btn.disabled = true;
   const entry = {
-    name, role, ref, tex
+    name, role, ref, text,
+    date: new Date().toLocaleDateString(lang === 'pt' ? 'pt-BR' : 'es-ES', {day:'numeric',month:'short'})
+  };
+  currentSugs.push(entry);
+  try { localStorage.setItem(SUG_KEY, JSON.stringify(currentSugs)); } catch(e) {}
+  renderSugs(currentSugs);
+  ['iname','itext'].forEach(id => document.getElementById(id).value = '');
+  document.getElementById('irole').value = '';
+  document.getElementById('iref').value  = '';
+  const m = document.getElementById('smsg');
+  m.classList.add('show');
+  setTimeout(() => m.classList.remove('show'), 3000);
+  writeSheets('sugestoes', { Data: entry.date, Nome: name, Area: role, Referencia: ref, Sugestao: text });
+  btn.disabled = false;
+}
+
+(function init() {
+  document.getElementById('hd').textContent = new Date().toLocaleDateString('pt-BR', {day:'numeric',month:'long',year:'numeric'});
+  if (lang === 'es') {
+    document.getElementById('btn-pt').classList.remove('active');
+    document.getElementById('btn-es').classList.add('active');
+    applyLang('es');
+  }
+  loadImportant();
+  loadSugs();
+})();
+</script>
+</body>
+</html>
