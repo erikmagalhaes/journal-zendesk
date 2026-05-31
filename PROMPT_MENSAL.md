@@ -44,8 +44,15 @@ Preciso atualizar o Zendesk Journal CX com as novidades de [MÊS ANTERIOR] de [A
    - PT/ES toggle funcional
    - Formulário de sugestões integrado
    - Link para guia.html e a3.html no header
-   - APPS_SCRIPT_URL já configurada (a mesma acima)
-   - window.storage para marcações, localStorage para sugestões
+   - APPS_SCRIPT_URL já configurada: https://script.google.com/macros/s/AKfycbxN6ATFNU-lD6sgWKpQWZruwON7xxAajsSQ05kwlYH6JHkRJBL_067s4qONOHUS0ZIUKw/exec
+   - Planilha ID: 1KX8zPfyUSFAs_zLxNZT93THm8OFgcUVH3o-eNEZkQg0
+   - Aba marcacoes — gravada via GET com mode no-cors ao marcar um card:
+     campos: Data, Mes, Titulo, Categoria, Resumo, Impacto, URL (capturados do DOM do card)
+   - Aba sugestoes — gravada via GET com mode no-cors ao enviar o formulário:
+     campos: Data, Nome, Area, Referencia, Sugestao
+   - writeSheets() usa URLSearchParams + fetch mode no-cors
+   - Marcações persistidas em window.storage (key: zj_[mes][ano]_imp)
+   - Sugestões persistidas em localStorage (key: zj_[mes][ano]_sugs)
 
 **Padrão visual de referência:** mesmo design do arquivo index.html atual
 (navy #0D1B2A, verde #00C853, Inter, cards com borda âmbar quando marcados)
@@ -119,8 +126,18 @@ TAREFA:
    - PT/ES toggle com traduções para espanhol
    - Formulário de sugestões integrado
    - Links para guia.html e a3.html no header
+
+   CONFIGURAÇÃO DA PLANILHA — deve estar sempre presente no index.html:
    - APPS_SCRIPT_URL: https://script.google.com/macros/s/AKfycbxN6ATFNU-lD6sgWKpQWZruwON7xxAajsSQ05kwlYH6JHkRJBL_067s4qONOHUS0ZIUKw/exec
-   - window.storage para marcações, localStorage para sugestões
+   - Planilha ID: 1KX8zPfyUSFAs_zLxNZT93THm8OFgcUVH3o-eNEZkQg0
+   - Aba marcacoes — gravada via GET com mode no-cors quando usuário marca um card como importante:
+     campos: Data, Mes, Titulo, Categoria, Resumo, Impacto, URL
+     capturados diretamente do DOM do card marcado
+   - Aba sugestoes — gravada via GET com mode no-cors quando usuário envia o formulário:
+     campos: Data, Nome, Area, Referencia, Sugestao
+   - A função writeSheets() usa URLSearchParams para montar a query string e fetch com mode: 'no-cors'
+   - Marcações: persistidas em window.storage (key: zj_[mes][ano]_imp)
+   - Sugestões: persistidas em localStorage (key: zj_[mes][ano]_sugs) e renderizadas na seção de sugestões
 
 5. Faça commit no repositório github.com/erikmagalhaes/journal-zendesk
    Branch: main — Mensagem: "Journal [MÊS] [ANO] — atualização automática"
