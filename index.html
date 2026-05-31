@@ -855,30 +855,43 @@ async function writeSheets(tab, row) {
 }
 
 async function loadImportant() {
+  let marked = [];
+  // Try window.storage (Vercel) first, fall back to localStorage
   try {
     const r = await window.storage.get(IMP_KEY, false);
-    if (!r) return;
-    JSON.parse(r.value).forEach(id => {
-      const btn = document.getElementById('imp-' + id);
-      if (!btn) return;
-      btn.classList.add('marked');
-      btn.querySelector('span').textContent = I18N[lang]['mark-btn-done'];
-      btn.closest('.card').classList.add('card-important');
-    });
-  } catch(e) {}
+    if (r) marked = JSON.parse(r.value);
+  } catch(e) {
+    try { const s = localStorage.getItem(IMP_KEY); if (s) marked = JSON.parse(s); } catch(e2) {}
+  }
+  marked.forEach(id => {
+    const btn = document.getElementById('imp-' + id);
+    if (!btn) return;
+    btn.classList.add('marked');
+    btn.querySelector('span').textContent = I18N[lang]['mark-btn-done'];
+    btn.closest('.card').classList.add('card-important');
+  });
 }
 
-async function toggleImp(id) {
+function toggleImp(id) {
   const btn = document.getElementById('imp-' + id);
+  if (!btn) return;
   const isMarked = btn.classList.toggle('marked');
   btn.querySelector('span').textContent = isMarked ? I18N[lang]['mark-btn-done'] : I18N[lang]['mark-btn'];
   btn.closest('.card').classList.toggle('card-important', isMarked);
-  try {
+  // Persist asynchronously
+  (async () => {
     let marked = [];
-    try { const r = await window.storage.get(IMP_KEY, false); if (r) marked = JSON.parse(r.value); } catch(e) {}
+    try {
+      const r = await window.storage.get(IMP_KEY, false);
+      if (r) marked = JSON.parse(r.value);
+    } catch(e) {
+      try { const s = localStorage.getItem(IMP_KEY); if (s) marked = JSON.parse(s); } catch(e2) {}
+    }
     marked = isMarked ? [...new Set([...marked, id])] : marked.filter(x => x !== id);
-    await window.storage.set(IMP_KEY, JSON.stringify(marked), false);
-  } catch(e) {}
+    try { await window.storage.set(IMP_KEY, JSON.stringify(marked), false); } catch(e) {
+      try { localStorage.setItem(IMP_KEY, JSON.stringify(marked)); } catch(e2) {}
+    }
+  })();
   if (isMarked) {
     const card = btn.closest('.card');
     writeSheets('marcacoes', {
@@ -938,13 +951,4 @@ async function submitSug() {
   const btn = document.getElementById('sbtn');
   btn.disabled = true;
   const entry = {
-    name, role, ref, text,
-    date: new Date().toLocaleDateString(lang === 'pt' ? 'pt-BR' : 'es-ES', {day:'numeric',month:'short'})
-  };
-  currentSugs.push(entry);
-  try { localStorage.setItem(SUG_KEY, JSON.stringify(currentSugs)); } catch(e) {}
-  renderSugs(currentSugs);
-  ['iname','itext'].forEach(id => document.getElementById(id).value = '');
-  document.getElementById('irole').value = '';
-  document.getElementById('iref').value  = '';
-  const m = document.getElemen
+    name, role, ref, tex
