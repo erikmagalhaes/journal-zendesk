@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Zendesk Journal · CX Intelligence</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
   --navy:#0D1B2A;--navy2:#152236;--navy3:#1E2F45;--navy4:#243650;
@@ -30,7 +31,7 @@ header{background:var(--navy);border-bottom:1px solid var(--border);position:sti
 .ln{font-size:15px;font-weight:700;color:var(--text);letter-spacing:-0.02em}
 .ln span{color:var(--green)}
 .hr{display:flex;align-items:center;gap:10px}
-.hbadge{font-size:11px;font-weight:600;background:var(--green-bg);color:var(--green);border:1px solid var(--green-border);border-radius:20px;padding:3px 10px;display:flex;align-items:center;gap:5px}
+.hbadge{font-size:11px;font-weight:600;background:var(--green-bg);color:var(--green);border:1px solid var(--green-border);border-radius:4px;padding:3px 10px;display:flex;align-items:center;gap:5px}
 .hbadge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--green);flex-shrink:0}
 .hdate{font-size:12px;color:var(--text3)}
 .lang-sw{display:flex;align-items:center;border:1px solid var(--border);border-radius:4px;overflow:hidden}
@@ -74,6 +75,7 @@ header{background:var(--navy);border-bottom:1px solid var(--border);position:sti
 .meta{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:10px}
 .b{display:inline-flex;align-items:center;font-size:11px;font-weight:600;letter-spacing:.02em;padding:3px 9px;border-radius:4px}
 .bai{background:var(--purple-bg);color:var(--purple);border:1px solid var(--purple-border)}
+.brel{background:var(--coral-bg);color:var(--coral);border:1px solid var(--coral-border)}
 .brp{background:var(--green-bg);color:var(--green);border:1px solid var(--green-border)}
 .bch{background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-border)}
 .bag{background:var(--navy3);color:var(--text2);border:1px solid var(--border2)}
@@ -100,8 +102,7 @@ header{background:var(--navy);border-bottom:1px solid var(--border);position:sti
 .dt-btn{font-size:12px;font-weight:500;color:var(--text3);background:var(--navy3);border:1px solid var(--border);border-radius:4px;padding:4px 10px;cursor:pointer;display:inline-flex;align-items:center;gap:5px;transition:all .15s;font-family:'Inter',sans-serif}
 .dt-btn:hover,.dt-btn.open{background:var(--purple-bg);color:var(--purple);border-color:var(--purple-border)}
 .dt-btn svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:1.5}
-.dp{display:none;border-top:1px solid var(--border);background:var(--navy);padding:1.25rem 1.5rem}
-.dp.open{display:block}
+.dp{display:none;border-top:1px solid var(--border);background:var(--navy);padding:1rem 1.5rem}
 .dpt{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--purple);margin-bottom:10px;display:flex;align-items:center;gap:6px}
 .dpt svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:1.5}
 .di{display:flex;gap:10px;align-items:flex-start;margin-bottom:8px}
@@ -194,7 +195,6 @@ footer a:hover{color:var(--green)}
         <svg viewBox="0 0 12 12"><circle cx="6" cy="6" r="5"/><path d="M6 5v3M6 4h.01"/></svg>
         <span id="h-guide">Guia</span>
       </a>
-      <span class="hdate" id="hd"></span>
     </div>
   </div>
 </header>
@@ -205,267 +205,305 @@ footer a:hover{color:var(--green)}
   <div class="hero">
     <div>
       <p class="hero-eye" id="hero-eye">Journal mensal · Primeira terça</p>
-      <h1 class="hero-title" id="hero-title">Novidades de<br><span>Abril 2026</span></h1>
-      <p class="hero-intro" id="hero-intro">Abril trouxe avanços em IA e observabilidade. O Zendesk expandiu a visibilidade dos agentes de IA, melhorou o roteamento omnichannel com recomendações inteligentes e reforçou os dashboards de SLA em tempo real.</p>
-      <a class="hero-src" href="https://support.zendesk.com/hc/en-us/articles/10479706763162" target="_blank">
+      <h1 class="hero-title" id="hero-title">Novidades de<br><span>Maio 2026</span></h1>
+      <p class="hero-intro" id="hero-intro">Maio traz avanços significativos em IA agêntica, automação inteligente e visibilidade operacional. O Zendesk lança o relatório de potencial de automação, expande os conectores de conhecimento e consolida a navegação unificada entre produtos.</p>
+      <a class="hero-src" href="https://support.zendesk.com/hc/en-us/articles/10609395164442-What-s-new-in-Zendesk-May-2026" target="_blank">
         <svg viewBox="0 0 12 12"><path d="M2 10L10 2M10 2H5M10 2v5"/></svg>
         <span id="hero-src-lbl">Fonte oficial Zendesk</span>
       </a>
     </div>
     <div class="stats">
-      <div class="stat"><div class="stat-n">7</div><div class="stat-l" id="stat1-lbl">novidades selecionadas</div></div>
-      <div class="stat"><div class="stat-n">20+</div><div class="stat-l" id="stat2-lbl">total de atualizações</div></div>
+      <div class="stat"><div class="stat-n">8</div><div class="stat-l" id="stat1-lbl">novidades selecionadas</div></div>
+      <div class="stat"><div class="stat-n">30+</div><div class="stat-l" id="stat2-lbl">total de atualizações</div></div>
     </div>
   </div>
 
-  <!-- ── IA & Automação ─────────────────────────────────── -->
-  <div class="sl" id="sl-ia">IA &amp; Automação</div>
+  <!-- IA & Automação -->
+  <div class="sl" id="sl-ia" data-i="sl-ia">IA &amp; AUTOMAÇÃO</div>
 
-  <!-- Card 1 -->
-  <div class="card">
-    <div class="img-wrap">
-      <img src="https://zen-marketing-documentation.s3.amazonaws.com/docs/en/aiaa_conversation_journey_single_step.png" alt="Conversation Journey" onerror="this.closest('.img-wrap').remove()">
-    </div>
+  <!-- Card 1: Automation Potential Report -->
+  <div class="card" data-id="c1">
+    <div class="img-wrap"><img src="https://zen-marketing-documentation.s3.amazonaws.com/docs/en/aia_automation_potential_report_ga.png" alt="Automation potential report" loading="lazy"></div>
     <div class="cb">
-      <div class="meta"><span class="b bai" data-i="badge-ia">IA &amp; Automação</span></div>
-      <h2 class="ct" data-i="c1-title">Nova aba "Conversation Journey" para IA avançada</h2>
-      <p class="cs" data-i="c1-sum">O dashboard de AI agents ganhou uma aba que visualiza os fluxos de conversa entre clientes e agentes de IA, mostrando onde ocorrem escalações e quais caminhos têm maior taxa de resolução automática.</p>
-      <div class="ci"><strong data-i="impact-lbl">Impacto CX:</strong> <span data-i="c1-impact">Identifique gargalos na automação e replique os caminhos de conversa mais eficientes, reduzindo escalações desnecessárias.</span></div>
+      <div class="meta">
+        <span class="b bai" data-i="badge-ia">IA &amp; Automação</span>
+      </div>
+      <h2 class="ct" data-i="c1-title">Novo Relatório de Potencial de Automação</h2>
+      <p class="cs" data-i="c1-sum">Um novo relatório analisa suas conversas e identifica quais solicitações podem ser automatizadas com agentes de IA. Fornece insights por marca, exemplos de tickets reais e mostra exatamente como um agente de IA responderia a cada consulta.</p>
+      <div class="ci"><strong data-i="impact-lbl">Impacto CX:</strong> <span data-i="c1-impact">Identifica oportunidades concretas para aumentar FCR e reduzir TTR — automatizando os fluxos mais comuns antes de precisar de um agente humano.</span></div>
       <div class="cf">
-        <a class="al" href="https://support.zendesk.com/hc/en-us/articles/10468587676442" target="_blank">
+        <a class="al" href="https://support.zendesk.com/hc/en-us/articles/9877546283930" target="_blank" data-i="read-more">
           <svg viewBox="0 0 12 12"><path d="M2 10L10 2M10 2H5M10 2v5"/></svg>
-          <span data-i="read-more">Ver artigo completo</span>
+          Ver artigo completo
         </a>
         <div class="cf-right">
-          <button class="imp-btn" id="imp-c1" onclick="toggleImp('c1')">
-            <svg viewBox="0 0 14 14"><path d="M12 2l-6.5 6.5L2 5"/><rect x="1" y="1" width="12" height="12" rx="2"/></svg>
+          <button class="imp-btn" onclick="toggleImp(this)">
+            <svg viewBox="0 0 14 14"><rect x="1" y="1" width="12" height="12" rx="2"/><path d="M7 4v4M7 9.5h.01"/></svg>
             <span data-i="mark-btn">Marcar como importante</span>
           </button>
-          <button class="dt-btn" onclick="toggleDisc(this,'dp-c1')">
-            <svg viewBox="0 0 12 12"><circle cx="6" cy="6" r="4.5"/><path d="M6 4v2.5M6 8h.01"/></svg>
+          <button class="dt-btn" onclick="toggleDisc(this)">
+            <svg viewBox="0 0 12 12"><circle cx="6" cy="6" r="5"/><path d="M4.5 4.5l3 3M7.5 4.5l-3 3"/></svg>
             <span data-i="disc-btn">Oportunidades de discovery</span>
           </button>
         </div>
       </div>
     </div>
-    <div class="dp" id="dp-c1">
-      <p class="dpt">
-        <svg viewBox="0 0 12 12"><path d="M6 1l1.2 2.5L10 4l-2 1.9.5 2.8L6 7.5 3.5 8.7l.5-2.8L2 4l2.8-.5z"/></svg>
-        <span data-i="disc-title">Sugestões geradas pela IA</span>
-      </p>
-      <div class="di"><div class="dd"></div><p class="dt2" data-i="c1-d1">Mapear os top 5 fluxos onde a IA escala para humano — entender se são lacunas de base de conhecimento ou limitação do modelo.</p></div>
-      <div class="di"><div class="dd"></div><p class="dt2" data-i="c1-d2">Criar benchmark mensal de taxa de deflexão por intenção para medir o impacto das otimizações de conversa.</p></div>
-      <div class="di"><div class="dd"></div><p class="dt2" data-i="c1-d3">Discovery: quais caminhos com maior CSAT podem ser replicados como templates para outros fluxos?</p></div>
+    <div class="dp">
+      <p class="dpt"><svg viewBox="0 0 12 12"><path d="M6 1v10M1 6h10"/></svg><span data-i="disc-title">Sugestões de discovery</span></p>
+      <div class="di"><div class="dd"></div><p class="dt2" data-i="c1-d1">Gerar o relatório por marca (BR e LATAM separadamente) e comparar os top 10 intents com a taxa atual de FCR por fila.</p></div>
+      <div class="di"><div class="dd"></div><p class="dt2" data-i="c1-d2">Mapear sobreposição entre os intents sugeridos para automação e os fluxos já configurados nas Intenções do Zendesk.</p></div>
+      <div class="di"><div class="dd"></div><p class="dt2" data-i="c1-d3">Testar piloto de agente de IA nos 3 tipos de ticket com maior potencial de automação e medir impacto em TTR após 2 semanas.</p></div>
     </div>
   </div>
 
-  <!-- Card 2 -->
-  <div class="card">
+  <!-- Card 2: Agentic AI for email GA -->
+  <div class="card" data-id="c2">
     <div class="cb">
-      <div class="meta"><span class="b bai" data-i="badge-ia">IA &amp; Automação</span></div>
-      <h2 class="ct" data-i="c2-title">Copilot com recomendações de roteamento omnichannel</h2>
-      <p class="cs" data-i="c2-sum">O Copilot agora oferece 21 tipos de recomendações baseadas em IA para otimizar configurações de roteamento, cobrindo todos os aspectos do omnichannel setup — acessíveis direto no Admin Center com filtros por tipo.</p>
-      <div class="ci"><strong data-i="impact-lbl">Impacto CX:</strong> <span data-i="c2-impact">Reduz tempo de configuração e aumenta eficiência do roteamento sem depender de trial and error manual.</span></div>
+      <div class="meta">
+        <span class="b bai" data-i="badge-ia">IA &amp; Automação</span>
+      </div>
+      <h2 class="ct" data-i="c2-title">IA Agêntica para E-mail — Disponibilidade Geral (GA)</h2>
+      <p class="cs" data-i="c2-sum">Agentes de IA avançados agora entendem e-mails completos, respondem perguntas, automatizam procedimentos e escalam quando necessário — reduzindo idas e vindas com clientes em e-mail sem intervenção humana para casos recorrentes.</p>
+      <div class="ci"><strong data-i="impact-lbl">Impacto CX:</strong> <span data-i="c2-impact">Reduz FRT e TMA em e-mail eliminando triagem manual de tickets recorrentes. Escalações acontecem apenas quando o agente de IA não consegue resolver — melhorando FCR.</span></div>
       <div class="cf">
-        <a class="al" href="https://support.zendesk.com/hc/en-us/articles/9598690362010" target="_blank">
+        <a class="al" href="https://support.zendesk.com/hc/en-us/articles/8966284087066" target="_blank" data-i="read-more">
           <svg viewBox="0 0 12 12"><path d="M2 10L10 2M10 2H5M10 2v5"/></svg>
-          <span data-i="read-more">Ver artigo completo</span>
+          Ver artigo completo
         </a>
         <div class="cf-right">
-          <button class="imp-btn" id="imp-c2" onclick="toggleImp('c2')">
-            <svg viewBox="0 0 14 14"><path d="M12 2l-6.5 6.5L2 5"/><rect x="1" y="1" width="12" height="12" rx="2"/></svg>
+          <button class="imp-btn" onclick="toggleImp(this)">
+            <svg viewBox="0 0 14 14"><rect x="1" y="1" width="12" height="12" rx="2"/><path d="M7 4v4M7 9.5h.01"/></svg>
             <span data-i="mark-btn">Marcar como importante</span>
           </button>
-          <button class="dt-btn" onclick="toggleDisc(this,'dp-c2')">
-            <svg viewBox="0 0 12 12"><circle cx="6" cy="6" r="4.5"/><path d="M6 4v2.5M6 8h.01"/></svg>
+          <button class="dt-btn" onclick="toggleDisc(this)">
+            <svg viewBox="0 0 12 12"><circle cx="6" cy="6" r="5"/><path d="M4.5 4.5l3 3M7.5 4.5l-3 3"/></svg>
             <span data-i="disc-btn">Oportunidades de discovery</span>
           </button>
         </div>
       </div>
     </div>
-    <div class="dp" id="dp-c2">
-      <p class="dpt"><svg viewBox="0 0 12 12"><path d="M6 1l1.2 2.5L10 4l-2 1.9.5 2.8L6 7.5 3.5 8.7l.5-2.8L2 4l2.8-.5z"/></svg><span data-i="disc-title">Sugestões geradas pela IA</span></p>
-      <div class="di"><div class="dd"></div><p class="dt2" data-i="c2-d1">Revisar as 21 categorias de recomendação com o time de operações — priorizar as que mais impactam tempo de resposta.</p></div>
-      <div class="di"><div class="dd"></div><p class="dt2" data-i="c2-d2">Discovery: comparar configuração atual de roteamento com as recomendações para identificar gaps de eficiência.</p></div>
+    <div class="dp">
+      <p class="dpt"><svg viewBox="0 0 12 12"><path d="M6 1v10M1 6h10"/></svg><span data-i="disc-title">Sugestões de discovery</span></p>
+      <div class="di"><div class="dd"></div><p class="dt2" data-i="c2-d1">Mapear os top 5 tipos de e-mail com maior volume que chegam sem resposta nas primeiras 4h — esses são os candidatos ideais para o piloto.</p></div>
+      <div class="di"><div class="dd"></div><p class="dt2" data-i="c2-d2">Verificar se as Intenções configuradas cobrem os fluxos mais volumosos de e-mail e ajustar antes de ativar o agente agêntico.</p></div>
+      <div class="di"><div class="dd"></div><p class="dt2" data-i="c2-d3">Definir critérios claros de escalação (ex: sentimento negativo, palavras-chave críticas) para garantir CSAT em casos complexos.</p></div>
     </div>
   </div>
 
-  <!-- Card 3 -->
-  <div class="card">
-    <div class="img-wrap">
-      <img src="https://zen-marketing-documentation.s3.amazonaws.com/docs/en/copilot_writingtools_customprompt_enter.png" alt="Ferramentas IA escrita" onerror="this.closest('.img-wrap').remove()">
-    </div>
+  <!-- Card 3: Copilot macro suggestions -->
+  <div class="card" data-id="c3">
     <div class="cb">
-      <div class="meta"><span class="b bai" data-i="badge-ia">IA &amp; Automação</span></div>
-      <h2 class="ct" data-i="c3-title">Ferramentas de escrita por IA disponíveis em todos os planos</h2>
-      <p class="cs" data-i="c3-sum">Tom de voz, Simplificar e Prompt personalizado deixaram de exigir o add-on Copilot. A busca generativa e Quick Answers também migraram para o motor RAG dos AI agents, com respostas mais precisas no help center e Agent Workspace.</p>
-      <div class="ci"><strong data-i="impact-lbl">Impacto CX:</strong> <span data-i="c3-impact">Times sem Copilot agora têm acesso à IA de escrita — impacto direto na qualidade de resposta de agentes novatos.</span></div>
+      <div class="meta">
+        <span class="b bai" data-i="badge-ia">IA &amp; Automação</span>
+      </div>
+      <h2 class="ct" data-i="c3-title">Copilot: Sugestões de Macros e Recomendações de Segurança</h2>
+      <p class="cs" data-i="c3-sum">Copilot passa a incluir dois novos tipos de recomendação: sugestões de conteúdo de macros (para otimizar respostas padronizadas) e recomendações de trust &amp; safety (para melhorar configurações de segurança da conta), ambas acessíveis diretamente no Admin Center.</p>
+      <div class="ci"><strong data-i="impact-lbl">Impacto CX:</strong> <span data-i="c3-impact">Reduz TMA ao identificar macros ineficientes e sugerir melhorias; melhora consistência de respostas e CSAT ao padronizar comunicação em fluxos críticos.</span></div>
       <div class="cf">
-        <a class="al" href="https://support.zendesk.com/hc/en-us/articles/6267360002714" target="_blank">
+        <a class="al" href="https://support.zendesk.com/hc/en-us/articles/9598690362010" target="_blank" data-i="read-more">
           <svg viewBox="0 0 12 12"><path d="M2 10L10 2M10 2H5M10 2v5"/></svg>
-          <span data-i="read-more">Ver artigo completo</span>
+          Ver artigo completo
         </a>
         <div class="cf-right">
-          <button class="imp-btn" id="imp-c3" onclick="toggleImp('c3')">
-            <svg viewBox="0 0 14 14"><path d="M12 2l-6.5 6.5L2 5"/><rect x="1" y="1" width="12" height="12" rx="2"/></svg>
+          <button class="imp-btn" onclick="toggleImp(this)">
+            <svg viewBox="0 0 14 14"><rect x="1" y="1" width="12" height="12" rx="2"/><path d="M7 4v4M7 9.5h.01"/></svg>
             <span data-i="mark-btn">Marcar como importante</span>
           </button>
-          <button class="dt-btn" onclick="toggleDisc(this,'dp-c3')">
-            <svg viewBox="0 0 12 12"><circle cx="6" cy="6" r="4.5"/><path d="M6 4v2.5M6 8h.01"/></svg>
+          <button class="dt-btn" onclick="toggleDisc(this)">
+            <svg viewBox="0 0 12 12"><circle cx="6" cy="6" r="5"/><path d="M4.5 4.5l3 3M7.5 4.5l-3 3"/></svg>
             <span data-i="disc-btn">Oportunidades de discovery</span>
           </button>
         </div>
       </div>
     </div>
-    <div class="dp" id="dp-c3">
-      <p class="dpt"><svg viewBox="0 0 12 12"><path d="M6 1l1.2 2.5L10 4l-2 1.9.5 2.8L6 7.5 3.5 8.7l.5-2.8L2 4l2.8-.5z"/></svg><span data-i="disc-title">Sugestões geradas pela IA</span></p>
-      <div class="di"><div class="dd"></div><p class="dt2" data-i="c3-d1">Ativar as ferramentas de escrita para o time e medir impacto em CSAT e tempo de resolução após 30 dias.</p></div>
-      <div class="di"><div class="dd"></div><p class="dt2" data-i="c3-d2">Criar guidelines de tom de voz por marca e configurar como padrão — padronizar a comunicação sem treinamento extra.</p></div>
+    <div class="dp">
+      <p class="dpt"><svg viewBox="0 0 12 12"><path d="M6 1v10M1 6h10"/></svg><span data-i="disc-title">Sugestões de discovery</span></p>
+      <div class="di"><div class="dd"></div><p class="dt2" data-i="c3-d1">Revisar as 20 macros mais usadas e verificar se as sugestões do Copilot indicam oportunidades de consolidação ou melhoria de conteúdo.</p></div>
+      <div class="di"><div class="dd"></div><p class="dt2" data-i="c3-d2">Identificar fluxos críticos sem macro dedicada (cancelamento, reembolso, troca) e usar as sugestões como ponto de partida para criação.</p></div>
     </div>
   </div>
 
-  <!-- ── Relatórios ─────────────────────────────────────── -->
-  <div class="sl" id="sl-rel" data-i="sl-rel">Relatórios &amp; Dados</div>
+  <!-- Relatórios & Dados -->
+  <div class="sl" id="sl-rel" data-i="sl-rel">RELATÓRIOS &amp; DADOS</div>
 
-  <!-- Card 4 -->
-  <div class="card">
-    <div class="img-wrap">
-      <img src="https://zen-marketing-documentation.s3.amazonaws.com/docs/en/zea_tickets_in_queue.png" alt="Dashboards tempo real SLA" onerror="this.closest('.img-wrap').remove()">
-    </div>
+  <!-- Card 4: Real-time dashboards -->
+  <div class="card" data-id="c4">
     <div class="cb">
-      <div class="meta"><span class="b brp" data-i="badge-rel">Relatórios</span></div>
-      <h2 class="ct" data-i="c4-title">Dashboards de tempo real com SLA e filtros avançados</h2>
-      <p class="cs" data-i="c4-sum">Os dashboards de monitoramento ganharam abas de status de SLA para filas padrão e customizadas, visualizações por percentil, filtros de progresso de fila e visões por marca e grupo.</p>
-      <div class="ci"><strong data-i="impact-lbl">Impacto CX:</strong> <span data-i="c4-impact">Visibilidade de SLA em tempo real para a liderança — agir preventivamente antes do breach, não após.</span></div>
+      <div class="meta">
+        <span class="b brel" data-i="badge-rel">Relatórios &amp; Dados</span>
+      </div>
+      <h2 class="ct" data-i="c4-title">Dashboards em Tempo Real: Toggle, 30 Dias e Permissões por Marca</h2>
+      <p class="cs" data-i="c4-sum">Os dashboards de monitoramento em tempo real ganham três melhorias: toggle "Mostrar linhas vazias" para visualizar marcas e grupos inativos, extensão de 30 dias para métricas históricas recentes, e permissões por marca para controle granular de acesso.</p>
+      <div class="ci"><strong data-i="impact-lbl">Impacto CX:</strong> <span data-i="c4-impact">Maior visibilidade de SLA e TTR por marca (BR vs LATAM); permissões granulares reduzem ruído para líderes de subequipes e facilitam gestão de SLA por canal.</span></div>
       <div class="cf">
-        <a class="al" href="https://support.zendesk.com/hc/en-us/articles/10369700284826" target="_blank">
+        <a class="al" href="https://support.zendesk.com/hc/en-us/articles/10609395164442-What-s-new-in-Zendesk-May-2026" target="_blank" data-i="read-more">
           <svg viewBox="0 0 12 12"><path d="M2 10L10 2M10 2H5M10 2v5"/></svg>
-          <span data-i="read-more">Ver artigo completo</span>
+          Ver artigo completo
         </a>
         <div class="cf-right">
-          <button class="imp-btn" id="imp-c4" onclick="toggleImp('c4')">
-            <svg viewBox="0 0 14 14"><path d="M12 2l-6.5 6.5L2 5"/><rect x="1" y="1" width="12" height="12" rx="2"/></svg>
+          <button class="imp-btn" onclick="toggleImp(this)">
+            <svg viewBox="0 0 14 14"><rect x="1" y="1" width="12" height="12" rx="2"/><path d="M7 4v4M7 9.5h.01"/></svg>
             <span data-i="mark-btn">Marcar como importante</span>
           </button>
-          <button class="dt-btn" onclick="toggleDisc(this,'dp-c4')">
-            <svg viewBox="0 0 12 12"><circle cx="6" cy="6" r="4.5"/><path d="M6 4v2.5M6 8h.01"/></svg>
+          <button class="dt-btn" onclick="toggleDisc(this)">
+            <svg viewBox="0 0 12 12"><circle cx="6" cy="6" r="5"/><path d="M4.5 4.5l3 3M7.5 4.5l-3 3"/></svg>
             <span data-i="disc-btn">Oportunidades de discovery</span>
           </button>
         </div>
       </div>
     </div>
-    <div class="dp" id="dp-c4">
-      <p class="dpt"><svg viewBox="0 0 12 12"><path d="M6 1l1.2 2.5L10 4l-2 1.9.5 2.8L6 7.5 3.5 8.7l.5-2.8L2 4l2.8-.5z"/></svg><span data-i="disc-title">Sugestões geradas pela IA</span></p>
-      <div class="di"><div class="dd"></div><p class="dt2" data-i="c4-d1">Configurar alertas de SLA em risco para supervisores receberem notificação antes do breach.</p></div>
-      <div class="di"><div class="dd"></div><p class="dt2" data-i="c4-d2">Criar view por brand para times multi-marca — medir se SLA varia por país ou produto.</p></div>
+    <div class="dp">
+      <p class="dpt"><svg viewBox="0 0 12 12"><path d="M6 1v10M1 6h10"/></svg><span data-i="disc-title">Sugestões de discovery</span></p>
+      <div class="di"><div class="dd"></div><p class="dt2" data-i="c4-d1">Configurar permissões por marca para que líderes de BR e LATAM vejam apenas dados das suas operações, sem ruído cruzado.</p></div>
+      <div class="di"><div class="dd"></div><p class="dt2" data-i="c4-d2">Usar a extensão de 30 dias para criar uma view de tendência de FRT por canal e identificar degradações graduais antes do breach de SLA.</p></div>
+      <div class="di"><div class="dd"></div><p class="dt2" data-i="c4-d3">Ativar o toggle de linhas vazias para auditar quais grupos e filas ficam sem volume — oportunidade de consolidar ou redistribuir capacidade.</p></div>
     </div>
   </div>
 
-  <!-- ── Canais ──────────────────────────────────────────── -->
-  <div class="sl" id="sl-ch" data-i="sl-ch">Canais</div>
+  <!-- Canais -->
+  <div class="sl" id="sl-ch" data-i="sl-ch">CANAIS</div>
 
-  <!-- Card 5 -->
-  <div class="card">
-    <div class="img-wrap">
-      <img src="https://zen-marketing-documentation.s3.amazonaws.com/docs/en/AI_label.png" alt="Generated by AI label" onerror="this.closest('.img-wrap').remove()">
-    </div>
+  <!-- Card 5: Generative search follow-up -->
+  <div class="card" data-id="c5">
+    <div class="img-wrap"><img src="https://zen-marketing-documentation.s3.amazonaws.com/docs/en/Conv-help-center.png" alt="Generative search follow-up" loading="lazy"></div>
     <div class="cb">
-      <div class="meta"><span class="b bch" data-i="badge-ch">Canais</span></div>
-      <h2 class="ct" data-i="c5-title">Usuários podem encerrar sessões de messaging + novo label de IA</h2>
-      <p class="cs" data-i="c5-sum">Clientes agora podem fechar a própria sessão de chat no Web Widget. O label "Generated by AI" foi redesenhado para aparecer uma vez por grupo de mensagens em vez de em cada mensagem individualmente.</p>
-      <div class="ci"><strong data-i="impact-lbl">Impacto CX:</strong> <span data-i="c5-impact">Melhora eficiência operacional e deixa a transparência da IA menos intrusiva na conversa.</span></div>
+      <div class="meta">
+        <span class="b bch" data-i="badge-ch">Canais</span>
+      </div>
+      <h2 class="ct" data-i="c5-title">Busca Generativa com Pergunta de Follow-up no Web Widget</h2>
+      <p class="cs" data-i="c5-sum">A busca generativa no help center agora suporta uma pergunta de follow-up para clientes usando o Web Widget. Cria um caminho mais natural do autoatendimento para uma conversa com agente de IA, mantendo o contexto da busca original.</p>
+      <div class="ci"><strong data-i="impact-lbl">Impacto CX:</strong> <span data-i="c5-impact">Aumenta FCR no autoatendimento; reduz volume de tickets criados por clientes que não encontraram resposta completa na primeira busca — impacto direto em FRT e volume geral.</span></div>
       <div class="cf">
-        <a class="al" href="https://support.zendesk.com/hc/en-us/articles/10408069561626" target="_blank">
+        <a class="al" href="https://support.zendesk.com/hc/en-us/articles/8888178335898" target="_blank" data-i="read-more">
           <svg viewBox="0 0 12 12"><path d="M2 10L10 2M10 2H5M10 2v5"/></svg>
-          <span data-i="read-more">Ver artigo completo</span>
+          Ver artigo completo
         </a>
         <div class="cf-right">
-          <button class="imp-btn" id="imp-c5" onclick="toggleImp('c5')">
-            <svg viewBox="0 0 14 14"><path d="M12 2l-6.5 6.5L2 5"/><rect x="1" y="1" width="12" height="12" rx="2"/></svg>
+          <button class="imp-btn" onclick="toggleImp(this)">
+            <svg viewBox="0 0 14 14"><rect x="1" y="1" width="12" height="12" rx="2"/><path d="M7 4v4M7 9.5h.01"/></svg>
             <span data-i="mark-btn">Marcar como importante</span>
           </button>
-          <button class="dt-btn" onclick="toggleDisc(this,'dp-c5')">
-            <svg viewBox="0 0 12 12"><circle cx="6" cy="6" r="4.5"/><path d="M6 4v2.5M6 8h.01"/></svg>
+          <button class="dt-btn" onclick="toggleDisc(this)">
+            <svg viewBox="0 0 12 12"><circle cx="6" cy="6" r="5"/><path d="M4.5 4.5l3 3M7.5 4.5l-3 3"/></svg>
             <span data-i="disc-btn">Oportunidades de discovery</span>
           </button>
         </div>
       </div>
     </div>
-    <div class="dp" id="dp-c5">
-      <p class="dpt"><svg viewBox="0 0 12 12"><path d="M6 1l1.2 2.5L10 4l-2 1.9.5 2.8L6 7.5 3.5 8.7l.5-2.8L2 4l2.8-.5z"/></svg><span data-i="disc-title">Sugestões geradas pela IA</span></p>
-      <div class="di"><div class="dd"></div><p class="dt2" data-i="c5-d1">Ativar encerramento pelo usuário e monitorar por 30 dias — medir impacto no volume de tickets reabertos.</p></div>
-      <div class="di"><div class="dd"></div><p class="dt2" data-i="c5-d2">Avaliar se o novo label mais discreto afeta percepção de confiança — incluir pergunta na próxima pesquisa de CSAT.</p></div>
+    <div class="dp">
+      <p class="dpt"><svg viewBox="0 0 12 12"><path d="M6 1v10M1 6h10"/></svg><span data-i="disc-title">Sugestões de discovery</span></p>
+      <div class="di"><div class="dd"></div><p class="dt2" data-i="c5-d1">Analisar as buscas no help center que não resultam em artigo clicado — são os candidatos com maior benefício da pergunta de follow-up.</p></div>
+      <div class="di"><div class="dd"></div><p class="dt2" data-i="c5-d2">Ativar busca generativa e medir taxa de deflexão (tickets não criados) antes e depois, segmentando por canal de entrada.</p></div>
+      <div class="di"><div class="dd"></div><p class="dt2" data-i="c5-d3">Validar se os artigos mais acessados via busca respondem completamente a pergunta — gaps identificados viram novos artigos.</p></div>
     </div>
   </div>
 
-  <!-- ── Agente ──────────────────────────────────────────── -->
-  <div class="sl" id="sl-ag" data-i="sl-ag">Agente</div>
-
-  <!-- Card 6 -->
-  <div class="card">
+  <!-- Card 6: Knowledge connectors -->
+  <div class="card" data-id="c6">
+    <div class="img-wrap"><img src="https://zen-marketing-documentation.s3.amazonaws.com/docs/en/knw-sharepoint-connections-page.png" alt="Knowledge connectors SharePoint Notion" loading="lazy"></div>
     <div class="cb">
-      <div class="meta"><span class="b bag" data-i="badge-ag">Agente</span></div>
-      <h2 class="ct" data-i="c6-title">Task lists — disponível para todos (GA)</h2>
-      <p class="cs" data-i="c6-sum">Admins criam listas de tarefas para tipos de tickets recorrentes. Agentes adicionam ao ticket e garantem que nenhuma etapa seja esquecida no processo de resolução.</p>
-      <div class="ci"><strong data-i="impact-lbl">Impacto CX:</strong> <span data-i="c6-impact">Reduz erros de processo e padroniza atendimento em fluxos críticos como onboarding, cancelamento ou trocas.</span></div>
+      <div class="meta">
+        <span class="b bch" data-i="badge-ch">Canais</span>
+      </div>
+      <h2 class="ct" data-i="c6-title">Conectores de Conhecimento: SharePoint, Notion e Document360</h2>
+      <p class="cs" data-i="c6-sum">Agora é possível conectar SharePoint, Notion ou Document360 ao Zendesk para tornar esse conteúdo disponível na busca generativa, no Copilot e nos agentes de IA — sem precisar duplicar documentação interna.</p>
+      <div class="ci"><strong data-i="impact-lbl">Impacto CX:</strong> <span data-i="c6-impact">Reduz TTR ao dar acesso ao agente (e ao Copilot) a bases de conhecimento internas já existentes; elimina consulta manual a ferramentas externas durante o atendimento.</span></div>
       <div class="cf">
-        <a class="al" href="https://support.zendesk.com/hc/en-us/articles/9676917386650" target="_blank">
+        <a class="al" href="https://support.zendesk.com/hc/en-us/articles/10589816988698" target="_blank" data-i="read-more">
           <svg viewBox="0 0 12 12"><path d="M2 10L10 2M10 2H5M10 2v5"/></svg>
-          <span data-i="read-more">Ver artigo completo</span>
+          Ver artigo completo
         </a>
         <div class="cf-right">
-          <button class="imp-btn" id="imp-c6" onclick="toggleImp('c6')">
-            <svg viewBox="0 0 14 14"><path d="M12 2l-6.5 6.5L2 5"/><rect x="1" y="1" width="12" height="12" rx="2"/></svg>
+          <button class="imp-btn" onclick="toggleImp(this)">
+            <svg viewBox="0 0 14 14"><rect x="1" y="1" width="12" height="12" rx="2"/><path d="M7 4v4M7 9.5h.01"/></svg>
             <span data-i="mark-btn">Marcar como importante</span>
           </button>
-          <button class="dt-btn" onclick="toggleDisc(this,'dp-c6')">
-            <svg viewBox="0 0 12 12"><circle cx="6" cy="6" r="4.5"/><path d="M6 4v2.5M6 8h.01"/></svg>
+          <button class="dt-btn" onclick="toggleDisc(this)">
+            <svg viewBox="0 0 12 12"><circle cx="6" cy="6" r="5"/><path d="M4.5 4.5l3 3M7.5 4.5l-3 3"/></svg>
             <span data-i="disc-btn">Oportunidades de discovery</span>
           </button>
         </div>
       </div>
     </div>
-    <div class="dp" id="dp-c6">
-      <p class="dpt"><svg viewBox="0 0 12 12"><path d="M6 1l1.2 2.5L10 4l-2 1.9.5 2.8L6 7.5 3.5 8.7l.5-2.8L2 4l2.8-.5z"/></svg><span data-i="disc-title">Sugestões geradas pela IA</span></p>
-      <div class="di"><div class="dd"></div><p class="dt2" data-i="c6-d1">Mapear os 3 tipos de ticket com maior variação de qualidade — criar task lists e medir impacto em CSAT após 60 dias.</p></div>
-      <div class="di"><div class="dd"></div><p class="dt2" data-i="c6-d2">Envolver agentes sênior na criação das listas — eles conhecem os passos críticos que novatos costumam pular.</p></div>
+    <div class="dp">
+      <p class="dpt"><svg viewBox="0 0 12 12"><path d="M6 1v10M1 6h10"/></svg><span data-i="disc-title">Sugestões de discovery</span></p>
+      <div class="di"><div class="dd"></div><p class="dt2" data-i="c6-d1">Mapear quais documentos internos (Notion, SharePoint) os agentes consultam manualmente hoje durante o atendimento — esses são os primeiros a conectar.</p></div>
+      <div class="di"><div class="dd"></div><p class="dt2" data-i="c6-d2">Testar conexão com Notion para os 20 artigos internos mais acessados e verificar se aparecem nas sugestões do Copilot.</p></div>
     </div>
   </div>
 
-  <!-- Card 7 -->
-  <div class="card">
-    <div class="img-wrap">
-      <img src="https://zen-marketing-documentation.s3.amazonaws.com/docs/en/wfm_create_combined_workstream.png" alt="WFM workstreams combinados" onerror="this.closest('.img-wrap').remove()">
-    </div>
+  <!-- Agente -->
+  <div class="sl" id="sl-ag" data-i="sl-ag">AGENTE</div>
+
+  <!-- Card 7: Action flows approvals -->
+  <div class="card" data-id="c7">
     <div class="cb">
-      <div class="meta"><span class="b bag" data-i="badge-ag">Agente</span></div>
-      <h2 class="ct" data-i="c7-title">WFM: workstreams combinados e folgas mais precisas</h2>
-      <p class="cs" data-i="c7-sum">Possível combinar workstreams (ex: voz + tickets) para escalar agentes multitarefa simultaneamente. Folgas agora mapeiam turnos reais em vez de blocos de 24h, e um novo indicador de horas faturáveis considera folgas pagas parciais.</p>
-      <div class="ci"><strong data-i="impact-lbl">Impacto CX:</strong> <span data-i="c7-impact">Planejamento de capacidade mais preciso para times que operam em múltiplos canais simultaneamente.</span></div>
+      <div class="meta">
+        <span class="b bag" data-i="badge-ag">Agente</span>
+      </div>
+      <h2 class="ct" data-i="c7-title">Fluxos de Ação: Criar Aprovações Automaticamente</h2>
+      <p class="cs" data-i="c7-sum">Admins podem configurar fluxos de ação para criar solicitações de aprovação automaticamente com a nova ação "Enviar solicitação de aprovação". Automatiza processos que exigem validação, reduzindo trabalho manual e garantindo consistência.</p>
+      <div class="ci"><strong data-i="impact-lbl">Impacto CX:</strong> <span data-i="c7-impact">Reduz TTR em tickets que dependem de aprovação interna; garante rastreabilidade e elimina o risco de etapas esquecidas em fluxos críticos como reembolsos e cancelamentos.</span></div>
       <div class="cf">
-        <a class="al" href="https://support.zendesk.com/hc/en-us/articles/10379843022234" target="_blank">
+        <a class="al" href="https://support.zendesk.com/hc/en-us/articles/8855601898266" target="_blank" data-i="read-more">
           <svg viewBox="0 0 12 12"><path d="M2 10L10 2M10 2H5M10 2v5"/></svg>
-          <span data-i="read-more">Ver artigo completo</span>
+          Ver artigo completo
         </a>
         <div class="cf-right">
-          <button class="imp-btn" id="imp-c7" onclick="toggleImp('c7')">
-            <svg viewBox="0 0 14 14"><path d="M12 2l-6.5 6.5L2 5"/><rect x="1" y="1" width="12" height="12" rx="2"/></svg>
+          <button class="imp-btn" onclick="toggleImp(this)">
+            <svg viewBox="0 0 14 14"><rect x="1" y="1" width="12" height="12" rx="2"/><path d="M7 4v4M7 9.5h.01"/></svg>
             <span data-i="mark-btn">Marcar como importante</span>
           </button>
-          <button class="dt-btn" onclick="toggleDisc(this,'dp-c7')">
-            <svg viewBox="0 0 12 12"><circle cx="6" cy="6" r="4.5"/><path d="M6 4v2.5M6 8h.01"/></svg>
+          <button class="dt-btn" onclick="toggleDisc(this)">
+            <svg viewBox="0 0 12 12"><circle cx="6" cy="6" r="5"/><path d="M4.5 4.5l3 3M7.5 4.5l-3 3"/></svg>
             <span data-i="disc-btn">Oportunidades de discovery</span>
           </button>
         </div>
       </div>
     </div>
-    <div class="dp" id="dp-c7">
-      <p class="dpt"><svg viewBox="0 0 12 12"><path d="M6 1l1.2 2.5L10 4l-2 1.9.5 2.8L6 7.5 3.5 8.7l.5-2.8L2 4l2.8-.5z"/></svg><span data-i="disc-title">Sugestões geradas pela IA</span></p>
-      <div class="di"><div class="dd"></div><p class="dt2" data-i="c7-d1">Identificar agentes que atuam alternadamente em voz e tickets — criar workstream combinado e comparar aderência ao schedule.</p></div>
+    <div class="dp">
+      <p class="dpt"><svg viewBox="0 0 12 12"><path d="M6 1v10M1 6h10"/></svg><span data-i="disc-title">Sugestões de discovery</span></p>
+      <div class="di"><div class="dd"></div><p class="dt2" data-i="c7-d1">Mapear os tipos de ticket que exigem aprovação manual hoje — quantos, qual time aprova, qual o tempo médio de espera.</p></div>
+      <div class="di"><div class="dd"></div><p class="dt2" data-i="c7-d2">Criar um fluxo piloto para aprovação automática de reembolsos acima de um valor-limite e medir redução de TTR.</p></div>
+      <div class="di"><div class="dd"></div><p class="dt2" data-i="c7-d3">Revisar os Fluxos de Ação existentes e identificar quais já tinham etapas de aprovação manual que podem ser substituídas.</p></div>
     </div>
   </div>
 
-  <!-- ── Sugestões do time ──────────────────────────────── -->
+  <!-- Card 8: Unified navigation -->
+  <div class="card" data-id="c8">
+    <div class="img-wrap"><img src="https://zen-marketing-documentation.s3.amazonaws.com/docs/en/annoc_product_tray_after3.png" alt="Unified navigation Zendesk" loading="lazy"></div>
+    <div class="cb">
+      <div class="meta">
+        <span class="b bag" data-i="badge-ag">Agente</span>
+      </div>
+      <h2 class="ct" data-i="c8-title">Navegação Unificada Entre Produtos Zendesk</h2>
+      <p class="cs" data-i="c8-sum">Uma interface unificada e consistente para navegar entre todos os produtos Zendesk reduz significativamente a curva de aprendizado para admins e agentes que usam múltiplos módulos no dia a dia, com uma abordagem simplificada e padronizada.</p>
+      <div class="ci"><strong data-i="impact-lbl">Impacto CX:</strong> <span data-i="c8-impact">Reduz TMA indiretamente ao eliminar tempo perdido navegando entre interfaces diferentes; acelera onboarding de novos agentes e facilita acesso a configurações de Admin Center.</span></div>
+      <div class="cf">
+        <a class="al" href="https://support.zendesk.com/hc/en-us/articles/9562988564634" target="_blank" data-i="read-more">
+          <svg viewBox="0 0 12 12"><path d="M2 10L10 2M10 2H5M10 2v5"/></svg>
+          Ver artigo completo
+        </a>
+        <div class="cf-right">
+          <button class="imp-btn" onclick="toggleImp(this)">
+            <svg viewBox="0 0 14 14"><rect x="1" y="1" width="12" height="12" rx="2"/><path d="M7 4v4M7 9.5h.01"/></svg>
+            <span data-i="mark-btn">Marcar como importante</span>
+          </button>
+          <button class="dt-btn" onclick="toggleDisc(this)">
+            <svg viewBox="0 0 12 12"><circle cx="6" cy="6" r="5"/><path d="M4.5 4.5l3 3M7.5 4.5l-3 3"/></svg>
+            <span data-i="disc-btn">Oportunidades de discovery</span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="dp">
+      <p class="dpt"><svg viewBox="0 0 12 12"><path d="M6 1v10M1 6h10"/></svg><span data-i="disc-title">Sugestões de discovery</span></p>
+      <div class="di"><div class="dd"></div><p class="dt2" data-i="c8-d1">Coletar feedback de agentes novos sobre dificuldades de navegação antes e 30 dias após a atualização — usar como baseline de onboarding.</p></div>
+      <div class="di"><div class="dd"></div><p class="dt2" data-i="c8-d2">Verificar se a nova navegação facilita o acesso dos admins às configurações mais usadas de Omnichannel e Gatilhos.</p></div>
+    </div>
+  </div>
+
+  <!-- Suggestions Section -->
   <div class="ss">
     <div class="sh">
       <div>
@@ -476,9 +514,9 @@ footer a:hover{color:var(--green)}
       <span class="sc" id="scount">0 sugestões</span>
     </div>
     <div class="sl2" id="slist">
-      <div class="empty" id="empty">
-        <svg viewBox="0 0 24 24"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
-        <p data-i="empty-sug">Nenhuma sugestão ainda.<br>Seja o primeiro a contribuir abaixo.</p>
+      <div class="empty">
+        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        <span data-i="empty-sug">Nenhuma sugestão ainda. Seja o primeiro!</span>
       </div>
     </div>
     <div class="sf">
@@ -498,352 +536,386 @@ footer a:hover{color:var(--green)}
         </div>
       </div>
       <div class="fr">
-        <label data-i="f-ref">Relacionado a</label>
+        <label data-i="f-ref">Relacionado com</label>
         <select id="iref">
           <option value="" data-i="f-ref-sel">Selecione a novidade...</option>
-          <option data-i="ref-c1">Conversation Journey para IA avançada</option>
-          <option data-i="ref-c2">Copilot com recomendações de roteamento</option>
-          <option data-i="ref-c3">Ferramentas de IA em todos os planos</option>
-          <option data-i="ref-c4">Dashboards de SLA em tempo real</option>
-          <option data-i="ref-c5">Encerramento de sessão + label de IA</option>
-          <option data-i="ref-c6">Task lists (GA)</option>
-          <option data-i="ref-c7">WFM: workstreams combinados</option>
-          <option value="geral" data-i="ref-geral">Geral / outro</option>
+          <option data-i="ref-c1">Relatório de Potencial de Automação</option>
+          <option data-i="ref-c2">IA Agêntica para E-mail (GA)</option>
+          <option data-i="ref-c3">Copilot: Sugestões de Macros e Segurança</option>
+          <option data-i="ref-c4">Dashboards em Tempo Real</option>
+          <option data-i="ref-c5">Busca Generativa com Follow-up</option>
+          <option data-i="ref-c6">Conectores de Conhecimento</option>
+          <option data-i="ref-c7">Fluxos de Ação: Aprovações Automáticas</option>
+          <option data-i="ref-c8">Navegação Unificada</option>
+          <option data-i="ref-geral">Geral / outro</option>
         </select>
       </div>
-      <div class="fr"><label data-i="f-text">Sugestão de discovery ou iniciativa</label><textarea id="itext" placeholder="Ex: Quero explorar como usar o Conversation Journey para reduzir escalações no fluxo de cancelamento..."></textarea></div>
-      <button class="sbtn" id="sbtn" onclick="submitSug()">
-        <svg viewBox="0 0 14 14"><path d="M2 7h10M7 2l5 5-5 5"/></svg>
+      <div class="fr"><label data-i="f-text">Sugestão de discovery ou iniciativa</label><textarea id="itext" placeholder="Descreva sua ideia..."></textarea></div>
+      <button class="sbtn" onclick="submitSug()" id="sbtn">
+        <svg viewBox="0 0 14 14"><path d="M13 7H1M7 1l6 6-6 6"/></svg>
         <span data-i="f-submit">Enviar sugestão</span>
       </button>
       <div class="smsg" id="smsg">
-        <svg viewBox="0 0 14 14"><path d="M2 7l3.5 3.5L12 3"/></svg>
-        <span data-i="f-ok">Sugestão enviada com sucesso!</span>
+        <svg viewBox="0 0 14 14"><path d="M2 7l4 4 6-6"/></svg>
+        <span data-i="f-ok">Sugestão enviada! Obrigado.</span>
       </div>
     </div>
   </div>
 
-</div>
+</div><!-- /wrap -->
 
 <footer>
   Zendesk Journal · Nuvemshop CX Intelligence · <span data-i="footer-cadence">Gerado na primeira terça de cada mês</span> ·
-  <a href="https://support.zendesk.com/hc/en-us/articles/10479706763162" target="_blank">Fonte: Zendesk April 2026</a>
+  <a href="https://support.zendesk.com/hc/en-us/articles/10609395164442-What-s-new-in-Zendesk-May-2026" target="_blank">Fonte: Zendesk May 2026</a>
 </footer>
 
 <script>
-// ── DATE ──────────────────────────────────────────────────────────────────────
-document.getElementById('hd').textContent = new Date().toLocaleDateString('pt-BR',{day:'numeric',month:'long',year:'numeric'});
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxN6ATFNU-lD6sgWKpQWZruwON7xxAajsSQ05kwlYH6JHkRJBL_067s4qONOHUS0ZIUKw/exec';
+const SHEET = 'may26';
 
-// ── I18N ──────────────────────────────────────────────────────────────────────
-const I18N = {
+window.storage = {
+  get(key) { try { return JSON.parse(localStorage.getItem(key)) || {} } catch(e) { return {} } },
+  set(key, val) { try { localStorage.setItem(key, JSON.stringify(val)) } catch(e) {} }
+};
+
+const T = {
   pt: {
-    'hbadge':'Atualizado','h-a3':'Ver A3',
-    'hero-eye':'Journal mensal · Primeira terça',
-    'hero-title':'Novidades de\n<span>Abril 2026</span>',
-    'hero-intro':'Abril trouxe avanços em IA e observabilidade. O Zendesk expandiu a visibilidade dos agentes de IA, melhorou o roteamento omnichannel com recomendações inteligentes e reforçou os dashboards de SLA em tempo real.',
-    'hero-src-lbl':'Fonte oficial Zendesk',
-    'stat1-lbl':'novidades selecionadas','stat2-lbl':'total de atualizações',
-    'sl-ia':'IA & Automação','sl-rel':'Relatórios & Dados','sl-ch':'Canais','sl-ag':'Agente',
-    'badge-ia':'IA & Automação','badge-rel':'Relatórios','badge-ch':'Canais','badge-ag':'Agente',
-    'impact-lbl':'Impacto CX:','read-more':'Ver artigo completo',
-    'mark-btn':'Marcar como importante','mark-btn-done':'Importante',
-    'disc-btn':'Oportunidades de discovery','disc-btn-hide':'Ocultar',
-    'disc-title':'Sugestões geradas pela IA',
-    'c1-title':'Nova aba "Conversation Journey" para IA avançada',
-    'c1-sum':'O dashboard de AI agents ganhou uma aba que visualiza os fluxos de conversa entre clientes e agentes de IA, mostrando onde ocorrem escalações e quais caminhos têm maior taxa de resolução automática.',
-    'c1-impact':'Identifique gargalos na automação e replique os caminhos de conversa mais eficientes, reduzindo escalações desnecessárias.',
-    'c1-d1':'Mapear os top 5 fluxos onde a IA escala para humano — entender se são lacunas de base de conhecimento ou limitação do modelo.',
-    'c1-d2':'Criar benchmark mensal de taxa de deflexão por intenção para medir o impacto das otimizações de conversa.',
-    'c1-d3':'Discovery: quais caminhos com maior CSAT podem ser replicados como templates para outros fluxos?',
-    'c2-title':'Copilot com recomendações de roteamento omnichannel',
-    'c2-sum':'O Copilot agora oferece 21 tipos de recomendações baseadas em IA para otimizar configurações de roteamento, cobrindo todos os aspectos do omnichannel setup — acessíveis direto no Admin Center com filtros por tipo.',
-    'c2-impact':'Reduz tempo de configuração e aumenta eficiência do roteamento sem depender de trial and error manual.',
-    'c2-d1':'Revisar as 21 categorias de recomendação com o time de operações — priorizar as que mais impactam tempo de resposta.',
-    'c2-d2':'Discovery: comparar configuração atual de roteamento com as recomendações para identificar gaps de eficiência.',
-    'c3-title':'Ferramentas de escrita por IA disponíveis em todos os planos',
-    'c3-sum':'Tom de voz, Simplificar e Prompt personalizado deixaram de exigir o add-on Copilot. A busca generativa e Quick Answers também migraram para o motor RAG dos AI agents, com respostas mais precisas no help center e Agent Workspace.',
-    'c3-impact':'Times sem Copilot agora têm acesso à IA de escrita — impacto direto na qualidade de resposta de agentes novatos.',
-    'c3-d1':'Ativar as ferramentas de escrita para o time e medir impacto em CSAT e tempo de resolução após 30 dias.',
-    'c3-d2':'Criar guidelines de tom de voz por marca e configurar como padrão — padronizar a comunicação sem treinamento extra.',
-    'c4-title':'Dashboards de tempo real com SLA e filtros avançados',
-    'c4-sum':'Os dashboards de monitoramento ganharam abas de status de SLA para filas padrão e customizadas, visualizações por percentil, filtros de progresso de fila e visões por marca e grupo.',
-    'c4-impact':'Visibilidade de SLA em tempo real para a liderança — agir preventivamente antes do breach, não após.',
-    'c4-d1':'Configurar alertas de SLA em risco para supervisores receberem notificação antes do breach.',
-    'c4-d2':'Criar view por brand para times multi-marca — medir se SLA varia por país ou produto.',
-    'c5-title':'Usuários podem encerrar sessões de messaging + novo label de IA',
-    'c5-sum':'Clientes agora podem fechar a própria sessão de chat no Web Widget. O label "Generated by AI" foi redesenhado para aparecer uma vez por grupo de mensagens em vez de em cada mensagem individualmente.',
-    'c5-impact':'Melhora eficiência operacional e deixa a transparência da IA menos intrusiva na conversa.',
-    'c5-d1':'Ativar encerramento pelo usuário e monitorar por 30 dias — medir impacto no volume de tickets reabertos.',
-    'c5-d2':'Avaliar se o novo label mais discreto afeta percepção de confiança — incluir pergunta na próxima pesquisa de CSAT.',
-    'c6-title':'Task lists — disponível para todos (GA)',
-    'c6-sum':'Admins criam listas de tarefas para tipos de tickets recorrentes. Agentes adicionam ao ticket e garantem que nenhuma etapa seja esquecida no processo de resolução.',
-    'c6-impact':'Reduz erros de processo e padroniza atendimento em fluxos críticos como onboarding, cancelamento ou trocas.',
-    'c6-d1':'Mapear os 3 tipos de ticket com maior variação de qualidade — criar task lists e medir impacto em CSAT após 60 dias.',
-    'c6-d2':'Envolver agentes sênior na criação das listas — eles conhecem os passos críticos que novatos costumam pular.',
-    'c7-title':'WFM: workstreams combinados e folgas mais precisas',
-    'c7-sum':'Possível combinar workstreams (ex: voz + tickets) para escalar agentes multitarefa simultaneamente. Folgas agora mapeiam turnos reais em vez de blocos de 24h, e um novo indicador de horas faturáveis considera folgas pagas parciais.',
-    'c7-impact':'Planejamento de capacidade mais preciso para times que operam em múltiplos canais simultaneamente.',
-    'c7-d1':'Identificar agentes que atuam alternadamente em voz e tickets — criar workstream combinado e comparar aderência ao schedule.',
-    'sug-eye':'Colaboração do time','sug-title':'Sugestões de iniciativas',
-    'sug-sub':'O que líderes de CX e produto/ops querem explorar a partir dessas novidades',
-    'empty-sug':'Nenhuma sugestão ainda.<br>Seja o primeiro a contribuir abaixo.',
-    'form-title':'Adicionar sugestão','f-name':'Seu nome','f-role':'Área',
-    'f-sel':'Selecione...','f-cx':'Líder de CX','f-ops':'Produto / Ops',
-    'f-ref':'Relacionado a','f-ref-sel':'Selecione a novidade...',
-    'ref-c1':'Conversation Journey para IA avançada',
-    'ref-c2':'Copilot com recomendações de roteamento',
-    'ref-c3':'Ferramentas de IA em todos os planos',
-    'ref-c4':'Dashboards de SLA em tempo real',
-    'ref-c5':'Encerramento de sessão + label de IA',
-    'ref-c6':'Task lists (GA)',
-    'ref-c7':'WFM: workstreams combinados',
-    'ref-geral':'Geral / outro',
-    'f-text':'Sugestão de discovery ou iniciativa',
-    'f-submit':'Enviar sugestão','f-ok':'Sugestão enviada com sucesso!',
-    'footer-cadence':'Gerado na primeira terça de cada mês',
-    'f-alert':'Preencha nome, área e sugestão.',
-    'sug-count-s':'sugestão','sug-count-p':'sugestões',
+    'hbadge': 'Atualizado',
+    'h-a3': 'Ver A3',
+    'h-guide': 'Guia',
+    'hero-eye': 'Journal mensal · Primeira terça',
+    'hero-title': 'Novidades de<br><span>Maio 2026</span>',
+    'hero-intro': 'Maio traz avanços significativos em IA agêntica, automação inteligente e visibilidade operacional. O Zendesk lança o relatório de potencial de automação, expande os conectores de conhecimento e consolida a navegação unificada entre produtos.',
+    'hero-src-lbl': 'Fonte oficial Zendesk',
+    'stat1-lbl': 'novidades selecionadas',
+    'stat2-lbl': 'total de atualizações',
+    'sl-ia': 'IA &amp; AUTOMAÇÃO',
+    'sl-rel': 'RELATÓRIOS &amp; DADOS',
+    'sl-ch': 'CANAIS',
+    'sl-ag': 'AGENTE',
+    'badge-ia': 'IA &amp; Automação',
+    'badge-rel': 'Relatórios &amp; Dados',
+    'badge-ch': 'Canais',
+    'badge-ag': 'Agente',
+    'impact-lbl': 'Impacto CX:',
+    'read-more': '<svg viewBox="0 0 12 12"><path d="M2 10L10 2M10 2H5M10 2v5"/></svg> Ver artigo completo',
+    'mark-btn': 'Marcar como importante',
+    'disc-btn': 'Oportunidades de discovery',
+    'disc-title': 'Sugestões de discovery',
+    'c1-title': 'Novo Relatório de Potencial de Automação',
+    'c1-sum': 'Um novo relatório analisa suas conversas e identifica quais solicitações podem ser automatizadas com agentes de IA. Fornece insights por marca, exemplos de tickets reais e mostra exatamente como um agente de IA responderia a cada consulta.',
+    'c1-impact': 'Identifica oportunidades concretas para aumentar FCR e reduzir TTR — automatizando os fluxos mais comuns antes de precisar de um agente humano.',
+    'c1-d1': 'Gerar o relatório por marca (BR e LATAM separadamente) e comparar os top 10 intents com a taxa atual de FCR por fila.',
+    'c1-d2': 'Mapear sobreposição entre os intents sugeridos para automação e os fluxos já configurados nas Intenções do Zendesk.',
+    'c1-d3': 'Testar piloto de agente de IA nos 3 tipos de ticket com maior potencial de automação e medir impacto em TTR após 2 semanas.',
+    'c2-title': 'IA Agêntica para E-mail — Disponibilidade Geral (GA)',
+    'c2-sum': 'Agentes de IA avançados agora entendem e-mails completos, respondem perguntas, automatizam procedimentos e escalam quando necessário — reduzindo idas e vindas com clientes em e-mail sem intervenção humana para casos recorrentes.',
+    'c2-impact': 'Reduz FRT e TMA em e-mail eliminando triagem manual de tickets recorrentes. Escalações acontecem apenas quando o agente de IA não consegue resolver — melhorando FCR.',
+    'c2-d1': 'Mapear os top 5 tipos de e-mail com maior volume que chegam sem resposta nas primeiras 4h — esses são os candidatos ideais para o piloto.',
+    'c2-d2': 'Verificar se as Intenções configuradas cobrem os fluxos mais volumosos de e-mail e ajustar antes de ativar o agente agêntico.',
+    'c2-d3': 'Definir critérios claros de escalação (ex: sentimento negativo, palavras-chave críticas) para garantir CSAT em casos complexos.',
+    'c3-title': 'Copilot: Sugestões de Macros e Recomendações de Segurança',
+    'c3-sum': 'Copilot passa a incluir dois novos tipos de recomendação: sugestões de conteúdo de macros (para otimizar respostas padronizadas) e recomendações de trust &amp; safety (para melhorar configurações de segurança da conta), ambas acessíveis diretamente no Admin Center.',
+    'c3-impact': 'Reduz TMA ao identificar macros ineficientes e sugerir melhorias; melhora consistência de respostas e CSAT ao padronizar comunicação em fluxos críticos.',
+    'c3-d1': 'Revisar as 20 macros mais usadas e verificar se as sugestões do Copilot indicam oportunidades de consolidação ou melhoria de conteúdo.',
+    'c3-d2': 'Identificar fluxos críticos sem macro dedicada (cancelamento, reembolso, troca) e usar as sugestões como ponto de partida para criação.',
+    'c4-title': 'Dashboards em Tempo Real: Toggle, 30 Dias e Permissões por Marca',
+    'c4-sum': 'Os dashboards de monitoramento em tempo real ganham três melhorias: toggle "Mostrar linhas vazias" para visualizar marcas e grupos inativos, extensão de 30 dias para métricas históricas recentes, e permissões por marca para controle granular de acesso.',
+    'c4-impact': 'Maior visibilidade de SLA e TTR por marca (BR vs LATAM); permissões granulares reduzem ruído para líderes de subequipes e facilitam gestão de SLA por canal.',
+    'c4-d1': 'Configurar permissões por marca para que líderes de BR e LATAM vejam apenas dados das suas operações, sem ruído cruzado.',
+    'c4-d2': 'Usar a extensão de 30 dias para criar uma view de tendência de FRT por canal e identificar degradações graduais antes do breach de SLA.',
+    'c4-d3': 'Ativar o toggle de linhas vazias para auditar quais grupos e filas ficam sem volume — oportunidade de consolidar ou redistribuir capacidade.',
+    'c5-title': 'Busca Generativa com Pergunta de Follow-up no Web Widget',
+    'c5-sum': 'A busca generativa no help center agora suporta uma pergunta de follow-up para clientes usando o Web Widget. Cria um caminho mais natural do autoatendimento para uma conversa com agente de IA, mantendo o contexto da busca original.',
+    'c5-impact': 'Aumenta FCR no autoatendimento; reduz volume de tickets criados por clientes que não encontraram resposta completa na primeira busca — impacto direto em FRT e volume geral.',
+    'c5-d1': 'Analisar as buscas no help center que não resultam em artigo clicado — são os candidatos com maior benefício da pergunta de follow-up.',
+    'c5-d2': 'Ativar busca generativa e medir taxa de deflexão (tickets não criados) antes e depois, segmentando por canal de entrada.',
+    'c5-d3': 'Validar se os artigos mais acessados via busca respondem completamente a pergunta — gaps identificados viram novos artigos.',
+    'c6-title': 'Conectores de Conhecimento: SharePoint, Notion e Document360',
+    'c6-sum': 'Agora é possível conectar SharePoint, Notion ou Document360 ao Zendesk para tornar esse conteúdo disponível na busca generativa, no Copilot e nos agentes de IA — sem precisar duplicar documentação interna.',
+    'c6-impact': 'Reduz TTR ao dar acesso ao agente (e ao Copilot) a bases de conhecimento internas já existentes; elimina consulta manual a ferramentas externas durante o atendimento.',
+    'c6-d1': 'Mapear quais documentos internos (Notion, SharePoint) os agentes consultam manualmente hoje durante o atendimento — esses são os primeiros a conectar.',
+    'c6-d2': 'Testar conexão com Notion para os 20 artigos internos mais acessados e verificar se aparecem nas sugestões do Copilot.',
+    'c7-title': 'Fluxos de Ação: Criar Aprovações Automaticamente',
+    'c7-sum': 'Admins podem configurar fluxos de ação para criar solicitações de aprovação automaticamente com a nova ação "Enviar solicitação de aprovação". Automatiza processos que exigem validação, reduzindo trabalho manual e garantindo consistência.',
+    'c7-impact': 'Reduz TTR em tickets que dependem de aprovação interna; garante rastreabilidade e elimina o risco de etapas esquecidas em fluxos críticos como reembolsos e cancelamentos.',
+    'c7-d1': 'Mapear os tipos de ticket que exigem aprovação manual hoje — quantos, qual time aprova, qual o tempo médio de espera.',
+    'c7-d2': 'Criar um fluxo piloto para aprovação automática de reembolsos acima de um valor-limite e medir redução de TTR.',
+    'c7-d3': 'Revisar os Fluxos de Ação existentes e identificar quais já tinham etapas de aprovação manual que podem ser substituídas.',
+    'c8-title': 'Navegação Unificada Entre Produtos Zendesk',
+    'c8-sum': 'Uma interface unificada e consistente para navegar entre todos os produtos Zendesk reduz significativamente a curva de aprendizado para admins e agentes que usam múltiplos módulos no dia a dia, com uma abordagem simplificada e padronizada.',
+    'c8-impact': 'Reduz TMA indiretamente ao eliminar tempo perdido navegando entre interfaces diferentes; acelera onboarding de novos agentes e facilita acesso a configurações de Admin Center.',
+    'c8-d1': 'Coletar feedback de agentes novos sobre dificuldades de navegação antes e 30 dias após a atualização — usar como baseline de onboarding.',
+    'c8-d2': 'Verificar se a nova navegação facilita o acesso dos admins às configurações mais usadas de Omnichannel e Gatilhos.',
+    'sug-eye': 'Colaboração do time',
+    'sug-title': 'Sugestões de iniciativas',
+    'sug-sub': 'O que líderes de CX e produto/ops querem explorar a partir dessas novidades',
+    'empty-sug': 'Nenhuma sugestão ainda. Seja o primeiro!',
+    'form-title': 'Adicionar sugestão',
+    'f-name': 'Seu nome',
+    'f-role': 'Área',
+    'f-sel': 'Selecione...',
+    'f-cx': 'Líder de CX',
+    'f-ops': 'Produto / Ops',
+    'f-ref': 'Relacionado com',
+    'f-ref-sel': 'Selecione a novidade...',
+    'ref-c1': 'Relatório de Potencial de Automação',
+    'ref-c2': 'IA Agêntica para E-mail (GA)',
+    'ref-c3': 'Copilot: Sugestões de Macros e Segurança',
+    'ref-c4': 'Dashboards em Tempo Real',
+    'ref-c5': 'Busca Generativa com Follow-up',
+    'ref-c6': 'Conectores de Conhecimento',
+    'ref-c7': 'Fluxos de Ação: Aprovações Automáticas',
+    'ref-c8': 'Navegação Unificada',
+    'ref-geral': 'Geral / outro',
+    'f-text': 'Sugestão de discovery ou iniciativa',
+    'f-submit': 'Enviar sugestão',
+    'f-ok': 'Sugestão enviada! Obrigado.',
+    'footer-cadence': 'Gerado na primeira terça de cada mês'
   },
   es: {
-    'hbadge':'Actualizado','h-a3':'Ver A3',
-    'hero-eye':'Journal mensual · Primer martes',
-    'hero-title':'Novedades de\n<span>Abril 2026</span>',
-    'hero-intro':'Abril trajo avances en IA y observabilidad. Zendesk amplió la visibilidad de los agentes de IA, mejoró el enrutamiento omnicanal con recomendaciones inteligentes y reforzó los dashboards de SLA en tiempo real.',
-    'hero-src-lbl':'Fuente oficial Zendesk',
-    'stat1-lbl':'novedades seleccionadas','stat2-lbl':'total de actualizaciones',
-    'sl-ia':'IA & Automatización','sl-rel':'Reportes & Datos','sl-ch':'Canales','sl-ag':'Agente',
-    'badge-ia':'IA & Automatización','badge-rel':'Reportes','badge-ch':'Canales','badge-ag':'Agente',
-    'impact-lbl':'Impacto CX:','read-more':'Ver artículo completo',
-    'mark-btn':'Marcar como importante','mark-btn-done':'Importante',
-    'disc-btn':'Oportunidades de discovery','disc-btn-hide':'Ocultar',
-    'disc-title':'Sugerencias generadas por IA',
-    'c1-title':'Nueva pestaña "Conversation Journey" para IA avanzada',
-    'c1-sum':'El dashboard de AI agents obtuvo una pestaña que visualiza los flujos de conversación entre clientes y agentes de IA, mostrando dónde ocurren escalaciones y qué caminos tienen mayor tasa de resolución automática.',
-    'c1-impact':'Identifica cuellos de botella en la automatización y replica los caminos de conversación más eficientes, reduciendo escalaciones innecesarias.',
-    'c1-d1':'Mapear los top 5 flujos donde la IA escala a humano — entender si son brechas de base de conocimiento o limitación del modelo.',
-    'c1-d2':'Crear benchmark mensual de tasa de deflexión por intención para medir el impacto de las optimizaciones de conversación.',
-    'c1-d3':'Discovery: ¿qué caminos con mayor CSAT pueden replicarse como templates para otros flujos?',
-    'c2-title':'Copilot con recomendaciones de enrutamiento omnicanal',
-    'c2-sum':'Copilot ahora ofrece 21 tipos de recomendaciones basadas en IA para optimizar configuraciones de enrutamiento, cubriendo todos los aspectos del omnichannel setup — accesibles directamente en Admin Center con filtros por tipo.',
-    'c2-impact':'Reduce el tiempo de configuración y aumenta la eficiencia del enrutamiento sin depender de trial and error manual.',
-    'c2-d1':'Revisar las 21 categorías de recomendación con el equipo de operaciones — priorizar las que más impactan el tiempo de respuesta.',
-    'c2-d2':'Discovery: comparar la configuración actual de enrutamiento con las recomendaciones para identificar brechas de eficiencia.',
-    'c3-title':'Herramientas de escritura por IA disponibles en todos los planes',
-    'c3-sum':'Tono de voz, Simplificar y Prompt personalizado dejaron de requerir el add-on Copilot. La búsqueda generativa y Quick Answers también migraron al motor RAG de los AI agents, con respuestas más precisas en el help center y Agent Workspace.',
-    'c3-impact':'Equipos sin Copilot ahora tienen acceso a la IA de escritura — impacto directo en la calidad de respuesta de agentes nuevos.',
-    'c3-d1':'Activar las herramientas de escritura para el equipo y medir impacto en CSAT y tiempo de resolución tras 30 días.',
-    'c3-d2':'Crear guidelines de tono de voz por marca y configurar como predeterminado — estandarizar la comunicación sin entrenamiento extra.',
-    'c4-title':'Dashboards en tiempo real con SLA y filtros avanzados',
-    'c4-sum':'Los dashboards de monitoreo ganaron pestañas de estado de SLA para filas estándar y personalizadas, visualizaciones por percentil, filtros de progreso de fila y vistas por marca y grupo.',
-    'c4-impact':'Visibilidad de SLA en tiempo real para el liderazgo — actuar de forma preventiva antes del breach, no después.',
-    'c4-d1':'Configurar alertas de SLA en riesgo para que supervisores reciban notificación antes del breach.',
-    'c4-d2':'Crear vista por brand para equipos multi-marca — medir si el SLA varía por país o producto.',
-    'c5-title':'Usuarios pueden cerrar sesiones de messaging + nuevo label de IA',
-    'c5-sum':'Los clientes ahora pueden cerrar su propia sesión de chat en el Web Widget. El label "Generated by AI" fue rediseñado para aparecer una vez por grupo de mensajes en lugar de en cada mensaje individualmente.',
-    'c5-impact':'Mejora la eficiencia operacional y hace que la transparencia de la IA sea menos intrusiva en la conversación.',
-    'c5-d1':'Activar cierre de sesión por el usuario y monitorear por 30 días — medir impacto en el volumen de tickets reabiertos.',
-    'c5-d2':'Evaluar si el nuevo label más discreto afecta la percepción de confianza — incluir pregunta en la próxima encuesta de CSAT.',
-    'c6-title':'Task lists — disponible para todos (GA)',
-    'c6-sum':'Los admins crean listas de tareas para tipos de tickets recurrentes. Los agentes las agregan al ticket y garantizan que ningún paso sea olvidado en el proceso de resolución.',
-    'c6-impact':'Reduce errores de proceso y estandariza la atención en flujos críticos como onboarding, cancelación o cambios.',
-    'c6-d1':'Mapear los 3 tipos de ticket con mayor variación de calidad — crear task lists y medir impacto en CSAT tras 60 días.',
-    'c6-d2':'Involucrar a agentes senior en la creación de las listas — conocen los pasos críticos que los nuevos suelen omitir.',
-    'c7-title':'WFM: workstreams combinados y licencias más precisas',
-    'c7-sum':'Es posible combinar workstreams (ej: voz + tickets) para programar agentes multitarea simultáneamente. Las licencias ahora mapean turnos reales en lugar de bloques de 24h, con un nuevo indicador de horas facturables que considera licencias pagas parciales.',
-    'c7-impact':'Planificación de capacidad más precisa para equipos que operan en múltiples canales simultáneamente.',
-    'c7-d1':'Identificar agentes que alternan entre voz y tickets — crear workstream combinado y comparar adherencia al schedule.',
-    'sug-eye':'Colaboración del equipo','sug-title':'Sugerencias de iniciativas',
-    'sug-sub':'Lo que líderes de CX y producto/ops quieren explorar a partir de estas novedades',
-    'empty-sug':'Sin sugerencias aún.<br>Sé el primero en contribuir abajo.',
-    'form-title':'Agregar sugerencia','f-name':'Tu nombre','f-role':'Área',
-    'f-sel':'Selecciona...','f-cx':'Líder de CX','f-ops':'Producto / Ops',
-    'f-ref':'Relacionado con','f-ref-sel':'Selecciona la novedad...',
-    'ref-c1':'Conversation Journey para IA avanzada',
-    'ref-c2':'Copilot con recomendaciones de enrutamiento',
-    'ref-c3':'Herramientas de IA en todos los planes',
-    'ref-c4':'Dashboards de SLA en tiempo real',
-    'ref-c5':'Cierre de sesión + label de IA',
-    'ref-c6':'Task lists (GA)',
-    'ref-c7':'WFM: workstreams combinados',
-    'ref-geral':'General / otro',
-    'f-text':'Sugerencia de discovery o iniciativa',
-    'f-submit':'Enviar sugerencia','f-ok':'¡Sugerencia enviada con éxito!',
-    'footer-cadence':'Generado el primer martes de cada mes',
-    'f-alert':'Completa nombre, área y sugerencia.',
-    'sug-count-s':'sugerencia','sug-count-p':'sugerencias',
+    'hbadge': 'Actualizado',
+    'h-a3': 'Ver A3',
+    'h-guide': 'Guía',
+    'hero-eye': 'Journal mensual · Primer martes',
+    'hero-title': 'Novedades de<br><span>Mayo 2026</span>',
+    'hero-intro': 'Mayo trae avances significativos en IA agéntica, automatización inteligente y visibilidad operacional. Zendesk lanza el informe de potencial de automatización, expande los conectores de conocimiento y consolida la navegación unificada entre productos.',
+    'hero-src-lbl': 'Fuente oficial Zendesk',
+    'stat1-lbl': 'novedades seleccionadas',
+    'stat2-lbl': 'actualizaciones totales',
+    'sl-ia': 'IA &amp; AUTOMATIZACIÓN',
+    'sl-rel': 'REPORTES &amp; DATOS',
+    'sl-ch': 'CANALES',
+    'sl-ag': 'AGENTE',
+    'badge-ia': 'IA &amp; Automatización',
+    'badge-rel': 'Reportes &amp; Datos',
+    'badge-ch': 'Canales',
+    'badge-ag': 'Agente',
+    'impact-lbl': 'Impacto CX:',
+    'read-more': '<svg viewBox="0 0 12 12"><path d="M2 10L10 2M10 2H5M10 2v5"/></svg> Ver artículo completo',
+    'mark-btn': 'Marcar como importante',
+    'disc-btn': 'Oportunidades de discovery',
+    'disc-title': 'Sugerencias de discovery',
+    'c1-title': 'Nuevo Informe de Potencial de Automatización',
+    'c1-sum': 'Un nuevo informe analiza tus conversaciones e identifica qué solicitudes pueden automatizarse con agentes de IA. Ofrece insights por marca, ejemplos de tickets reales y muestra exactamente cómo un agente de IA respondería a cada consulta.',
+    'c1-impact': 'Identifica oportunidades concretas para aumentar FCR y reducir TTR — automatizando los flujos más comunes antes de necesitar un agente humano.',
+    'c1-d1': 'Generar el informe por marca (BR y LATAM por separado) y comparar los top 10 intents con la tasa actual de FCR por cola.',
+    'c1-d2': 'Mapear la superposición entre los intents sugeridos para automatización y los flujos configurados en Intenciones de Zendesk.',
+    'c1-d3': 'Probar piloto de agente de IA en los 3 tipos de ticket con mayor potencial de automatización y medir impacto en TTR a las 2 semanas.',
+    'c2-title': 'IA Agéntica para Email — Disponibilidad General (GA)',
+    'c2-sum': 'Los agentes de IA avanzados ahora entienden emails completos, responden preguntas, automatizan procedimientos y escalan cuando es necesario — reduciendo intercambios con clientes en email sin intervención humana para casos recurrentes.',
+    'c2-impact': 'Reduce FRT y TMA en email eliminando la clasificación manual de tickets recurrentes. Las escalaciones ocurren solo cuando el agente de IA no puede resolver — mejorando FCR.',
+    'c2-d1': 'Mapear los top 5 tipos de email con mayor volumen que llegan sin respuesta en las primeras 4h — estos son los candidatos ideales para el piloto.',
+    'c2-d2': 'Verificar que las Intenciones configuradas cubran los flujos de email más volumosos y ajustar antes de activar el agente agéntico.',
+    'c2-d3': 'Definir criterios claros de escalación (ej: sentimiento negativo, palabras clave críticas) para garantizar CSAT en casos complejos.',
+    'c3-title': 'Copilot: Sugerencias de Macros y Recomendaciones de Seguridad',
+    'c3-sum': 'Copilot ahora incluye dos nuevos tipos de recomendación: sugerencias de contenido de macros (para optimizar respuestas estandarizadas) y recomendaciones de trust &amp; safety (para mejorar configuraciones de seguridad), accesibles directamente en Admin Center.',
+    'c3-impact': 'Reduce TMA al identificar macros ineficientes y sugerir mejoras; mejora consistencia de respuestas y CSAT al estandarizar la comunicación en flujos críticos.',
+    'c3-d1': 'Revisar las 20 macros más usadas y verificar si las sugerencias de Copilot indican oportunidades de consolidación o mejora de contenido.',
+    'c3-d2': 'Identificar flujos críticos sin macro dedicada (cancelación, reembolso, cambio) y usar las sugerencias como punto de partida.',
+    'c4-title': 'Dashboards en Tiempo Real: Toggle, 30 Días y Permisos por Marca',
+    'c4-sum': 'Los dashboards de monitoreo en tiempo real ganan tres mejoras: toggle "Mostrar filas vacías" para visualizar marcas y grupos inactivos, extensión de 30 días para métricas históricas recientes, y permisos por marca para control granular de acceso.',
+    'c4-impact': 'Mayor visibilidad de SLA y TTR por marca (BR vs LATAM); permisos granulares reducen el ruido para líderes de subequipos y facilitan la gestión de SLA por canal.',
+    'c4-d1': 'Configurar permisos por marca para que los líderes de BR y LATAM vean solo datos de sus operaciones, sin ruido cruzado.',
+    'c4-d2': 'Usar la extensión de 30 días para crear una vista de tendencia de FRT por canal e identificar degradaciones graduales antes del breach de SLA.',
+    'c4-d3': 'Activar el toggle de filas vacías para auditar qué grupos y colas se quedan sin volumen — oportunidad de consolidar o redistribuir capacidad.',
+    'c5-title': 'Búsqueda Generativa con Pregunta de Follow-up en Web Widget',
+    'c5-sum': 'La búsqueda generativa en el help center ahora soporta una pregunta de follow-up para clientes usando el Web Widget. Crea un camino más natural del autoservicio hacia una conversación con un agente de IA, manteniendo el contexto de la búsqueda original.',
+    'c5-impact': 'Aumenta FCR en autoservicio; reduce el volumen de tickets creados por clientes que no encontraron respuesta completa en la primera búsqueda — impacto directo en FRT y volumen general.',
+    'c5-d1': 'Analizar las búsquedas en el help center que no resultan en artículo clickeado — son los candidatos con mayor beneficio del follow-up.',
+    'c5-d2': 'Activar búsqueda generativa y medir tasa de deflexión (tickets no creados) antes y después, segmentando por canal de entrada.',
+    'c5-d3': 'Validar si los artículos más accedidos vía búsqueda responden completamente la pregunta — los gaps identificados se convierten en nuevos artículos.',
+    'c6-title': 'Conectores de Conocimiento: SharePoint, Notion y Document360',
+    'c6-sum': 'Ahora es posible conectar SharePoint, Notion o Document360 a Zendesk para hacer ese contenido disponible en la búsqueda generativa, en Copilot y en los agentes de IA — sin necesidad de duplicar documentación interna.',
+    'c6-impact': 'Reduce TTR al dar acceso al agente (y al Copilot) a bases de conocimiento internas ya existentes; elimina la consulta manual a herramientas externas durante la atención.',
+    'c6-d1': 'Mapear qué documentos internos (Notion, SharePoint) los agentes consultan manualmente hoy durante la atención — esos son los primeros a conectar.',
+    'c6-d2': 'Probar conexión con Notion para los 20 artículos internos más accedidos y verificar si aparecen en las sugerencias de Copilot.',
+    'c7-title': 'Flujos de Acción: Crear Aprobaciones Automáticamente',
+    'c7-sum': 'Los admins pueden configurar flujos de acción para crear solicitudes de aprobación automáticamente con la nueva acción "Enviar solicitud de aprobación". Automatiza procesos que requieren validación, reduciendo trabajo manual y garantizando consistencia.',
+    'c7-impact': 'Reduce TTR en tickets que dependen de aprobación interna; garantiza trazabilidad y elimina el riesgo de pasos olvidados en flujos críticos como reembolsos y cancelaciones.',
+    'c7-d1': 'Mapear los tipos de ticket que requieren aprobación manual hoy — cuántos, qué equipo aprueba, cuál es el tiempo promedio de espera.',
+    'c7-d2': 'Crear un flujo piloto para aprobación automática de reembolsos por encima de un valor límite y medir reducción de TTR.',
+    'c7-d3': 'Revisar los Flujos de Acción existentes e identificar cuáles tenían pasos de aprobación manual que pueden reemplazarse.',
+    'c8-title': 'Navegación Unificada Entre Productos Zendesk',
+    'c8-sum': 'Una interfaz unificada y consistente para navegar entre todos los productos Zendesk reduce significativamente la curva de aprendizaje para admins y agentes que usan múltiples módulos en el día a día, con un enfoque simplificado y estandarizado.',
+    'c8-impact': 'Reduce TMA indirectamente al eliminar tiempo perdido navegando entre interfaces diferentes; acelera el onboarding de nuevos agentes y facilita el acceso a configuraciones de Admin Center.',
+    'c8-d1': 'Recopilar feedback de agentes nuevos sobre dificultades de navegación antes y 30 días después de la actualización — usar como baseline de onboarding.',
+    'c8-d2': 'Verificar si la nueva navegación facilita el acceso de los admins a las configuraciones más usadas de Omnichannel y Gatillos.',
+    'sug-eye': 'Colaboración del equipo',
+    'sug-title': 'Sugerencias de iniciativas',
+    'sug-sub': 'Lo que líderes de CX y producto/ops quieren explorar a partir de estas novedades',
+    'empty-sug': '¡Ninguna sugerencia todavía. Sé el primero!',
+    'form-title': 'Agregar sugerencia',
+    'f-name': 'Tu nombre',
+    'f-role': 'Área',
+    'f-sel': 'Selecciona...',
+    'f-cx': 'Líder de CX',
+    'f-ops': 'Producto / Ops',
+    'f-ref': 'Relacionado con',
+    'f-ref-sel': 'Selecciona la novedad...',
+    'ref-c1': 'Informe de Potencial de Automatización',
+    'ref-c2': 'IA Agéntica para Email (GA)',
+    'ref-c3': 'Copilot: Sugerencias de Macros y Seguridad',
+    'ref-c4': 'Dashboards en Tiempo Real',
+    'ref-c5': 'Búsqueda Generativa con Follow-up',
+    'ref-c6': 'Conectores de Conocimiento',
+    'ref-c7': 'Flujos de Acción: Aprobaciones Automáticas',
+    'ref-c8': 'Navegación Unificada',
+    'ref-geral': 'General / otro',
+    'f-text': 'Sugerencia de discovery o iniciativa',
+    'f-submit': 'Enviar sugerencia',
+    'f-ok': '¡Sugerencia enviada! Gracias.',
+    'footer-cadence': 'Generado el primer martes de cada mes'
   }
 };
 
-let lang = localStorage.getItem('zj_lang') || (navigator.language||'pt').toLowerCase().startsWith('es') ? 'es' : 'pt';
-if(!localStorage.getItem('zj_lang')) lang = (navigator.language||'pt').toLowerCase().startsWith('es') ? 'es' : 'pt';
+let currentLang = 'pt';
 
-function setLang(l) {
-  lang = l;
-  localStorage.setItem('zj_lang', l);
-  applyLang();
+function setLang(lang) {
+  currentLang = lang;
+  document.getElementById('btn-pt').classList.toggle('active', lang === 'pt');
+  document.getElementById('btn-es').classList.toggle('active', lang === 'es');
+  applyLang(lang);
+  try { localStorage.setItem('jz-lang', lang); } catch(e) {}
 }
 
-function applyLang() {
-  const T = I18N[lang];
-  document.documentElement.lang = lang === 'pt' ? 'pt-BR' : 'es';
-  document.getElementById('btn-pt').classList.toggle('active', lang==='pt');
-  document.getElementById('btn-es').classList.toggle('active', lang==='es');
-
+function applyLang(lang) {
+  const t = T[lang];
   document.querySelectorAll('[data-i]').forEach(el => {
     const key = el.getAttribute('data-i');
-    if (T[key] === undefined) return;
-    if (el.tagName === 'INPUT' && el.type === 'text') { el.placeholder = T[key]; return; }
-    if (el.tagName === 'TEXTAREA') { el.placeholder = T[key]; return; }
-    if (el.id === 'hero-title') { el.innerHTML = T[key].replace('\n','<br>'); return; }
-    el.textContent = T[key];
+    if (t[key] === undefined) return;
+    const tag = el.tagName;
+    if (tag === 'INPUT' || tag === 'TEXTAREA') {
+      el.placeholder = t[key];
+    } else if (tag === 'OPTION') {
+      el.textContent = t[key];
+    } else {
+      el.innerHTML = t[key];
+    }
   });
-
-  // Update date locale
-  document.getElementById('hd').textContent = new Date().toLocaleDateString(lang==='pt'?'pt-BR':'es-ES',{day:'numeric',month:'long',year:'numeric'});
-
-  // Re-render suggestions with correct locale
-  renderSugs(currentSugs);
 }
 
-// ── IMPORTANCE ─────────────────────────────────────────────────────────────────
-const IMP_KEY = 'zj_apr2026_imp';
-
-async function loadImportant() {
-  try {
-    const r = await window.storage.get(IMP_KEY, false);
-    if (!r) return;
-    JSON.parse(r.value).forEach(id => {
-      const btn = document.getElementById('imp-' + id);
-      if (!btn) return;
-      btn.classList.add('marked');
-      btn.querySelector('span').textContent = I18N[lang]['mark-btn-done'];
-      btn.closest('.card').classList.add('card-important');
-    });
-  } catch(e) {}
+function loadImportant() {
+  const imp = window.storage.get('jz-imp-may26');
+  document.querySelectorAll('.card').forEach(card => {
+    const id = card.getAttribute('data-id');
+    if (id && imp[id]) {
+      card.classList.add('card-important');
+      const btn = card.querySelector('.imp-btn');
+      if (btn) btn.classList.add('marked');
+    }
+  });
 }
 
-async function toggleImp(id) {
-  const btn = document.getElementById('imp-' + id);
-  const isMarked = btn.classList.toggle('marked');
-  btn.querySelector('span').textContent = isMarked ? I18N[lang]['mark-btn-done'] : I18N[lang]['mark-btn'];
-  btn.closest('.card').classList.toggle('card-important', isMarked);
-  // Persist + send to sheets
-  try {
-    let marked = [];
-    try { const r = await window.storage.get(IMP_KEY, false); if(r) marked = JSON.parse(r.value); } catch(e) {}
-    marked = isMarked ? [...new Set([...marked, id])] : marked.filter(x => x !== id);
-    await window.storage.set(IMP_KEY, JSON.stringify(marked), false);
-  } catch(e) {}
-  // Write to Google Sheets via Apps Script
-  if (isMarked) {
-    const card = btn.closest('.card');
-    writeSheets('marcacoes', {
-      Data:      new Date().toLocaleDateString('pt-BR'),
-      Mes:       'Abril 2026',
-      Titulo:    card?.querySelector('.ct')?.textContent?.trim() || '',
-      Categoria: card?.querySelector('.b')?.textContent?.trim() || '',
-      Resumo:    card?.querySelector('.cs')?.textContent?.trim() || '',
-      Impacto:   card?.querySelector('.ci span')?.textContent?.trim() || '',
-      URL:       card?.querySelector('a.al')?.href || '',
-    });
+function toggleImp(btn) {
+  const card = btn.closest('.card');
+  const id = card.getAttribute('data-id');
+  const imp = window.storage.get('jz-imp-may26');
+  if (imp[id]) {
+    delete imp[id];
+    btn.classList.remove('marked');
+    card.classList.remove('card-important');
+  } else {
+    imp[id] = true;
+    btn.classList.add('marked');
+    card.classList.add('card-important');
   }
+  window.storage.set('jz-imp-may26', imp);
 }
 
-// ── DISCOVERY TOGGLE ──────────────────────────────────────────────────────────
-function toggleDisc(btn, id) {
-  const panel = document.getElementById(id);
-  const isOpen = panel.classList.toggle('open');
-  btn.classList.toggle('open', isOpen);
-  btn.querySelector('span').textContent = isOpen ? I18N[lang]['disc-btn-hide'] : I18N[lang]['disc-btn'];
+function toggleDisc(btn) {
+  const dp = btn.closest('.card').querySelector('.dp');
+  const open = btn.classList.toggle('open');
+  dp.style.display = open ? 'block' : 'none';
 }
-
-// ── SUGGESTIONS ────────────────────────────────────────────────────────────────
-const SUG_KEY = 'zj_apr2026_sugs';
-let currentSugs = [];
 
 async function loadSugs() {
   try {
-    const saved = localStorage.getItem(SUG_KEY);
-    if (saved) currentSugs = JSON.parse(saved);
-  } catch(e) {}
-  renderSugs(currentSugs);
+    const r = await fetch(APPS_SCRIPT_URL + '?action=get&sheet=' + SHEET);
+    const data = await r.json();
+    renderSugs(Array.isArray(data) ? data : []);
+  } catch(e) {
+    renderSugs([]);
+  }
 }
 
-function renderSugs(list) {
-  const T = I18N[lang];
-  const c = document.getElementById('slist');
-  const e = document.getElementById('empty');
-  const count = list.length;
-  document.getElementById('scount').textContent = count + ' ' + (count === 1 ? T['sug-count-s'] : T['sug-count-p']);
-  c.querySelectorAll('.scard').forEach(x => x.remove());
-  if (!count) { e.style.display = 'block'; return; }
-  e.style.display = 'none';
-  list.slice().reverse().forEach(s => {
-    const ini = s.name.trim().split(' ').map(n=>n[0]).join('').slice(0,2).toUpperCase();
-    const ac = s.role === 'cx' ? 'avcx' : 'avop';
-    const rl = s.role === 'cx' ? T['f-cx'] : T['f-ops'];
-    const d = document.createElement('div');
-    d.className = 'scard';
-    d.innerHTML = `<div class="sch"><div class="sau"><div class="av ${ac}">${ini}</div><div><div class="sn">${s.name}</div><div class="sr">${rl}</div></div></div><span class="sd">${s.date}</span></div><p class="st">${s.text}</p>${s.ref&&s.ref!=='geral'&&s.ref?`<p class="srf"><svg viewBox="0 0 12 12"><path d="M2 6h8M6 2l4 4-4 4"/></svg>${lang==='pt'?'Referente a':'Referente a'}: <span>${s.ref}</span></p>`:''}`;
-    c.appendChild(d);
-  });
+function renderSugs(items) {
+  const list = document.getElementById('slist');
+  const count = document.getElementById('scount');
+  const t = T[currentLang];
+  if (!items.length) {
+    count.textContent = '0';
+    list.innerHTML = '<div class="empty"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><span>' + (t['empty-sug'] || 'Nenhuma sugestão ainda.') + '</span></div>';
+    return;
+  }
+  const word = currentLang === 'pt' ? (items.length === 1 ? 'sugestão' : 'sugestões') : (items.length === 1 ? 'sugerencia' : 'sugerencias');
+  count.textContent = items.length + ' ' + word;
+  list.innerHTML = items.map(s => {
+    const isCx = s.role === 'cx';
+    const avClass = isCx ? 'avcx' : 'avop';
+    const initial = (s.name || '?').charAt(0).toUpperCase();
+    const dateStr = s.date || '';
+    return `<div class="scard">
+      <div class="sch">
+        <div class="sau">
+          <div class="av ${avClass}">${initial}</div>
+          <div>
+            <div class="sn">${escHtml(s.name || '')}</div>
+            <div class="sr">${isCx ? (currentLang === 'pt' ? 'Líder de CX' : 'Líder de CX') : (currentLang === 'pt' ? 'Produto / Ops' : 'Producto / Ops')}</div>
+          </div>
+        </div>
+        <div class="sd">${escHtml(dateStr)}</div>
+      </div>
+      <div class="st">${escHtml(s.text || '')}</div>
+      ${s.ref ? '<div class="srf"><svg viewBox="0 0 12 12"><path d="M2 6h8M6 2l4 4-4 4"/></svg><span>' + escHtml(s.ref) + '</span></div>' : ''}
+    </div>`;
+  }).join('');
+}
+
+function escHtml(str) {
+  return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
 
 async function submitSug() {
-  const T = I18N[lang];
   const name = document.getElementById('iname').value.trim();
   const role = document.getElementById('irole').value;
-  const ref  = document.getElementById('iref').value;
+  const ref = document.getElementById('iref').value;
   const text = document.getElementById('itext').value.trim();
-  if (!name || !role || !text) { alert(T['f-alert']); return; }
-
+  if (!name || !role || !text) return;
   const btn = document.getElementById('sbtn');
   btn.disabled = true;
-
-  const entry = {
-    name, role, ref, text,
-    date: new Date().toLocaleDateString(lang==='pt'?'pt-BR':'es-ES',{day:'numeric',month:'short'})
-  };
-
-  // Salva localmente
-  currentSugs.push(entry);
-  try { localStorage.setItem(SUG_KEY, JSON.stringify(currentSugs)); } catch(e) {}
-  renderSugs(currentSugs);
-
-  // Limpa formulário
-  ['iname','itext'].forEach(id => document.getElementById(id).value = '');
+  const now = new Date();
+  const dateStr = now.toLocaleDateString(currentLang === 'pt' ? 'pt-BR' : 'es-AR', {day:'2-digit', month:'short'});
+  await writeSheets({ name, role, ref, text, date: dateStr, sheet: SHEET });
+  document.getElementById('smsg').classList.add('show');
+  document.getElementById('iname').value = '';
   document.getElementById('irole').value = '';
-  document.getElementById('iref').value  = '';
-
-  // Mostra confirmação
-  const m = document.getElementById('smsg');
-  m.classList.add('show');
-  setTimeout(() => m.classList.remove('show'), 3000);
-
-  // Envia para a planilha (fire and forget — não bloqueia nem exibe erro ao usuário)
-  writeSheets('sugestoes', { Data: entry.date, Nome: name, Area: role, Referencia: ref, Sugestao: text });
-
-  btn.disabled = false;
+  document.getElementById('iref').value = '';
+  document.getElementById('itext').value = '';
+  setTimeout(() => { btn.disabled = false; document.getElementById('smsg').classList.remove('show'); }, 3000);
+  loadSugs();
 }
 
-// ── SHEETS (Apps Script) ──────────────────────────────────────────────────────
-const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxN6ATFNU-lD6sgWKpQWZruwON7xxAajsSQ05kwlYH6JHkRJBL_067s4qONOHUS0ZIUKw/exec';
-
-async function writeSheets(tab, row) {
-  if (!APPS_SCRIPT_URL || APPS_SCRIPT_URL === 'COLE_AQUI_A_URL_DO_APPS_SCRIPT') return;
+async function writeSheets(data) {
   try {
-    const params = new URLSearchParams({ tab, ...row });
-    await fetch(APPS_SCRIPT_URL + '?' + params.toString(), {
-      method: 'GET',
-      mode: 'no-cors'
+    await fetch(APPS_SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ action: 'write', ...data })
     });
-  } catch(e) { console.error('Sheets:', e); }
+  } catch(e) {}
 }
 
-// ── INIT ──────────────────────────────────────────────────────────────────────
-applyLang();
-loadSugs();
-loadImportant();
+// Init
+(function init() {
+  try {
+    const saved = localStorage.getItem('jz-lang');
+    if (saved === 'es') { currentLang = 'es'; applyLang('es'); document.getElementById('btn-pt').classList.remove('active'); document.getElementById('btn-es').classList.add('active'); }
+  } catch(e) {}
+  loadImportant();
+  loadSugs();
+})();
 </script>
 </body>
 </html>
