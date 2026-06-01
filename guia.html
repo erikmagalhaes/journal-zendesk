@@ -5,97 +5,90 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Guia de Uso · Zendesk Journal CX</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
 :root{
-  --navy:#0D1B2A;--navy2:#152236;--navy3:#1E2F45;--navy4:#243650;
-  --green:#00C853;--green2:#00E676;--green-bg:#003D1A;--green-border:#005C25;
-  --amber:#FFB300;--amber-bg:#2A1F00;--amber-border:#503300;
-  --purple:#7C4DFF;--purple-bg:#1A0F35;--purple-border:#3D2680;
-  --text:#E8EDF2;--text2:#8FA3BB;--text3:#4D6478;
-  --border:#1E3148;--border2:#253D58;
-  --r:8px;--rl:12px;
+  --bg:#001897;--panel-bg:#ffffff;--page-bg:#f3f4f6;
+  --text:#111827;--text2:#374151;--muted:#6b7280;--muted2:#9ca3af;
+  --primary:#2563eb;--primary-soft:#dbeafe;--primary-hover:#1d4ed8;
+  --panel-border:#e5e7eb;--border2:#d1d5db;
+  --pos:#059669;--pos-bg:#ecfdf5;--pos-border:#6ee7b7;
+  --neg:#dc2626;--neg-bg:#fef2f2;--neg-border:#fca5a5;
+  --amber:#d97706;--amber-bg:#fffbeb;--amber-border:#fcd34d;
+  --purple:#7c3aed;--purple-bg:#f5f3ff;--purple-border:#c4b5fd;
+  --r:10px;--rl:14px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{font-family:'Inter',sans-serif;background:var(--navy);color:var(--text);font-size:14px;line-height:1.6;min-height:100vh}
-
-header{background:var(--navy);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100}
+body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;background:var(--page-bg);color:var(--text);font-size:14px;line-height:1.6;min-height:100vh}
+header{background:var(--bg);border-bottom:none;position:sticky;top:0;z-index:100}
 .hi{max-width:900px;margin:0 auto;padding:0 1.5rem;height:56px;display:flex;align-items:center;justify-content:space-between}
 .logo{display:flex;align-items:center;gap:10px;text-decoration:none}
-.lm{width:30px;height:30px;border-radius:6px;background:var(--green);display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.lm svg{width:16px;height:16px;fill:var(--navy)}
-.ln{font-size:15px;font-weight:700;color:var(--text);letter-spacing:-0.02em}
-.ln span{color:var(--green)}
-.back{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:500;color:var(--text3);border:1px solid var(--border);border-radius:4px;padding:5px 12px;text-decoration:none;transition:all .15s}
-.back:hover{color:var(--green);border-color:var(--green-border)}
+.lm{width:30px;height:30px;border-radius:6px;background:#ffffff22;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.lm svg{width:16px;height:16px;fill:#fff}
+.ln{font-size:15px;font-weight:700;color:#fff;letter-spacing:-0.02em}
+.ln span{color:#93c5fd}
+.back{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:500;color:#cbd5e1;border:1px solid #ffffff33;border-radius:6px;padding:5px 12px;text-decoration:none;transition:all .15s}
+.back:hover{color:#fff;border-color:#ffffff66}
 .back svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:1.5}
-
 .wrap{max-width:900px;margin:0 auto;padding:2rem 1.5rem 5rem}
-
-.hero{background:var(--navy2);border:1px solid var(--border);border-radius:var(--rl);padding:2rem;margin-bottom:2rem}
-.hero-eye{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--green);margin-bottom:8px}
-.hero-title{font-size:28px;font-weight:700;letter-spacing:-.03em;color:var(--text);line-height:1.15;margin-bottom:10px}
-.hero-title span{color:var(--green)}
-.hero-intro{font-size:13px;color:var(--text2);line-height:1.7;max-width:620px}
-
-.sl{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);margin:2rem 0 1rem;display:flex;align-items:center;gap:10px}
-.sl::before{content:'';width:3px;height:14px;border-radius:2px;background:var(--green);flex-shrink:0}
-.sl::after{content:'';flex:1;height:1px;background:var(--border)}
-
-.card{background:var(--navy2);border:1px solid var(--border);border-radius:var(--rl);overflow:hidden;margin-bottom:12px}
+/* Hero */
+.hero{background:var(--bg);border:none;border-radius:var(--rl);padding:2rem;margin-bottom:2rem}
+.hero-eye{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#93c5fd;margin-bottom:8px}
+.hero-title{font-size:28px;font-weight:700;letter-spacing:-.03em;color:#fff;line-height:1.15;margin-bottom:10px}
+.hero-title span{color:#93c5fd}
+.hero-intro{font-size:13px;color:#bfdbfe;line-height:1.7;max-width:620px}
+/* Section label */
+.sl{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:2rem 0 1rem;display:flex;align-items:center;gap:10px}
+.sl::before{content:'';width:3px;height:14px;border-radius:2px;background:var(--primary);flex-shrink:0}
+.sl::after{content:'';flex:1;height:1px;background:var(--panel-border)}
+/* Card */
+.card{background:var(--panel-bg);border:1px solid var(--panel-border);border-radius:var(--rl);overflow:hidden;margin-bottom:12px;box-shadow:0 1px 3px rgba(0,0,0,0.05)}
 .cb{padding:1.25rem 1.5rem}
-
 /* Steps */
 .steps{list-style:none;padding:0;margin:0}
-.step{display:flex;gap:16px;padding:1.25rem 0;border-bottom:1px solid var(--border)}
+.step{display:flex;gap:16px;padding:1.25rem 0;border-bottom:1px solid var(--panel-border)}
 .step:last-child{border-bottom:none}
-.step-num{width:32px;height:32px;border-radius:50%;background:var(--green-bg);border:1.5px solid var(--green-border);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:var(--green);flex-shrink:0;margin-top:2px}
+.step-num{width:32px;height:32px;border-radius:50%;background:var(--primary-soft);border:1.5px solid var(--primary);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:var(--primary);flex-shrink:0;margin-top:2px}
 .step-body h3{font-size:14px;font-weight:600;color:var(--text);margin-bottom:4px}
 .step-body p{font-size:13px;color:var(--text2);line-height:1.7}
-.tip{display:inline-block;font-size:11px;color:var(--green);background:var(--green-bg);border:1px solid var(--green-border);border-radius:4px;padding:3px 10px;margin-top:6px;line-height:1.5}
-
-/* Visual demo boxes */
-.demo{background:var(--navy3);border:1px solid var(--border2);border-radius:var(--r);padding:.875rem 1rem;margin-top:10px;font-size:12px;color:var(--text2);line-height:1.6}
+.tip{display:inline-block;font-size:11px;color:var(--primary-hover);background:var(--primary-soft);border:1px solid #bfdbfe;border-radius:6px;padding:3px 10px;margin-top:6px;line-height:1.5}
+/* Demo boxes */
+.demo{background:#f8faff;border:1px solid var(--panel-border);border-radius:var(--r);padding:.875rem 1rem;margin-top:10px;font-size:12px;color:var(--text2);line-height:1.6}
 .demo strong{color:var(--text);font-weight:600}
 .demo-row{display:flex;align-items:center;gap:8px;margin-bottom:6px}
 .demo-row:last-child{margin-bottom:0}
-.demo-badge{font-size:10px;font-weight:700;padding:2px 8px;border-radius:3px;white-space:nowrap}
+.demo-badge{font-size:10px;font-weight:700;padding:2px 8px;border-radius:20px;white-space:nowrap}
 .dbai{background:var(--purple-bg);color:var(--purple);border:1px solid var(--purple-border)}
-.dbgreen{background:var(--green-bg);color:var(--green);border:1px solid var(--green-border)}
+.dbgreen{background:var(--pos-bg);color:var(--pos);border:1px solid var(--pos-border)}
 .dbamber{background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-border)}
-.dbgray{background:var(--navy3);color:var(--text2);border:1px solid var(--border2)}
-.mock-btn{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:500;padding:3px 9px;border-radius:4px;border:1px solid var(--border);color:var(--text3);background:var(--navy3)}
+.dbgray{background:#f3f4f6;color:var(--muted);border:1px solid var(--panel-border)}
+.mock-btn{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:500;padding:3px 9px;border-radius:6px;border:1px solid var(--panel-border);color:var(--muted);background:var(--panel-bg)}
 .mock-btn-amber{background:var(--amber-bg);color:var(--amber);border-color:var(--amber-border)}
 .mock-btn-purple{background:var(--purple-bg);color:var(--purple);border-color:var(--purple-border)}
-.mock-card{background:var(--navy);border:1px solid var(--border);border-radius:var(--r);padding:.75rem 1rem;margin-top:8px}
+.mock-card{background:var(--panel-bg);border:1px solid var(--panel-border);border-radius:var(--r);padding:.75rem 1rem;margin-top:8px}
 .mock-card-marked{border-color:var(--amber-border)}
-
 /* Info boxes */
 .infobox{border-radius:var(--r);padding:.875rem 1rem;font-size:13px;line-height:1.6;display:flex;gap:10px;align-items:flex-start;margin-top:1rem}
 .infobox svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:1.5;flex-shrink:0;margin-top:2px}
-.ib-green{background:var(--green-bg);border:1px solid var(--green-border);color:#7AD89A}
-.ib-amber{background:var(--amber-bg);border:1px solid var(--amber-border);color:#FFC94D}
-.ib-purple{background:var(--purple-bg);border:1px solid var(--purple-border);color:#B39DFF}
-
+.ib-green{background:var(--pos-bg);border:1px solid var(--pos-border);color:var(--pos)}
+.ib-amber{background:var(--amber-bg);border:1px solid var(--amber-border);color:var(--amber)}
+.ib-purple{background:var(--purple-bg);border:1px solid var(--purple-border);color:var(--purple)}
 /* Category legend */
 .cat-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:.5rem}
 .cat-item{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text2)}
-
-footer{border-top:1px solid var(--border);text-align:center;padding:1.5rem;font-size:11px;color:var(--text3)}
-footer a{color:var(--text3);text-decoration:none}
-footer a:hover{color:var(--green)}
-
-.lang-sw{display:flex;align-items:center;border:1px solid var(--border);border-radius:4px;overflow:hidden}
-.lang-btn{font-family:'Inter',sans-serif;font-size:11px;font-weight:600;padding:4px 10px;background:none;border:none;cursor:pointer;color:var(--text3);transition:all .15s}
-.lang-btn.active{background:var(--navy3);color:var(--green)}
-.lang-sep{width:1px;background:var(--border);height:18px}
-
+footer{border-top:1px solid var(--panel-border);text-align:center;padding:1.5rem;font-size:11px;color:var(--muted);background:var(--panel-bg)}
+footer a{color:var(--muted);text-decoration:none}
+footer a:hover{color:var(--primary)}
+.lang-sw{display:flex;align-items:center;border:1px solid #ffffff33;border-radius:6px;overflow:hidden}
+.lang-btn{font-family:'Plus Jakarta Sans',sans-serif;font-size:11px;font-weight:600;padding:4px 10px;background:none;border:none;cursor:pointer;color:#94a3b8;transition:all .15s}
+.lang-btn.active{background:#ffffff22;color:#fff}
+.lang-sep{width:1px;background:#ffffff33;height:18px}
 .pt-content{display:block}
 .es-content{display:none}
 .es .pt-content{display:none}
 .es .es-content{display:block}
-
 @media(max-width:640px){
   .cat-grid{grid-template-columns:1fr}
   .hero-title{font-size:22px}
@@ -104,7 +97,6 @@ footer a:hover{color:var(--green)}
 </style>
 </head>
 <body>
-
 <header>
   <div class="hi">
     <a class="logo" href="index.html">
@@ -125,9 +117,7 @@ footer a:hover{color:var(--green)}
     </div>
   </div>
 </header>
-
 <div class="wrap">
-
   <!-- Hero -->
   <div class="hero">
     <p class="hero-eye pt-content">Documentação · Zendesk Journal CX</p>
@@ -137,11 +127,9 @@ footer a:hover{color:var(--green)}
     <p class="hero-intro pt-content">Tudo que você precisa saber para acompanhar as novidades mensais do Zendesk, marcar atualizações como importantes e enviar sugestões de oportunidade para o processo de melhoria contínua de CX.</p>
     <p class="hero-intro es-content">Todo lo que necesitas saber para seguir las novedades mensuales de Zendesk, marcar actualizaciones como importantes y enviar sugerencias para el proceso de mejora continua de CX.</p>
   </div>
-
   <!-- O que é -->
   <div class="sl pt-content">O que é o Zendesk Journal CX</div>
   <div class="sl es-content">Qué es el Zendesk Journal CX</div>
-
   <div class="card">
     <div class="cb">
       <p class="pt-content" style="font-size:13px;color:var(--text2);line-height:1.7;margin-bottom:1rem">
@@ -150,7 +138,6 @@ footer a:hover{color:var(--green)}
       <p class="es-content" style="font-size:13px;color:var(--text2);line-height:1.7;margin-bottom:1rem">
         El <strong style="color:var(--text)">Zendesk Journal CX</strong> es una curaduría mensual de las novedades de Zendesk relevantes para el equipo de Customer Experience de Nuvemshop. En vez de leer todos los artículos de actualización de Zendesk, el equipo recibe un resumen filtrado, con impacto práctico y sugerencias de discovery para cada novedad.
       </p>
-
       <div class="infobox ib-green">
         <svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="7"/><path d="M8 7v4M8 5v.5"/></svg>
         <div class="pt-content">Publicado toda <strong>1ª terça-feira do mês</strong>, referente ao mês anterior. Exemplo: na 1ª terça de junho, você vê as novidades de maio.</div>
@@ -158,11 +145,9 @@ footer a:hover{color:var(--green)}
       </div>
     </div>
   </div>
-
   <!-- Como marcar -->
   <div class="sl pt-content">Como marcar uma atualização como importante</div>
   <div class="sl es-content">Cómo marcar una actualización como importante</div>
-
   <div class="card">
     <div class="cb">
       <ol class="steps">
@@ -171,8 +156,8 @@ footer a:hover{color:var(--green)}
           <div class="step-body">
             <h3 class="pt-content">Acesse o Journal do mês</h3>
             <h3 class="es-content">Accede al Journal del mes</h3>
-            <p class="pt-content">Abra a página principal em <strong style="color:var(--green)">journal-zendesk.vercel.app</strong>. As atualizações do mês atual são carregadas automaticamente.</p>
-            <p class="es-content">Abre la página principal en <strong style="color:var(--green)">journal-zendesk.vercel.app</strong>. Las actualizaciones del mes actual se cargan automáticamente.</p>
+            <p class="pt-content">Abra a página principal em <strong style="color:var(--primary)">journal-zendesk.vercel.app</strong>. As atualizações do mês atual são carregadas automaticamente.</p>
+            <p class="es-content">Abre la página principal en <strong style="color:var(--primary)">journal-zendesk.vercel.app</strong>. Las actualizaciones del mes actual se cargan automáticamente.</p>
           </div>
         </li>
         <li class="step">
@@ -183,10 +168,10 @@ footer a:hover{color:var(--green)}
             <p class="pt-content">Cada card mostra a categoria, um resumo em português, o impacto prático para o time de CX e um link para o artigo original no Zendesk.</p>
             <p class="es-content">Cada tarjeta muestra la categoría, un resumen en español, el impacto práctico para el equipo de CX y un enlace al artículo original en Zendesk.</p>
             <div class="demo">
-              <div class="demo-row"><span class="demo-badge dbai">IA & Automação</span> <span style="color:var(--text3)">categoria da novidade</span></div>
+              <div class="demo-row"><span class="demo-badge dbai">IA & Automação</span> <span style="color:var(--muted)">categoria da novidade</span></div>
               <div style="font-size:13px;color:var(--text);font-weight:600;margin:4px 0">Nova aba "Conversation Journey" para IA avançada</div>
               <div style="font-size:12px;color:var(--text2)">O dashboard de AI agents ganhou uma aba que visualiza os fluxos...</div>
-              <div style="font-size:12px;margin-top:6px;padding:6px 8px;background:var(--navy);border-left:2px solid var(--green);border-radius:0 4px 4px 0"><strong style="color:var(--green)">Impacto CX:</strong> Identifique gargalos na automação...</div>
+              <div style="font-size:12px;margin-top:6px;padding:6px 8px;background:var(--page-bg);border-left:2px solid var(--primary);border-radius:0 4px 4px 0"><strong style="color:var(--primary)">Impacto CX:</strong> Identifique gargalos na automação...</div>
             </div>
             <span class="tip pt-content">💡 Use os filtros no topo para ver só IA & Automação, Relatórios etc.</span>
             <span class="tip es-content">💡 Usa los filtros en la parte superior para ver solo IA & Automatización, Reportes, etc.</span>
@@ -217,8 +202,8 @@ footer a:hover{color:var(--green)}
               <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:8px">Nova aba "Conversation Journey"...</div>
               <div style="display:flex;justify-content:space-between;align-items:center">
                 <span class="mock-btn mock-btn-amber">✓ <span class="pt-content">Importante</span><span class="es-content">Importante</span></span>
-                <span style="font-size:11px;color:var(--text3)" class="pt-content">Ver artigo completo ↗</span>
-                <span style="font-size:11px;color:var(--text3)" class="es-content">Ver artículo completo ↗</span>
+                <span style="font-size:11px;color:var(--muted)" class="pt-content">Ver artigo completo ↗</span>
+                <span style="font-size:11px;color:var(--muted)" class="es-content">Ver artículo completo ↗</span>
               </div>
             </div>
             <span class="tip pt-content">📊 O registro vai direto para a aba <strong>marcacoes</strong> da planilha — sem nenhum passo extra</span>
@@ -228,11 +213,9 @@ footer a:hover{color:var(--green)}
       </ol>
     </div>
   </div>
-
   <!-- Como enviar sugestão -->
   <div class="sl pt-content">Como enviar uma sugestão de oportunidade</div>
   <div class="sl es-content">Cómo enviar una sugerencia de oportunidad</div>
-
   <div class="card">
     <div class="cb">
       <ol class="steps">
@@ -270,11 +253,9 @@ footer a:hover{color:var(--green)}
       </ol>
     </div>
   </div>
-
   <!-- Categorias -->
   <div class="sl pt-content">Categorias das atualizações</div>
   <div class="sl es-content">Categorías de las actualizaciones</div>
-
   <div class="card">
     <div class="cb">
       <p style="font-size:13px;color:var(--text2);margin-bottom:1rem" class="pt-content">Cada novidade é classificada em uma das categorias abaixo para facilitar a filtragem:</p>
@@ -292,22 +273,18 @@ footer a:hover{color:var(--green)}
       </div>
     </div>
   </div>
-
   <!-- PT/ES -->
   <div class="sl pt-content">Português e Espanhol</div>
   <div class="sl es-content">Português y Español</div>
-
   <div class="card">
     <div class="cb">
       <p style="font-size:13px;color:var(--text2);line-height:1.7" class="pt-content">O Journal está disponível em português e espanhol. Para alternar o idioma, clique nos botões <strong style="color:var(--text)">PT</strong> / <strong style="color:var(--text)">ES</strong> no canto superior direito do header. A preferência fica salva no navegador.</p>
       <p style="font-size:13px;color:var(--text2);line-height:1.7" class="es-content">El Journal está disponible en portugués y español. Para cambiar el idioma, haz clic en los botones <strong style="color:var(--text)">PT</strong> / <strong style="color:var(--text)">ES</strong> en la esquina superior derecha del header. La preferencia queda guardada en el navegador.</p>
     </div>
   </div>
-
   <!-- Cadência -->
   <div class="sl pt-content">Cadência de atualização</div>
   <div class="sl es-content">Cadencia de actualización</div>
-
   <div class="card">
     <div class="cb">
       <div class="infobox ib-green" style="margin-top:0">
@@ -321,18 +298,14 @@ footer a:hover{color:var(--green)}
       </div>
     </div>
   </div>
-
 </div>
-
 <footer>
   Zendesk Journal · Nuvemshop CX Intelligence ·
   <a href="index.html" class="pt-content">Voltar ao Journal</a>
   <a href="index.html" class="es-content">Volver al Journal</a>
 </footer>
-
 <script>
 let lang = localStorage.getItem('zj_lang') || ((navigator.language||'pt').toLowerCase().startsWith('es') ? 'es' : 'pt');
-
 function setLang(l) {
   lang = l;
   localStorage.setItem('zj_lang', l);
@@ -341,7 +314,6 @@ function setLang(l) {
   document.getElementById('btn-pt').classList.toggle('active', l === 'pt');
   document.getElementById('btn-es').classList.toggle('active', l === 'es');
 }
-
 setLang(lang);
 </script>
 </body>
