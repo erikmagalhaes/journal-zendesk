@@ -5,97 +5,88 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>A3 · Zendesk Journal CX</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
 :root{
-  --navy:#0D1B2A;--navy2:#152236;--navy3:#1E2F45;--navy4:#243650;
-  --green:#00C853;--green2:#00E676;--green-bg:#003D1A;--green-border:#005C25;
-  --amber:#FFB300;--amber-bg:#2A1F00;--amber-border:#503300;
-  --coral:#FF5252;--coral-bg:#2A0A0A;--coral-border:#4A1010;
-  --purple:#7C4DFF;--purple-bg:#1A0F35;--purple-border:#3D2680;
-  --text:#E8EDF2;--text2:#8FA3BB;--text3:#4D6478;
-  --border:#1E3148;--border2:#253D58;
+  --bg:#001897;--panel-bg:#ffffff;--page-bg:#f3f4f6;
+  --text:#111827;--text2:#374151;--muted:#6b7280;--muted2:#9ca3af;
+  --primary:#2563eb;--primary-soft:#dbeafe;--primary-hover:#1d4ed8;
+  --panel-border:#e5e7eb;--border2:#d1d5db;
+  --pos:#059669;--pos-bg:#ecfdf5;--pos-border:#6ee7b7;
+  --neg:#dc2626;--neg-bg:#fef2f2;--neg-border:#fca5a5;
+  --amber:#d97706;--amber-bg:#fffbeb;--amber-border:#fcd34d;
+  --coral:#dc2626;--coral-bg:#fef2f2;--coral-border:#fca5a5;
+  --purple:#7c3aed;--purple-bg:#f5f3ff;--purple-border:#c4b5fd;
+  --r:10px;--rl:14px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{font-family:'Inter',sans-serif;background:var(--navy);color:var(--text);font-size:14px;line-height:1.6;min-height:100vh}
-
+body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;background:var(--page-bg);color:var(--text);font-size:14px;line-height:1.6;min-height:100vh}
 /* ── Header ── */
-header{background:var(--navy);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;print-color-adjust:exact;-webkit-print-color-adjust:exact}
+header{background:var(--bg);border-bottom:none;position:sticky;top:0;z-index:100;print-color-adjust:exact;-webkit-print-color-adjust:exact}
 .hi{max-width:1100px;margin:0 auto;padding:0 1.5rem;height:56px;display:flex;align-items:center;justify-content:space-between}
 .logo{display:flex;align-items:center;gap:10px;text-decoration:none}
-.lm{width:30px;height:30px;border-radius:6px;background:var(--green);display:flex;align-items:center;justify-content:center}
-.lm svg{width:16px;height:16px;fill:var(--navy)}
-.ln{font-size:15px;font-weight:700;color:var(--text);letter-spacing:-.02em}
-.ln span{color:var(--green)}
+.lm{width:30px;height:30px;border-radius:6px;background:#ffffff22;display:flex;align-items:center;justify-content:center}
+.lm svg{width:16px;height:16px;fill:#fff}
+.ln{font-size:15px;font-weight:700;color:#fff;letter-spacing:-.02em}
+.ln span{color:#93c5fd}
 .hlinks{display:flex;align-items:center;gap:8px}
-.hlink{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:500;color:var(--text3);border:1px solid var(--border);border-radius:4px;padding:5px 12px;text-decoration:none;transition:all .15s}
-.hlink:hover{color:var(--green);border-color:var(--green-border)}
+.hlink{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:500;color:#cbd5e1;border:1px solid #ffffff33;border-radius:6px;padding:5px 12px;text-decoration:none;transition:all .15s}
+.hlink:hover{color:#fff;border-color:#ffffff66}
 .hlink svg{width:12px;height:12px}
-.lang-sw{display:flex;align-items:center;border:1px solid var(--border);border-radius:4px;overflow:hidden}
-.lang-btn{font-family:'Inter',sans-serif;font-size:11px;font-weight:600;padding:5px 10px;background:none;border:none;cursor:pointer;color:var(--text3);transition:all .15s}
-.lang-btn.active{background:var(--navy3);color:var(--green)}
-.lang-sep{width:1px;background:var(--border);height:20px}
-
+.lang-sw{display:flex;align-items:center;border:1px solid #ffffff33;border-radius:6px;overflow:hidden}
+.lang-btn{font-family:'Plus Jakarta Sans',sans-serif;font-size:11px;font-weight:600;padding:5px 10px;background:none;border:none;cursor:pointer;color:#94a3b8;transition:all .15s}
+.lang-btn.active{background:#ffffff22;color:#fff}
+.lang-sep{width:1px;background:#ffffff33;height:20px}
 /* ── Layout ── */
 .wrap{max-width:1100px;margin:0 auto;padding:2rem 1.5rem 5rem}
-
 /* ── Hero ── */
-.hero{background:var(--navy2);border:1px solid var(--border);border-radius:12px;padding:2rem;margin-bottom:1.5rem;display:flex;justify-content:space-between;align-items:flex-start;gap:1.5rem}
-.hero-eye{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--green);margin-bottom:6px}
-.hero-title{font-size:30px;font-weight:700;letter-spacing:-.03em;color:var(--text);margin-bottom:8px}
-.hero-title span{color:var(--green)}
+.hero{background:var(--bg);border:none;border-radius:var(--rl);padding:2rem;margin-bottom:1.5rem;display:flex;justify-content:space-between;align-items:flex-start;gap:1.5rem}
+.hero-eye{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#93c5fd;margin-bottom:6px}
+.hero-title{font-size:30px;font-weight:700;letter-spacing:-.03em;color:#fff;margin-bottom:8px}
+.hero-title span{color:#93c5fd}
 .hero-tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
-.tag{font-size:11px;font-weight:600;padding:3px 10px;border-radius:4px}
-.tag-green{background:var(--green-bg);color:var(--green);border:1px solid var(--green-border)}
-.tag-navy{background:var(--navy3);color:var(--text2);border:1px solid var(--border2)}
+.tag{font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px}
+.tag-green{background:#1e3a8a;color:#93c5fd;border:1px solid #3b82f6}
+.tag-navy{background:#1e3a8a99;color:#93c5fd;border:1px solid #3b82f688}
 .hero-links{display:flex;flex-direction:column;gap:8px;flex-shrink:0;text-align:right}
 .url-row{display:flex;flex-direction:column;align-items:flex-end}
-.url-label{font-size:11px;font-weight:600;color:var(--text3);letter-spacing:.06em;text-transform:uppercase;margin-bottom:2px}
-.url-val{font-size:13px;font-weight:600;color:var(--green);text-decoration:none}
+.url-label{font-size:11px;font-weight:600;color:#93c5fd;letter-spacing:.06em;text-transform:uppercase;margin-bottom:2px}
+.url-val{font-size:13px;font-weight:600;color:#bfdbfe;text-decoration:none}
 .url-val:hover{text-decoration:underline}
-
 /* ── Two-col grid ── */
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.col-left{}
-.col-right{}
-
 /* ── Section card ── */
-.sec{background:var(--navy2);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:12px}
-.sec-head{padding:.75rem 1.25rem;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px}
+.sec{background:var(--panel-bg);border:1px solid var(--panel-border);border-radius:var(--rl);overflow:hidden;margin-bottom:12px;box-shadow:0 1px 3px rgba(0,0,0,0.05)}
+.sec-head{padding:.75rem 1.25rem;border-bottom:1px solid var(--panel-border);display:flex;align-items:center;gap:8px;background:#f9fafb}
 .sec-head-bar{width:3px;height:16px;border-radius:2px;flex-shrink:0}
-.sec-head-title{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.sec-head-title{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
 .sec-body{padding:1rem 1.25rem}
 .sec-body p{font-size:13px;color:var(--text2);line-height:1.7;margin-bottom:0}
-
 /* ── Bullet list ── */
 .blist{list-style:none;padding:0;margin:0}
-.blist li{display:flex;gap:8px;align-items:flex-start;font-size:13px;color:var(--text2);line-height:1.65;padding:4px 0;border-bottom:1px solid var(--border)}
+.blist li{display:flex;gap:8px;align-items:flex-start;font-size:13px;color:var(--text2);line-height:1.65;padding:6px 0;border-bottom:1px solid var(--panel-border)}
 .blist li:last-child{border-bottom:none}
-.blist li::before{content:'▸';color:var(--green);flex-shrink:0;margin-top:1px;font-size:11px}
+.blist li::before{content:'▸';color:var(--primary);flex-shrink:0;margin-top:1px;font-size:11px}
 .blist.bright li{color:var(--text)}
-
 /* ── Ishikawa ── */
 .ish-wrap{padding:1rem 1.25rem 1.25rem}
 .ish-title{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--amber);margin-bottom:.75rem}
 .ish-svg{width:100%;height:auto;display:block}
-
 /* ── State cards side-by-side ── */
 .state-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-
 /* ── Component grid ── */
 .comp-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:1rem 1.25rem}
-.comp-item{background:var(--navy3);border:1px solid var(--border2);border-radius:8px;padding:.75rem 1rem;font-size:12px;color:var(--text2);line-height:1.55}
-.comp-item::before{content:'';display:block;width:20px;height:2px;background:var(--green);border-radius:1px;margin-bottom:6px}
-
+.comp-item{background:var(--primary-soft);border:1px solid #bfdbfe;border-radius:8px;padding:.75rem 1rem;font-size:12px;color:var(--text2);line-height:1.55}
+.comp-item::before{content:'';display:block;width:20px;height:2px;background:var(--primary);border-radius:1px;margin-bottom:6px}
 /* ── Print ── */
 @media print{
-  header{position:relative}
+  header{position:relative;background:#001897!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
   .no-print{display:none}
-  body{background:#0D1B2A;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  body{background:var(--page-bg);-webkit-print-color-adjust:exact;print-color-adjust:exact}
   .wrap{padding:1rem}
 }
-
 @media(max-width:700px){
   .grid{grid-template-columns:1fr}
   .state-grid{grid-template-columns:1fr}
@@ -107,7 +98,6 @@ header{background:var(--navy);border-bottom:1px solid var(--border);position:sti
 </style>
 </head>
 <body>
-
 <header>
   <div class="hi">
     <a class="logo" href="index.html">
@@ -135,9 +125,7 @@ header{background:var(--navy);border-bottom:1px solid var(--border);position:sti
     </div>
   </div>
 </header>
-
 <div class="wrap">
-
   <!-- Hero -->
   <div class="hero">
     <div>
@@ -160,7 +148,6 @@ header{background:var(--navy);border-bottom:1px solid var(--border);position:sti
       </div>
     </div>
   </div>
-
   <!-- Ishikawa — ocupa as 2 colunas -->
   <div class="sec" style="margin-bottom:16px">
     <div class="sec-head">
@@ -171,9 +158,7 @@ header{background:var(--navy);border-bottom:1px solid var(--border);position:sti
       <svg viewBox="0 0 1100 320" xmlns="http://www.w3.org/2000/svg" id="ish-svg" style="width:100%;display:block"></svg>
     </div>
   </div>
-
   <div class="grid">
-
     <!-- LEFT: Problema + Estado Atual + Estado Futuro -->
     <div>
       <div class="sec" style="margin-bottom:12px">
@@ -188,8 +173,8 @@ header{background:var(--navy);border-bottom:1px solid var(--border);position:sti
       <div class="state-grid">
         <div class="sec">
           <div class="sec-head">
-            <div class="sec-head-bar" style="background:var(--text3)"></div>
-            <span class="sec-head-title" style="color:var(--text3)" data-i="currTitle">Estado Atual</span>
+            <div class="sec-head-bar" style="background:var(--muted2)"></div>
+            <span class="sec-head-title" style="color:var(--muted)" data-i="currTitle">Estado Atual</span>
           </div>
           <div class="sec-body">
             <ul class="blist" id="curr-list"></ul>
@@ -197,8 +182,8 @@ header{background:var(--navy);border-bottom:1px solid var(--border);position:sti
         </div>
         <div class="sec">
           <div class="sec-head">
-            <div class="sec-head-bar" style="background:var(--green)"></div>
-            <span class="sec-head-title" style="color:var(--green)" data-i="futTitle">Estado Futuro</span>
+            <div class="sec-head-bar" style="background:var(--primary)"></div>
+            <span class="sec-head-title" style="color:var(--primary)" data-i="futTitle">Estado Futuro</span>
           </div>
           <div class="sec-body">
             <ul class="blist bright" id="fut-list"></ul>
@@ -206,13 +191,12 @@ header{background:var(--navy);border-bottom:1px solid var(--border);position:sti
         </div>
       </div>
     </div>
-
     <!-- RIGHT: Solução + Stack + Resultados -->
     <div>
       <div class="sec" style="margin-bottom:12px">
         <div class="sec-head">
-          <div class="sec-head-bar" style="background:var(--green)"></div>
-          <span class="sec-head-title" style="color:var(--green)" data-i="solTitle">Solução — Zendesk Journal</span>
+          <div class="sec-head-bar" style="background:var(--primary)"></div>
+          <span class="sec-head-title" style="color:var(--primary)" data-i="solTitle">Solução — Zendesk Journal</span>
         </div>
         <div class="sec-body" style="padding-bottom:.5rem">
           <p style="margin-bottom:.75rem;font-style:italic" data-i="solIntro">Plataforma web que automatiza curadoria, aprovação e publicação das novidades mensais do Zendesk para o time de CX.</p>
@@ -221,8 +205,8 @@ header{background:var(--navy);border-bottom:1px solid var(--border);position:sti
       </div>
       <div class="sec" style="margin-bottom:12px">
         <div class="sec-head">
-          <div class="sec-head-bar" style="background:var(--text3)"></div>
-          <span class="sec-head-title" style="color:var(--text3)" data-i="techTitle">Stack Técnica</span>
+          <div class="sec-head-bar" style="background:var(--muted2)"></div>
+          <span class="sec-head-title" style="color:var(--muted)" data-i="techTitle">Stack Técnica</span>
         </div>
         <div class="sec-body">
           <ul class="blist" id="tech-list"></ul>
@@ -230,8 +214,8 @@ header{background:var(--navy);border-bottom:1px solid var(--border);position:sti
       </div>
       <div class="sec" style="margin-bottom:12px">
         <div class="sec-head">
-          <div class="sec-head-bar" style="background:var(--green)"></div>
-          <span class="sec-head-title" style="color:var(--green)" data-i="resTitle">Resultados Esperados</span>
+          <div class="sec-head-bar" style="background:var(--primary)"></div>
+          <span class="sec-head-title" style="color:var(--primary)" data-i="resTitle">Resultados Esperados</span>
         </div>
         <div class="sec-body">
           <ul class="blist bright" id="res-list"></ul>
@@ -247,10 +231,8 @@ header{background:var(--navy);border-bottom:1px solid var(--border);position:sti
         </div>
       </div>
     </div>
-
   </div>
 </div>
-
 <script>
 const I18N = {
   pt:{
@@ -312,32 +294,26 @@ const I18N = {
     ishEffect:['Liderazgo sin','visibilidad de las','novedades Zendesk'],
   }
 };
-
 let lang = (navigator.language||'pt').toLowerCase().startsWith('es') ? 'es' : 'pt';
-const saved = localStorage.getItem('a3_lang');
+const saved = localStorage.getItem('zj_lang');
 if(saved) lang = saved;
-
 function setLang(l){
   lang = l;
-  localStorage.setItem('a3_lang', l);
+  localStorage.setItem('zj_lang', l);
   applyLang();
 }
-
 function list(id, items, bright=false){
   const el = document.getElementById(id);
   el.innerHTML = items.map(i=>`<li>${i}</li>`).join('');
 }
-
 function drawIshikawa(bones, effect){
-  const green='#00C853', greenBg='#003D1A', greenBorder='#005C25',
-        coral='#FF5252', coralBg='#330808',
-        text1='#E8EDF2', text2='#8FA3BB', text3='#4D6478',
-        border='#1E3148', border2='#253D58';
-
+  const green='#2563eb', greenBg='#dbeafe', greenBorder='#2563eb',
+        coral='#dc2626', coralBg='#fef2f2', coralBorder='#fca5a5',
+        text1='#111827', text2='#374151', text3='#9ca3af',
+        border='#e5e7eb', border2='#d1d5db';
   // Layout constants — viewBox 1100x320, spine at y=160
   const cy = 160;
   const spineX0 = 20, spineX1 = 880;
-
   // 4 bone attach points + tip positions
   // Left pair: attach at x=260, tips at x=160 (top) and x=160 (bottom)
   // Right pair: attach at x=580, tips at x=480
@@ -347,35 +323,27 @@ function drawIshikawa(bones, effect){
     { ax:260, tipX:155, tipY:270, top:false }, // BL
     { ax:580, tipX:475, tipY:270, top:false }, // BR
   ];
-
   const t = (x,y,text,fill,size,bold,anchor='middle') =>
     `<text x="${x}" y="${y}" fill="${fill}" font-size="${size}" font-family="Inter,Arial,sans-serif" text-anchor="${anchor}" dominant-baseline="middle"${bold?' font-weight="700"':''}>${text}</text>`;
-
   let svg = '';
-
   // Spine
   svg += `<line x1="${spineX0}" y1="${cy}" x2="${spineX1}" y2="${cy}" stroke="${text3}" stroke-width="2.5"/>`;
   svg += `<polygon points="${spineX1},${cy} ${spineX1-14},${cy-8} ${spineX1-14},${cy+8}" fill="${text3}"/>`;
-
   // Effect box — right side
   const bw=170, bh=76, bx=920, by=cy-bh/2;
   svg += `<rect x="${bx}" y="${by}" width="${bw}" height="${bh}" rx="6" fill="${coralBg}" stroke="${coral}" stroke-width="2"/>`;
   effect.forEach((line,i) => svg += t(bx+bw/2, by+16+i*22, line, coral, 13, true));
-
   // Draw bones
   bones_layout.forEach((bl, i) => {
     const bone = bones[i];
     if(!bone) return;
-
     // Diagonal line from tip to attach point on spine
     svg += `<line x1="${bl.tipX}" y1="${bl.tipY}" x2="${bl.ax}" y2="${cy}" stroke="${border2}" stroke-width="2"/>`;
-
     // Category pill — centered on tipX, pushed away from spine
     const pw = bone.label.length * 9 + 24, ph = 24;
     const pillY = bl.top ? bl.tipY - 18 : bl.tipY + 18;
     svg += `<rect x="${bl.tipX - pw/2}" y="${pillY - ph/2}" width="${pw}" height="${ph}" rx="4" fill="${greenBg}" stroke="${green}" stroke-width="1.5"/>`;
     svg += t(bl.tipX, pillY, bone.label, green, 13, true);
-
     // Cause texts — stacked vertically, anchored to right of tipX
     bone.causes.forEach((cause, j) => {
       if(bl.top){
@@ -389,45 +357,37 @@ function drawIshikawa(bones, effect){
       }
     });
   });
-
   // Center divider line (subtle vertical)
   svg += `<line x1="420" y1="20" x2="420" y2="300" stroke="${border}" stroke-width="1" stroke-dasharray="4 4"/>`;
-
   document.getElementById('ish-svg').innerHTML = svg;
 }
-
 function applyLang(){
   const T = I18N[lang];
   document.documentElement.lang = lang==='pt'?'pt-BR':'es';
-
   // Update all data-i elements
   document.querySelectorAll('[data-i]').forEach(el=>{
     const key = el.getAttribute('data-i');
     if(T[key] !== undefined) el.textContent = T[key];
   });
-
   // Lang buttons
   document.getElementById('btn-pt').classList.toggle('active', lang==='pt');
   document.getElementById('btn-es').classList.toggle('active', lang==='es');
-
   // Lists
   list('curr-list', T.curr);
   list('fut-list', T.fut, true);
   list('tech-list', T.tech);
   list('res-list', T.res, true);
   list('next-list', T.next);
-
   // Hide next card if empty
   document.getElementById('next-card').style.display = T.next.length ? 'block' : 'none';
-
   // Components grid
   document.getElementById('comp-grid').innerHTML = T.comp.map(c=>`<div class="comp-item">${c}</div>`).join('');
-
   // Ishikawa
   drawIshikawa(T.ishBones, T.ishEffect);
 }
-
 applyLang();
 </script>
 </body>
 </html>
+
+E do guia:
