@@ -85,6 +85,8 @@ header{background:var(--bg);border-bottom:1px solid rgba(255,255,255,0.1);positi
 .brp{background:var(--pos-bg);color:#065f46}
 .bch{background:#d1fae5;color:#065f46}
 .bag{background:var(--page-bg);color:var(--text2);border:1px solid var(--panel-border)}
+.bmud{background:#fff7ed;color:#c2410c;border:1px solid #fed7aa}
+.beap{background:#f5f3ff;color:#6d28d9;border:1px solid #ddd6fe}
 
 /* Importance button */
 .imp-btn{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:500;color:var(--muted);background:var(--page-bg);border:1px solid var(--panel-border);border-radius:6px;padding:4px 10px;cursor:pointer;transition:all .15s;user-select:none;font-family:'Plus Jakarta Sans',sans-serif}
@@ -580,6 +582,109 @@ footer a:hover{color:var(--primary)}
     </div>
   </div>
 
+  <!-- Card 11: VOC Patterns -->
+  <div class="card" data-id="c11">
+    <div class="cb">
+      <div class="meta">
+        <span class="b bai" data-i="badge-ia">IA &amp; Automação</span>
+        <span class="b bmud" data-i="badge-new">Novidade</span>
+      </div>
+      <h2 class="ct" data-i="c11-title">VOC Patterns: IA que Identifica Tendências nos Tickets</h2>
+      <p class="cs" data-i="c11-sum">Novo app do Zendesk Labs que usa IA para analisar automaticamente tickets resolvidos e fechados, identificando padrões recorrentes — tendências de clientes, causas de recontato e oportunidades de melhoria — sem precisar de analytics complexo ou relatórios customizados. Padrões são atualizados a cada 12h.</p>
+      <div class="ci"><strong data-i="impact-lbl">Impacto CX:</strong> <span data-i="c11-impact">Liderança de CX passa a ter visibilidade automática dos principais padrões de atendimento. Inclui IA Assistant para aprofundar cada padrão, criação de categorias customizadas por segmento e planos de ação diretamente na plataforma.</span></div>
+      <div class="cf">
+        <a class="al" href="https://support.zendesk.com/hc/en-us/articles/10302096074650-Announcing-the-Voice-of-Customer-VOC-Patterns-app" target="_blank" data-i="read-more">
+          <svg viewBox="0 0 12 12"><path d="M2 10L10 2M10 2H5M10 2v5"/></svg>
+          Ver artigo completo
+        </a>
+        <div class="cf-right">
+          <button class="imp-btn" id="imp-c11" onclick="toggleImp('c11')">
+            <svg viewBox="0 0 14 14"><rect x="1" y="1" width="12" height="12" rx="2"/><path d="M7 4v4M7 9.5h.01"/></svg>
+            <span data-i="mark-btn">Marcar como importante</span>
+          </button>
+          <button class="dt-btn" onclick="toggleDisc(this,'dp-c11')">
+            <svg viewBox="0 0 12 12"><circle cx="6" cy="6" r="5"/><path d="M4.5 4.5l3 3M7.5 4.5l-3 3"/></svg>
+            <span data-i="disc-btn">Oportunidades de discovery</span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="dp" id="dp-c11">
+      <p class="dpt"><svg viewBox="0 0 12 12"><path d="M6 1v10M1 6h10"/></svg><span data-i="disc-title">Sugestões de discovery</span></p>
+      <div class="di"><div class="dd"></div><p class="dt2" data-i="c11-d1">Instalar o VOC Patterns, aguardar os primeiros padrões (~24h) e apresentar os top 5 resultados na próxima reunião de liderança de CX — validar se os padrões refletem o que o time já percebe no dia a dia.</p></div>
+      <div class="di"><div class="dd"></div><p class="dt2" data-i="c11-d2">Criar categorias customizadas por segmento (cancelamento, reembolso, dúvidas de produto) e comparar os padrões por categoria com as prioridades do roadmap de melhoria contínua.</p></div>
+      <div class="di"><div class="dd"></div><p class="dt2" data-i="c11-d3">Usar o AI Assistant do VOC Patterns para aprofundar o padrão com maior volume de recontato e transformar o resultado em um plano de ação mensurável com owner e prazo.</p></div>
+    </div>
+  </div>
+
+  <!-- Card 12: WhatsApp mudança -->
+  <div class="card" data-id="c12">
+    <div class="cb">
+      <div class="meta">
+        <span class="b bch" data-i="badge-ch">Canais</span>
+        <span class="b bmud" data-i="badge-warn">⚠️ Ação necessária</span>
+      </div>
+      <h2 class="ct" data-i="c12-title">WhatsApp: Mudança na Identificação de Usuários (Meta)</h2>
+      <p class="cs" data-i="c12-sum">A Meta está introduzindo Usernames para WhatsApp. Usuários que optarem pelo novo recurso serão identificados por um Business-Scoped User ID (BSUID) em vez do número de telefone. Testes regionais começam em 30 de junho/2026, com GA em agosto. Workflows que dependem do número de telefone precisam ser revisados.</p>
+      <div class="ci"><strong data-i="impact-lbl">Impacto CX:</strong> <span data-i="c12-impact">Integrações via API que leem o campo externalId ou dependem do telefone como chave de identificação precisam ser atualizadas antes de 30/junho. Novos contatos WhatsApp podem chegar sem número de telefone, quebrando fluxos de roteamento ou automação que usam esse campo.</span></div>
+      <div class="cf">
+        <a class="al" href="https://support.zendesk.com/hc/en-us/articles/10744666279834-Announcing-changes-to-how-WhatsApp-users-are-identified" target="_blank" data-i="read-more">
+          <svg viewBox="0 0 12 12"><path d="M2 10L10 2M10 2H5M10 2v5"/></svg>
+          Ver artigo completo
+        </a>
+        <div class="cf-right">
+          <button class="imp-btn" id="imp-c12" onclick="toggleImp('c12')">
+            <svg viewBox="0 0 14 14"><rect x="1" y="1" width="12" height="12" rx="2"/><path d="M7 4v4M7 9.5h.01"/></svg>
+            <span data-i="mark-btn">Marcar como importante</span>
+          </button>
+          <button class="dt-btn" onclick="toggleDisc(this,'dp-c12')">
+            <svg viewBox="0 0 12 12"><circle cx="6" cy="6" r="5"/><path d="M4.5 4.5l3 3M7.5 4.5l-3 3"/></svg>
+            <span data-i="disc-btn">Oportunidades de discovery</span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="dp" id="dp-c12">
+      <p class="dpt"><svg viewBox="0 0 12 12"><path d="M6 1v10M1 6h10"/></svg><span data-i="disc-title">Sugestões de discovery</span></p>
+      <div class="di"><div class="dd"></div><p class="dt2" data-i="c12-d1">Mapear todos os fluxos de automação e roteamento que usam número de telefone como campo de identificação do usuário WhatsApp — priorizar os que precisam ser ajustados antes de 30/junho.</p></div>
+      <div class="di"><div class="dd"></div><p class="dt2" data-i="c12-d2">Verificar se há integrações customizadas via API que leem o campo externalId de contatos WhatsApp e avaliar impacto da mudança para BSUID com o time de produto/tech.</p></div>
+    </div>
+  </div>
+
+  <!-- Card 13: AutoQA Reasoning EAP -->
+  <div class="card" data-id="c13">
+    <div class="cb">
+      <div class="meta">
+        <span class="b bai" data-i="badge-ia">IA &amp; Automação</span>
+        <span class="b beap">EAP</span>
+      </div>
+      <h2 class="ct" data-i="c13-title">AutoQA Reasoning: Explicabilidade nas Avaliações Automáticas (EAP)</h2>
+      <p class="cs" data-i="c13-sum">O AutoQA passa a explicar o raciocínio por trás de cada nota ou classificação automática. Ao clicar em uma categoria avaliada, expande um painel com: lógica de avaliação passo a passo, evidências identificadas na conversa e motivo de N/A quando aplicável. Disponível via EAP para categorias de sistema, spotlights e categorias baseadas em prompts de IA.</p>
+      <div class="ci"><strong data-i="impact-lbl">Impacto CX:</strong> <span data-i="c13-impact">Aumenta a confiança nas avaliações automáticas e facilita calibração com o time de qualidade. Reduz revisão manual aleatória ao direcionar o esforço para os casos onde o raciocínio mostra inconsistência — tornando o QA mais escalável e transparente.</span></div>
+      <div class="cf">
+        <a class="al" href="https://support.zendesk.com/hc/en-us/articles/10727979177498-Announcing-the-AutoQA-Reasoning-EAP" target="_blank" data-i="read-more">
+          <svg viewBox="0 0 12 12"><path d="M2 10L10 2M10 2H5M10 2v5"/></svg>
+          Ver artigo completo
+        </a>
+        <div class="cf-right">
+          <button class="imp-btn" id="imp-c13" onclick="toggleImp('c13')">
+            <svg viewBox="0 0 14 14"><rect x="1" y="1" width="12" height="12" rx="2"/><path d="M7 4v4M7 9.5h.01"/></svg>
+            <span data-i="mark-btn">Marcar como importante</span>
+          </button>
+          <button class="dt-btn" onclick="toggleDisc(this,'dp-c13')">
+            <svg viewBox="0 0 12 12"><circle cx="6" cy="6" r="5"/><path d="M4.5 4.5l3 3M7.5 4.5l-3 3"/></svg>
+            <span data-i="disc-btn">Oportunidades de discovery</span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="dp" id="dp-c13">
+      <p class="dpt"><svg viewBox="0 0 12 12"><path d="M6 1v10M1 6h10"/></svg><span data-i="disc-title">Sugestões de discovery</span></p>
+      <div class="di"><div class="dd"></div><p class="dt2" data-i="c13-d1">Habilitar o EAP de AutoQA Reasoning, revisar 10 tickets avaliados automaticamente e comparar o raciocínio gerado pela IA com a avaliação humana — identificar onde a IA e o calibrador divergem.</p></div>
+      <div class="di"><div class="dd"></div><p class="dt2" data-i="c13-d2">Usar o painel de Reasoning como ferramenta de onboarding para novos avaliadores: o raciocínio passo a passo pode substituir parte do treinamento manual em calibração de QA.</p></div>
+    </div>
+  </div>
+
   <!-- Suggestions Section -->
   <div class="ss">
     <div class="sh">
@@ -626,6 +731,9 @@ footer a:hover{color:var(--primary)}
           <option data-i="ref-c8">Navegação Unificada</option>
           <option data-i="ref-c9">Permissão para Regras de Capacidade</option>
           <option data-i="ref-c10">Reprodução de Áudio no Agent Workspace</option>
+          <option data-i="ref-c11">VOC Patterns: Tendências nos Tickets</option>
+          <option data-i="ref-c12">WhatsApp: Mudança na Identificação</option>
+          <option data-i="ref-c13">AutoQA Reasoning (EAP)</option>
           <option data-i="ref-geral">Geral / outro</option>
         </select>
       </div>
@@ -723,6 +831,23 @@ const I18N = {
     'c10-d1':'Levantar o volume de tickets com áudio no WhatsApp — quantos por semana e qual o TMA médio nesses tickets vs. tickets sem áudio.',
     'c10-d2':'Coletar feedback de agentes sobre a fricção atual ao receber áudios longos — validar se o player embutido elimina o problema principal.',
     'c10-d3':'Verificar se a funcionalidade está disponível no canal WhatsApp da operação e ativar para o time de atendimento.',
+    'badge-new':'Novidade','badge-warn':'⚠️ Ação necessária',
+    'c11-title':'VOC Patterns: IA que Identifica Tendências nos Tickets',
+    'c11-sum':'Novo app do Zendesk Labs que usa IA para analisar automaticamente tickets resolvidos e fechados, identificando padrões recorrentes — tendências de clientes, causas de recontato e oportunidades de melhoria — sem precisar de analytics complexo ou relatórios customizados. Padrões são atualizados a cada 12h.',
+    'c11-impact':'Liderança de CX passa a ter visibilidade automática dos principais padrões de atendimento. Inclui IA Assistant para aprofundar cada padrão, criação de categorias customizadas por segmento e planos de ação diretamente na plataforma.',
+    'c11-d1':'Instalar o VOC Patterns, aguardar os primeiros padrões (~24h) e apresentar os top 5 resultados na próxima reunião de liderança de CX — validar se os padrões refletem o que o time já percebe no dia a dia.',
+    'c11-d2':'Criar categorias customizadas por segmento (cancelamento, reembolso, dúvidas de produto) e comparar os padrões por categoria com as prioridades do roadmap de melhoria contínua.',
+    'c11-d3':'Usar o AI Assistant do VOC Patterns para aprofundar o padrão com maior volume de recontato e transformar o resultado em um plano de ação mensurável com owner e prazo.',
+    'c12-title':'WhatsApp: Mudança na Identificação de Usuários (Meta)',
+    'c12-sum':'A Meta está introduzindo Usernames para WhatsApp. Usuários que optarem serão identificados por um Business-Scoped User ID (BSUID) em vez do número de telefone. Testes regionais começam em 30/junho/2026, com GA em agosto. Workflows que dependem do número de telefone precisam ser revisados.',
+    'c12-impact':'Integrações via API que leem o campo externalId ou dependem do telefone como chave de identificação precisam ser atualizadas antes de 30/junho. Novos contatos WhatsApp podem chegar sem número de telefone, quebrando fluxos de roteamento ou automação que usam esse campo.',
+    'c12-d1':'Mapear todos os fluxos de automação e roteamento que usam número de telefone como campo de identificação do usuário WhatsApp — priorizar os que precisam ser ajustados antes de 30/junho.',
+    'c12-d2':'Verificar se há integrações customizadas via API que leem o campo externalId de contatos WhatsApp e avaliar impacto da mudança para BSUID com o time de produto/tech.',
+    'c13-title':'AutoQA Reasoning: Explicabilidade nas Avaliações Automáticas (EAP)',
+    'c13-sum':'O AutoQA passa a explicar o raciocínio por trás de cada nota ou classificação automática. Ao clicar em uma categoria avaliada, expande um painel com: lógica de avaliação passo a passo, evidências identificadas na conversa e motivo de N/A quando aplicável. Disponível via EAP para categorias de sistema, spotlights e prompts de IA.',
+    'c13-impact':'Aumenta a confiança nas avaliações automáticas e facilita calibração com o time de qualidade. Reduz revisão manual aleatória ao direcionar o esforço para os casos onde o raciocínio mostra inconsistência — tornando o QA mais escalável e transparente.',
+    'c13-d1':'Habilitar o EAP de AutoQA Reasoning, revisar 10 tickets avaliados automaticamente e comparar o raciocínio gerado pela IA com a avaliação humana — identificar onde a IA e o calibrador divergem.',
+    'c13-d2':'Usar o painel de Reasoning como ferramenta de onboarding para novos avaliadores: o raciocínio passo a passo pode substituir parte do treinamento manual em calibração de QA.',
     'sug-eye':'Colaboração do time','sug-title':'Sugestões de iniciativas',
     'sug-sub':'O que líderes de CX e produto/ops querem explorar a partir dessas novidades',
     'empty-sug':'Nenhuma sugestão ainda. Seja o primeiro!',
@@ -734,6 +859,7 @@ const I18N = {
     'ref-c5':'Busca Generativa com Follow-up','ref-c6':'Conectores de Conhecimento',
     'ref-c7':'Fluxos de Ação: Aprovações Automáticas','ref-c8':'Navegação Unificada',
     'ref-c9':'Permissão para Regras de Capacidade','ref-c10':'Reprodução de Áudio no Agent Workspace',
+    'ref-c11':'VOC Patterns: Tendências nos Tickets','ref-c12':'WhatsApp: Mudança na Identificação','ref-c13':'AutoQA Reasoning (EAP)',
     'ref-geral':'Geral / outro',
     'f-text':'Sugestão de discovery ou iniciativa','f-submit':'Enviar sugestão',
     'f-ok':'Sugestão enviada! Obrigado.','footer-cadence':'Gerado na primeira terça de cada mês',
@@ -808,6 +934,23 @@ const I18N = {
     'c10-d1':'Relevar el volumen de tickets con audio en WhatsApp — cuántos por semana y cuál es el TMA promedio en esos tickets vs. tickets sin audio.',
     'c10-d2':'Recopilar feedback de agentes sobre la fricción actual al recibir audios largos — validar si el reproductor integrado elimina el problema principal.',
     'c10-d3':'Verificar si la funcionalidad está disponible en el canal WhatsApp de la operación y activarla para el equipo de atención.',
+    'badge-new':'Novedad','badge-warn':'⚠️ Acción requerida',
+    'c11-title':'VOC Patterns: IA que Identifica Tendencias en los Tickets',
+    'c11-sum':'Nueva app de Zendesk Labs que usa IA para analizar automáticamente tickets resueltos y cerrados, identificando patrones recurrentes — tendencias de clientes, causas de recontacto y oportunidades de mejora — sin necesidad de analytics complejo ni reportes personalizados. Los patrones se actualizan cada 12h.',
+    'c11-impact':'El liderazgo de CX obtiene visibilidad automática de los principales patrones de atención. Incluye IA Assistant para profundizar cada patrón, creación de categorías personalizadas por segmento y planes de acción directamente en la plataforma.',
+    'c11-d1':'Instalar VOC Patterns, esperar los primeros patrones (~24h) y presentar los top 5 resultados en la próxima reunión de liderazgo de CX — validar si los patrones reflejan lo que el equipo ya percibe en el día a día.',
+    'c11-d2':'Crear categorías personalizadas por segmento (cancelación, reembolso, dudas de producto) y comparar los patrones por categoría con las prioridades del roadmap de mejora continua.',
+    'c11-d3':'Usar el AI Assistant de VOC Patterns para profundizar el patrón con mayor volumen de recontacto y convertir el resultado en un plan de acción medible con responsable y plazo.',
+    'c12-title':'WhatsApp: Cambio en la Identificación de Usuarios (Meta)',
+    'c12-sum':'Meta está introduciendo Usernames para WhatsApp. Los usuarios que opten serán identificados por un Business-Scoped User ID (BSUID) en lugar del número de teléfono. Las pruebas regionales comienzan el 30 de junio/2026, con GA en agosto. Los flujos que dependen del número de teléfono deben revisarse.',
+    'c12-impact':'Integraciones vía API que leen el campo externalId o dependen del teléfono como clave de identificación deben actualizarse antes del 30/junio. Nuevos contactos de WhatsApp pueden llegar sin número de teléfono, rompiendo flujos de enrutamiento o automatización que usan ese campo.',
+    'c12-d1':'Mapear todos los flujos de automatización y enrutamiento que usan número de teléfono como campo de identificación del usuario WhatsApp — priorizar los que deben ajustarse antes del 30/junio.',
+    'c12-d2':'Verificar si hay integraciones personalizadas vía API que leen el campo externalId de contactos WhatsApp y evaluar el impacto del cambio a BSUID con el equipo de producto/tech.',
+    'c13-title':'AutoQA Reasoning: Explicabilidad en las Evaluaciones Automáticas (EAP)',
+    'c13-sum':'El AutoQA ahora explica el razonamiento detrás de cada nota o clasificación automática. Al hacer clic en una categoría evaluada, se expande un panel con: lógica de evaluación paso a paso, evidencias identificadas en la conversación y motivo de N/A cuando aplica. Disponible vía EAP para categorías de sistema, spotlights y prompts de IA.',
+    'c13-impact':'Aumenta la confianza en las evaluaciones automáticas y facilita la calibración con el equipo de calidad. Reduce la revisión manual aleatoria al dirigir el esfuerzo hacia los casos donde el razonamiento muestra inconsistencia — haciendo el QA más escalable y transparente.',
+    'c13-d1':'Habilitar el EAP de AutoQA Reasoning, revisar 10 tickets evaluados automáticamente y comparar el razonamiento generado por la IA con la evaluación humana — identificar dónde la IA y el calibrador divergen.',
+    'c13-d2':'Usar el panel de Reasoning como herramienta de onboarding para nuevos evaluadores: el razonamiento paso a paso puede reemplazar parte del entrenamiento manual en calibración de QA.',
     'sug-eye':'Colaboración del equipo','sug-title':'Sugerencias de iniciativas',
     'sug-sub':'Lo que líderes de CX y producto/ops quieren explorar a partir de estas novedades',
     'empty-sug':'¡Ninguna sugerencia todavía. Sé el primero!',
@@ -819,6 +962,7 @@ const I18N = {
     'ref-c5':'Búsqueda Generativa con Follow-up','ref-c6':'Conectores de Conocimiento',
     'ref-c7':'Flujos de Acción: Aprobaciones Automáticas','ref-c8':'Navegación Unificada',
     'ref-c9':'Permiso para Reglas de Capacidad','ref-c10':'Reproducción de Audio en Agent Workspace',
+    'ref-c11':'VOC Patterns: Tendencias en Tickets','ref-c12':'WhatsApp: Cambio en Identificación','ref-c13':'AutoQA Reasoning (EAP)',
     'ref-geral':'General / otro',
     'f-text':'Sugerencia de discovery o iniciativa','f-submit':'Enviar sugerencia',
     'f-ok':'¡Sugerencia enviada! Gracias.','footer-cadence':'Generado el primer martes de cada mes',
